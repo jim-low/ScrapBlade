@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 194275955}
   - component: {fileID: 194275954}
   - component: {fileID: 194275953}
+  - component: {fileID: 194275957}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -221,6 +222,18 @@ Transform:
   m_Father: {fileID: 701737755}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194275957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194275952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662b910189d94d14f89f298fa92e6257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &286383884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: cf3910b7639e12447827e45f63f60201, type: 3}
@@ -250,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ec537d07a5307418a8c7326c17c0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   walkSpeed: 5
   runSpeed: 15
   stoppingDistance: 2
@@ -258,6 +272,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  damage: 5
+  attackTime: 1
+  attackRange: 5
   waypoints:
   - {fileID: 1421774221}
   - {fileID: 1802600355}
@@ -1209,14 +1226,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ec537d07a5307418a8c7326c17c0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 194275952}
   walkSpeed: 5
-  runSpeed: 15
+  runSpeed: 8
   stoppingDistance: 2
   sightRange: 15
   fovAngle: 90
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  damage: 5
+  attackTime: 1
+  attackRange: 2.17
   waypoints:
   - {fileID: 1421774221}
   - {fileID: 1802600355}

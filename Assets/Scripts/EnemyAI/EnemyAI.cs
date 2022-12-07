@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-	private GameObject player;
+	public GameObject player;
 	public float walkSpeed = 5f;
 	public float runSpeed = 15f;
 	private float speed;
@@ -15,8 +15,13 @@ public class EnemyAI : MonoBehaviour
 	public float sightRange = 18f;
 	public float fovAngle = 90f;
 	public LayerMask playerLayer;
-
 	private float idleTime = 5f;
+	private float chaseTime = 3f;
+	public float damage = 5f;
+	public float attackTime = 1f;
+	public float attackRange;
+	private bool playerInAttack;
+	private bool canAttack;
 
 	public Transform[] waypoints;
 	private int waypointIndex;
@@ -26,17 +31,15 @@ public class EnemyAI : MonoBehaviour
 		speed = walkSpeed;
 		isIdle = false;
 		waypointIndex = 0;
-	}
-
-	void Start()
-	{
-		player = GameObject.Find("Player");
+		canAttack = true;
+		stoppingDistance = 3f;
+		attackRange = stoppingDistance;
 	}
 
 	void Update()
 	{
-		Debug.Log(waypointIndex);
-		DetectPlayer();
+		DetectPlayerInSight();
+		DetectPlayerInAttack();
 
 		if (!isIdle && !playerInSight)
 		{
@@ -45,30 +48,46 @@ public class EnemyAI : MonoBehaviour
 
 		if (playerInSight)
 		{
+			transform.LookAt(player.transform);
+		}
+
+		if (playerInSight && !playerInAttack)
+		{
 			Chase();
+		}
+
+		if (playerInSight && playerInAttack)
+		{
+			Attack();
 		}
 	}
 
-	void DetectPlayer()
+	void DetectPlayerInSight()
 	{
 		Vector3 direction = player.transform.position - transform.position;
 		float angle = Vector3.Angle(direction, transform.forward);
 		RaycastHit hit;
-		if (Physics.Raycast(transform.position, direction, out hit, sightRange, playerLayer))
+		bool hitTarget = Physics.Raycast(transform.position, direction, out hit, sightRange);
+		if (hitTarget && hit.collider.gameObject.tag == "Player")
 		{
 			float distance = Vector3.Distance(player.transform.position, transform.position);
 			playerInSight = (angle < fovAngle / 2) && distance <= sightRange;
 		}
 	}
 
+	void DetectPlayerInAttack()
+	{
+		playerInAttack = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+	}
+
 	// States
 	void Patrol()
 	{
-		Debug.Log("patroling");
 		// patrol area
 		speed = walkSpeed;
 		Navigation.target = waypoints[waypointIndex];
 		Navigation.agent.stoppingDistance = 0f;
+		Navigation.agent.autoBraking = false;
 	}
 
 	private void OnTriggerEnter(Collider collided)
@@ -93,13 +112,28 @@ public class EnemyAI : MonoBehaviour
 
 	void Chase()
 	{
-		Debug.Log("chasing");
 		StopCoroutine(Idle());
 		speed = runSpeed;
 		isIdle = false;
 		Navigation.target = player.transform;
 		Navigation.agent.stoppingDistance = stoppingDistance;
-		transform.LookAt(player.transform);
+		Navigation.agent.autoBraking = true;
+	}
+
+	void Attack()
+	{
+		if (canAttack)
+		{
+			player.GetComponent<PlayerScriptForTesting>().Damage(damage);
+			StartCoroutine(NextAttack());
+		}
+	}
+
+	private IEnumerator NextAttack()
+	{
+		canAttack = false;
+		yield return new WaitForSeconds(attackTime);
+		canAttack = true;
 	}
 
 	public float GetCurrentSpeed()
@@ -107,12 +141,15 @@ public class EnemyAI : MonoBehaviour
 		return speed;
 	}
 
-	private void OnDrawGizmos()
+	private void OnDrawGizmos() // just to draw line of sight
 	{
-		if (playerInSight)
-		{
-			Gizmos.color = Color.red;
-			Gizmos.DrawRay(transform.position, player.transform.position);
-		}
+		Gizmos.color = Color.green;
+		Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * sightRange);
+
+		Gizmos.color = playerInSight ? Color.blue : Color.yellow;
+		Gizmos.DrawWireSphere(transform.position, sightRange);
+
+		Gizmos.color = playerInAttack ? Color.red : Color.gray;
+		Gizmos.DrawWireSphere(transform.position, attackRange);
 	}
 }

@@ -19,8 +19,10 @@ public class Navigation : MonoBehaviour
     {
         if (target)
         {
+            //Debug.Log("Moving towards: " + target.name);
 			agent.destination = target.position;
 		}
         agent.speed = enemy.GetCurrentSpeed();
+        agent.angularSpeed = 180f;
     }
 }
