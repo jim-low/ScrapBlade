@@ -3,22 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+enum State
+{
+	PATROL,
+	CHASE,
+	ATTACK,
+}
+
 public class EnemyAI : MonoBehaviour
 {
-	public GameObject player;
-	public float walkSpeed = 5f;
-	public float runSpeed = 15f;
+	public Transform player;
+	private State state;
+	public float damping;
+	public float walkSpeed;
+	public float runSpeed;
 	private float speed;
 	private bool isIdle;
 	private bool playerInSight;
-	public float stoppingDistance = 2f;
-	public float sightRange = 18f;
-	public float fovAngle = 90f;
+	public float stoppingDistance;
+	public float sightRange;
+	public float fovAngle;
 	public LayerMask playerLayer;
-	private float idleTime = 5f;
-	private float chaseTime = 3f;
-	public float damage = 5f;
-	public float attackTime = 1f;
+	private float idleTime;
+	private float chaseTime;
+	public float damage;
+	public float attackTime;
 	public float attackRange;
 	private bool playerInAttack;
 	private bool canAttack;
@@ -28,27 +37,47 @@ public class EnemyAI : MonoBehaviour
 
 	void Awake()
 	{
+		state = State.PATROL;
+		damping = 10f;
+		walkSpeed = 5f;
+		runSpeed = 8f;
 		speed = walkSpeed;
+
 		isIdle = false;
-		waypointIndex = 0;
-		canAttack = true;
 		stoppingDistance = 3f;
 		attackRange = stoppingDistance;
+
+		sightRange = 18f;
+		fovAngle = 90f;
+
+		idleTime = 5f;
+		chaseTime = 3f; // this still need to implement
+		damage = 45f;
+		attackTime = 1f;
+
+		waypointIndex = 0;
+		canAttack = true;
 	}
 
 	void Update()
 	{
+		if (!playerInSight && state == State.CHASE)
+		{
+			speed = walkSpeed;
+			StartCoroutine(GiveUpChase());
+		}
+
 		DetectPlayerInSight();
 		DetectPlayerInAttack();
 
-		if (!isIdle && !playerInSight)
+		if (!isIdle && !playerInSight && state == State.PATROL)
 		{
 			Patrol();
 		}
 
 		if (playerInSight)
 		{
-			transform.LookAt(player.transform);
+			LookAtPlayer();
 		}
 
 		if (playerInSight && !playerInAttack)
@@ -62,17 +91,49 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
+	void LookAtPlayer()
+	{
+		Vector3 lookPos = player.position - transform.position;
+		lookPos.y = 0;
+		Quaternion rotation = Quaternion.LookRotation(lookPos);
+		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+	}
+
+	IEnumerator GiveUpChase()
+	{
+		yield return new WaitForSeconds(chaseTime);
+		state = State.PATROL;
+	}
+
 	void DetectPlayerInSight()
 	{
-		Vector3 direction = player.transform.position - transform.position;
+		if (state == State.PATROL) // if patrolling, depend on FOV angle to detect player
+		{
+			playerInSight = DetectPlayerInFOV();
+		}
+
+		if (state == State.CHASE) // if chasing, check if player is nearby and if is in FOV
+		{
+			if (Physics.CheckSphere(transform.position, sightRange, playerLayer)) // check if player is nearby
+			{
+				playerInSight = DetectPlayerInFOV();
+			}
+		}
+	}
+
+	bool DetectPlayerInFOV()
+	{
+		Vector3 direction = player.position - transform.position;
 		float angle = Vector3.Angle(direction, transform.forward);
+
 		RaycastHit hit;
 		bool hitTarget = Physics.Raycast(transform.position, direction, out hit, sightRange);
 		if (hitTarget && hit.collider.gameObject.tag == "Player")
 		{
-			float distance = Vector3.Distance(player.transform.position, transform.position);
-			playerInSight = (angle < fovAngle / 2) && distance <= sightRange;
+			float distance = Vector3.Distance(player.position, transform.position);
+			return (angle < fovAngle / 2) && distance <= sightRange;
 		}
+		return false;
 	}
 
 	void DetectPlayerInAttack()
@@ -83,6 +144,7 @@ public class EnemyAI : MonoBehaviour
 	// States
 	void Patrol()
 	{
+		state = State.PATROL;
 		// patrol area
 		speed = walkSpeed;
 		Navigation.target = waypoints[waypointIndex];
@@ -112,16 +174,18 @@ public class EnemyAI : MonoBehaviour
 
 	void Chase()
 	{
+		state = State.CHASE;
+		StopCoroutine(GiveUpChase());
 		StopCoroutine(Idle());
 		speed = runSpeed;
 		isIdle = false;
-		Navigation.target = player.transform;
+		Navigation.target = player;
 		Navigation.agent.stoppingDistance = stoppingDistance;
-		Navigation.agent.autoBraking = true;
 	}
 
 	void Attack()
 	{
+		state = State.ATTACK;
 		if (canAttack)
 		{
 			player.GetComponent<PlayerScriptForTesting>().Damage(damage);
@@ -143,13 +207,28 @@ public class EnemyAI : MonoBehaviour
 
 	private void OnDrawGizmos() // just to draw line of sight
 	{
-		Gizmos.color = Color.green;
-		Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * sightRange);
+		if (state == State.PATROL)
+		{
+			Gizmos.color = Color.green;
+			Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * sightRange);
+		}
 
-		Gizmos.color = playerInSight ? Color.blue : Color.yellow;
-		Gizmos.DrawWireSphere(transform.position, sightRange);
+		if (state == State.CHASE && playerInSight)
+		{
+			Gizmos.color = Color.yellow;
+			Gizmos.DrawWireSphere(transform.position, sightRange);
+		}
 
-		Gizmos.color = playerInAttack ? Color.red : Color.gray;
-		Gizmos.DrawWireSphere(transform.position, attackRange);
+		if (state == State.CHASE && !playerInSight)
+		{
+			Gizmos.color = Color.grey;
+			Gizmos.DrawWireSphere(transform.position, sightRange);
+		}
+
+		if (state == State.ATTACK)
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawWireSphere(transform.position, attackRange);
+		}
 	}
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScriptForTesting : MonoBehaviour
 {
@@ -15,13 +16,12 @@ public class PlayerScriptForTesting : MonoBehaviour
         }
         else
         {
-            Debug.Log("Health: " + health);
+            //Debug.Log("Health: " + health);
         }
     }
 
     void Die()
     {
-        Debug.Log("Yuo is died");
     }
 
     public void Damage(float damage)
