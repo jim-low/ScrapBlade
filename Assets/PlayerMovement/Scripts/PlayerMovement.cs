@@ -166,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
         // if want to turn off gravity for when on slope to avoid slipping down
         //rb.useGravity = !OnSlope();
 
-        PlayerSpeedometer.speedMsg = "Speed:" + rb.velocity.magnitude;
+        PlayerSpeedometer.speedMsg = "Speed: " + rb.velocity.magnitude;
     }
 
     private void SpeedControl()
