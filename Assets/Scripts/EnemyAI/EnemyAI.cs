@@ -173,7 +173,7 @@ public class EnemyAI : MonoBehaviour
 		state = State.ATTACK;
 		if (canAttack)
 		{
-			player.GetComponent<Player>().Damage(damage);
+			player.GetComponent<Player>().UnAlive();
 			StartCoroutine(NextAttack());
 		}
 	}

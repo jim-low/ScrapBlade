@@ -5,30 +5,17 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private float health = 100f;
+    private bool hasBeenUnalived = false;
+    public Text dedText;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (health <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            //Debug.Log("Health: " + health);
-        }
-    }
+	void Start()
+	{
+        dedText.enabled = false;
+	}
 
-    void Die()
-    {
-    }
-
-    public void Damage(float damage)
-    {
-        if (health <= 0)
-            return;
-        
-        health -= damage;
-    }
+	public void UnAlive()
+	{
+		hasBeenUnalived = true;
+		dedText.enabled = true;
+	}
 }

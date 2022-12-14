@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2337526299141920490}
   - component: {fileID: 1035371292264702582}
   m_Layer: 0
-  m_Name: Katana Sparks Particle System
+  m_Name: Katana Block Sparks Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
