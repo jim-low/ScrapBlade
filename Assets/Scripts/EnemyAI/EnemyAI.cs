@@ -67,6 +67,7 @@ public class EnemyAI : MonoBehaviour
 			StartCoroutine(GiveUpChase());
 		}
 
+		// something wrong here
 		DetectPlayerInSight();
 		DetectPlayerInAttack();
 
