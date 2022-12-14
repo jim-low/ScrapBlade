@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 enum State
 {
-	PATROL,
 	CHASE,
+	PATROL,
 	ATTACK,
 }
 
@@ -25,7 +25,6 @@ public class EnemyAI : MonoBehaviour
 	public float fovAngle;
 	public LayerMask playerLayer;
 	private float idleTime;
-	private float chaseTime;
 	public float damage;
 	public float attackTime;
 	public float attackRange;
@@ -51,7 +50,6 @@ public class EnemyAI : MonoBehaviour
 		fovAngle = 90f;
 
 		idleTime = 5f;
-		chaseTime = 3f; // this still need to implement
 		damage = 45f;
 		attackTime = 1f;
 
@@ -61,17 +59,10 @@ public class EnemyAI : MonoBehaviour
 
 	void Update()
 	{
-		if (!playerInSight && state == State.CHASE)
-		{
-			speed = walkSpeed;
-			StartCoroutine(GiveUpChase());
-		}
-
-		// something wrong here
 		DetectPlayerInSight();
 		DetectPlayerInAttack();
 
-		if (!isIdle && !playerInSight && state == State.PATROL)
+		if (!isIdle && state == State.PATROL)
 		{
 			Patrol();
 		}
@@ -98,12 +89,6 @@ public class EnemyAI : MonoBehaviour
 		lookPos.y = 0;
 		Quaternion rotation = Quaternion.LookRotation(lookPos);
 		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
-	}
-
-	IEnumerator GiveUpChase()
-	{
-		yield return new WaitForSeconds(chaseTime);
-		state = State.PATROL;
 	}
 
 	void DetectPlayerInSight()
@@ -176,7 +161,6 @@ public class EnemyAI : MonoBehaviour
 	void Chase()
 	{
 		state = State.CHASE;
-		StopCoroutine(GiveUpChase());
 		StopCoroutine(Idle());
 		speed = runSpeed;
 		isIdle = false;
@@ -189,7 +173,7 @@ public class EnemyAI : MonoBehaviour
 		state = State.ATTACK;
 		if (canAttack)
 		{
-			player.GetComponent<PlayerScriptForTesting>().Damage(damage);
+			player.GetComponent<Player>().Damage(damage);
 			StartCoroutine(NextAttack());
 		}
 	}
