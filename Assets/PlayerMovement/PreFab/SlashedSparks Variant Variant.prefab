@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &9066870871938307385
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.10789002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.044317007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 292.644
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 73.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 380.133
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6631571
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6741684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.28085458
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.1638303
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 53.334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -96.419
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177586, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -86.417
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: NoiseModule.frequency
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: ExternalForcesModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: ShapeModule.radius.speed.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177587, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: ExternalForcesModule.multiplierCurve.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224667752921177589, guid: 6f3ca0bdc91d82c469f37a1793f3083b,
+        type: 3}
+      propertyPath: m_Name
+      value: SlashedSparks Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f3ca0bdc91d82c469f37a1793f3083b, type: 3}
