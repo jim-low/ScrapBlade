@@ -14,9 +14,9 @@ Material:
   - _GLOSSYREFLECTIONS_OFF
   - _NORMALMAP
   m_InvalidKeywords:
+  - _ENVIRONMENTREFLECTIONS_OFF
   - _LIGHTMAPPING_REALTIME
   - _OCCLUSIONMAP
-  - _SPECULAR_SETUP
   - _UVSEC_UV1
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -101,7 +101,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionScaleUI: 1
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _GlossMapScale: 0
     - _Glossiness: 0.15
     - _GlossyReflections: 0
@@ -118,7 +118,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _UVSec: 0
-    - _WorkflowMode: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

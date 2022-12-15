@@ -15,6 +15,7 @@ Material:
   - _GLOSSYREFLECTIONS_OFF
   - _METALLICGLOSSMAP
   m_InvalidKeywords:
+  - _ENVIRONMENTREFLECTIONS_OFF
   - _METALLICSPECGLOSSMAP
   - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 1
@@ -97,7 +98,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _GlossMapScale: 0
     - _Glossiness: 0.063
     - _GlossyReflections: 0
