@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour
 	public float attackRange;
 	private bool playerInAttack;
 	private bool canAttack;
+	private NavMeshAgent agent;
 
 	public Transform[] waypoints;
 	private int waypointIndex;
@@ -57,6 +58,15 @@ public class EnemyAI : MonoBehaviour
 		canAttack = true;
 	}
 
+	void Start()
+	{
+		if (waypoints.Length == 0)
+		{
+			Idle();
+		}
+
+		agent = GetComponent<Navigation>().GetAgent();
+	}
 	void Update()
 	{
 		DetectPlayerInSight();
@@ -134,8 +144,8 @@ public class EnemyAI : MonoBehaviour
 		// patrol area
 		speed = walkSpeed;
 		Navigation.target = waypoints[waypointIndex];
-		Navigation.agent.stoppingDistance = 0f;
-		Navigation.agent.autoBraking = false;
+		agent.stoppingDistance = 0f;
+		agent.autoBraking = false;
 	}
 
 	private void OnTriggerEnter(Collider collided)
@@ -165,7 +175,7 @@ public class EnemyAI : MonoBehaviour
 		speed = runSpeed;
 		isIdle = false;
 		Navigation.target = player;
-		Navigation.agent.stoppingDistance = stoppingDistance;
+		agent.stoppingDistance = stoppingDistance;
 	}
 
 	void Attack()

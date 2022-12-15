@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class Navigation : MonoBehaviour
 {
     private EnemyAI enemy;
-    public static NavMeshAgent agent;
+    public NavMeshAgent agent;
     public static Transform target;
 
     void Awake()
@@ -24,5 +25,10 @@ public class Navigation : MonoBehaviour
 		}
         agent.speed = enemy.GetCurrentSpeed();
         agent.angularSpeed = 180f;
+    }
+
+    public NavMeshAgent GetAgent()
+    {
+        return agent;
     }
 }
