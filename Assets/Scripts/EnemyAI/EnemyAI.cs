@@ -183,7 +183,7 @@ public class EnemyAI : MonoBehaviour
 		state = State.ATTACK;
 		if (canAttack)
 		{
-			player.GetComponent<Player>().UnAlive();
+			// TODO: let player be unalive here
 			StartCoroutine(NextAttack());
 		}
 	}

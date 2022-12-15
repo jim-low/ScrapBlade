@@ -8,6 +8,7 @@ public class BossAI : MonoBehaviour
     [Header("Movement")]
     public float walkSpeed = 5f;
     public float runSpeed = 15f;
+    public float jumpForce = 20f;
 
     private Animator anim;
 
