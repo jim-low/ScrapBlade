@@ -18,10 +18,8 @@ public class PickSword : Interactable
 		if (hasTakenSword)
 			return;
 
-		GameObject sword = GameObject.Find("Sword_Cyber_Cyan");
-		Destroy(sword);
+		Destroy(GameObject.Find("SwordRotationPivot"));
 
-		GameObject player = GameObject.Find("PlayerSwordSpawnPoint");
 		GameObject swordInstance = Instantiate(swordPrefab, spawnPoint);
         swordInstance.name = "PlayerSword";
         hasTakenSword = true;
