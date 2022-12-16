@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickSword : Interactable
 {
 	private bool hasTakenSword = false;
+    public Transform spawnPoint;
 	public GameObject swordPrefab;
 
 	void Start()
@@ -20,11 +21,9 @@ public class PickSword : Interactable
 		GameObject sword = GameObject.Find("Sword_Cyber_Cyan");
 		Destroy(sword);
 
-		GameObject player = GameObject.Find("Player");
-		GameObject swordInstance = Instantiate(swordPrefab, player.transform);
-        swordInstance.name = "haha_sword_go_brrrrrrrrrrr";
-		swordInstance.transform.position = new Vector3(0.3f, -0.3f, 0.4f);
-		swordInstance.transform.localRotation = Quaternion.Euler(0f, 0f, 45f);
+		GameObject player = GameObject.Find("PlayerSwordSpawnPoint");
+		GameObject swordInstance = Instantiate(swordPrefab, spawnPoint);
+        swordInstance.name = "PlayerSword";
         hasTakenSword = true;
 	}
 }
