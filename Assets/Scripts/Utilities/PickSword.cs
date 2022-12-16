@@ -25,5 +25,6 @@ public class PickSword : Interactable
 		GameObject swordInstance = Instantiate(swordPrefab, spawnPoint);
         swordInstance.name = "PlayerSword";
         hasTakenSword = true;
+        hint = "";
 	}
 }
