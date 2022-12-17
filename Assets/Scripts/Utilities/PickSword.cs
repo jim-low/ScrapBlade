@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickSword : Interactable
 {
 	private bool hasTakenSword = false;
-    public Transform spawnPoint;
+	public Transform spawnPoint;
 	public GameObject swordPrefab;
 
 	void Start()
@@ -21,8 +21,9 @@ public class PickSword : Interactable
 		Destroy(GameObject.Find("SwordRotationPivot"));
 
 		GameObject swordInstance = Instantiate(swordPrefab, spawnPoint);
-        swordInstance.name = "PlayerSword";
-        hasTakenSword = true;
-        hint = "";
+		swordInstance.name = "PlayerSword";
+		hasTakenSword = true;
+		SwordAttack.isPickedUp = true;
+		hint = "";
 	}
 }

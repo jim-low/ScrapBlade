@@ -7,7 +7,7 @@ public class KillEnemy : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Sword")
+        if (collider.gameObject.tag == "Sword" && SwordAttack.isAttacking)
         {
             Debug.Log(gameObject.name + " has been unalived");
             GetComponent<Animator>().enabled = false;
