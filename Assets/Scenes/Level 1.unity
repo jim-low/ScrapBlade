@@ -3201,7 +3201,8 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 4.57
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4582518930620597303, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
 --- !u!1001 &1863818874
 PrefabInstance:
@@ -3820,11 +3821,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2562495373132597368, guid: f1edb3949ff54694b8312b916d1ceef8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.736
+      value: 23.16
       objectReference: {fileID: 0}
     - target: {fileID: 2562495373132597368, guid: f1edb3949ff54694b8312b916d1ceef8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -72.835
+      value: -73.387
       objectReference: {fileID: 0}
     - target: {fileID: 2562495373132597368, guid: f1edb3949ff54694b8312b916d1ceef8, type: 3}
       propertyPath: m_LocalRotation.w
