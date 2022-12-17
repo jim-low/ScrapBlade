@@ -20,6 +20,10 @@ public class PickSword : Interactable
 		if (hasTakenSword)
 		{
 			spotlight.intensity = spotlight.intensity - 0.5f;
+			if (spotlight.intensity <= 0)
+			{
+				spotlight.enabled = false;
+			}
 		}
 	}
 
