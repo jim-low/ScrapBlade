@@ -58,7 +58,8 @@ GameObject:
   - component: {fileID: 2751887579130763119}
   - component: {fileID: 2751887579131854247}
   - component: {fileID: 2751887579127680905}
-  m_Layer: 0
+  - component: {fileID: 4582518930620597303}
+  m_Layer: 9
   m_Name: SwordPedestal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +150,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 806d243665386404cb481e60e75eb50b, type: 3}
+--- !u!114 &4582518930620597303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751887579129616145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88d919b2176121418578b6562303b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hint: 
+  spawnPoint: {fileID: 0}
+  swordPrefab: {fileID: 0}
 --- !u!1 &2751887579534790539
 GameObject:
   m_ObjectHideFlags: 0

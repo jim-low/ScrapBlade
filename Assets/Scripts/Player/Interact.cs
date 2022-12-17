@@ -27,9 +27,13 @@ public class Interact : MonoBehaviour
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(ray, out hit, 3f, interactableLayer))
 		{
-			hintText.text = hit.collider.GetComponent<Interactable>().hint;
-			hintText.enabled = true;
-			canInteract = true;
+            string text = hit.collider.GetComponent<Interactable>().hint;
+			if (text.Length > 0)
+			{
+				hintText.text = text + " (E)";
+				hintText.enabled = true;
+				canInteract = true;
+			}
 		}
 		else
 		{
