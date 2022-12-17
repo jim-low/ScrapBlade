@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 5135317675104253498}
   - component: {fileID: 5050739411082266587}
   - component: {fileID: 5050739411082266596}
+  - component: {fileID: 14662774848531207}
   m_Layer: 0
   m_Name: RangedBlackRobot
   m_TagString: Enemy
@@ -255,7 +256,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5048780105765904244}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -31.06, y: 0.003036499, z: -26.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -317,6 +318,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade9e8a80723aef41985ae79d76d7a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &14662774848531207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048780105765904244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d67234d03e8eb4f8439ebec6571b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7506310772738199635, guid: 6e8e822e1ebaf3c41841d33e6c674949, type: 3}
+  bulletCollection: {fileID: 0}
 --- !u!1 &5048820769462187230
 GameObject:
   m_ObjectHideFlags: 0
