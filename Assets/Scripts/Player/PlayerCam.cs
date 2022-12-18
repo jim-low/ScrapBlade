@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerCam : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerCam : MonoBehaviour
 
     //player orientation
     public Transform orientation;
+    public Transform camHolder;
 
     float xRotate;
     float yRotate;
@@ -32,7 +34,17 @@ public class PlayerCam : MonoBehaviour
         xRotate -= mouseY;
         xRotate = Mathf.Clamp(xRotate, -90f, 90f); //make sure screen doesnt look pass 90 degrees up or down
 
-        transform.rotation = Quaternion.Euler(xRotate, yRotate, 0);
+        camHolder.rotation = Quaternion.Euler(xRotate, yRotate, 0);
         orientation.rotation = Quaternion.Euler(0, yRotate, 0);
+    }
+
+    public void DoFovChanges(float endValue)        //change fov when wall running
+    {
+        GetComponent<Camera>().DOFieldOfView(endValue, 0.25f);
+    }
+
+    public void DoTilt(float zTilt)     //tilt to side when wall running
+    {
+        transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
     }
 }
