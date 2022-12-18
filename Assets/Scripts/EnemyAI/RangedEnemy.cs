@@ -9,22 +9,21 @@ public class RangedEnemy : MonoBehaviour
     public Transform player;
     public Transform firePoint;
 
-    // Update is called once per frame
+    void Start()
+    {
+        firePoint = transform.Find("FirePoint");
+    }
+
     void Update()
     {
 		transform.LookAt(player);
 
-        float rotation = transform.localRotation.eulerAngles.y;
-
-        if (rotation > 180f)
-        {
-            rotation = rotation - 360f;
-        }
-        Debug.Log(rotation);
+        Vector3 direction = (firePoint.position - player.position).normalized;
+        Quaternion lookDirection = Quaternion.LookRotation(direction);
 
 		if (Input.GetMouseButtonDown(1))
         {
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(90f, 0, rotation), bulletCollection);
+            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(-90f, 0, lookDirection.eulerAngles.y), bulletCollection);
         }
     }
 }
