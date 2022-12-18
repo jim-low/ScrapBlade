@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class BossAI : MonoBehaviour
+[RequireComponent(typeof(RangedEnemy))]
+public class Boss : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] private Transform[] firePoints;
