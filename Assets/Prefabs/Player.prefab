@@ -297,6 +297,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2562495373132597368}
     m_Modifications:
+    - target: {fileID: 743567937860324568, guid: c095395e04b453a4099224a446b296fc, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 743567937860324573, guid: c095395e04b453a4099224a446b296fc, type: 3}
       propertyPath: orientation
       value: 
