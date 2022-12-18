@@ -11,19 +11,25 @@ public class RangedEnemy : MonoBehaviour
 
     void Start()
     {
-        firePoint = transform.Find("FirePoint");
+        firePoint = transform.Find("Robot_Soldier_Rifle").Find("FirePoint");
     }
 
     void Update()
     {
 		transform.LookAt(player);
 
-        Vector3 direction = (firePoint.position - player.position).normalized;
-        Quaternion lookDirection = Quaternion.LookRotation(direction);
 
 		if (Input.GetMouseButtonDown(1))
         {
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(-90f, 0, lookDirection.eulerAngles.y), bulletCollection);
         }
     }
+
+    void Shoot()
+    {
+        // calculate 
+		Vector3 direction = (firePoint.position - player.position).normalized;
+		Quaternion lookDirection = Quaternion.LookRotation(direction);
+
+		Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(-90f, 0, lookDirection.eulerAngles.y), bulletCollection);
+	}
 }
