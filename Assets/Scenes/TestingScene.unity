@@ -128,11 +128,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5046277276834681660, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
   m_PrefabInstance: {fileID: 1953198930}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &53248490 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5050814509158358936, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
-  m_PrefabInstance: {fileID: 1589534747}
+--- !u!1 &76880953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76880954}
+  m_Layer: 0
+  m_Name: FirePoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &76880954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76880953}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0768, y: 1.241, z: 0.1783}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1974502902}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &219179889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -187,6 +213,10 @@ PrefabInstance:
     - target: {fileID: 2790552720960578840, guid: 4d645a943b37eaa4d96448399fef09d4, type: 3}
       propertyPath: m_Name
       value: RangedBlueRobot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790552720960578840, guid: 4d645a943b37eaa4d96448399fef09d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3086610816023379517, guid: 4d645a943b37eaa4d96448399fef09d4, type: 3}
       propertyPath: bulletPrefab
@@ -261,6 +291,30 @@ PrefabInstance:
     - target: {fileID: 5048780105765904244, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: m_Name
       value: RangedBlackRobot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048780105765904244, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1207756008}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: sightRadius
+      value: 80.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7506310772738199635, guid: 6e8e822e1ebaf3c41841d33e6c674949, type: 3}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: bulletCollection
+      value: 
+      objectReference: {fileID: 1582731607}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
@@ -513,6 +567,10 @@ PrefabInstance:
     - target: {fileID: 2790552720960578840, guid: 4d645a943b37eaa4d96448399fef09d4, type: 3}
       propertyPath: m_Name
       value: RangedBlueRobot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790552720960578840, guid: 4d645a943b37eaa4d96448399fef09d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3086610816023379517, guid: 4d645a943b37eaa4d96448399fef09d4, type: 3}
       propertyPath: bulletPrefab
@@ -1014,6 +1072,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedBlackRobot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5048780105765904244, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1207756008}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: sightRadius
+      value: 80.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7506310772738199635, guid: 6e8e822e1ebaf3c41841d33e6c674949, type: 3}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: bulletCollection
+      value: 
+      objectReference: {fileID: 1582731607}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
@@ -1061,37 +1143,6 @@ Transform:
   - {fileID: 653151144}
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1129000872
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1129000873}
-  m_Layer: 0
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1129000873
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129000872}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5825, y: 1.3793, z: 0.353}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 53248490}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1207756008 stripped
 Transform:
@@ -1319,16 +1370,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1207756008}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
-      propertyPath: firePoint
-      value: 
-      objectReference: {fileID: 1129000873}
-    - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: sightRadius
-      value: 37.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
-      propertyPath: playerAimSpot
-      value: 
+      value: 80.85
       objectReference: {fileID: 0}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: bulletCollection
@@ -1386,7 +1429,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedBlackRobotTester
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5048780105765904244, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
 --- !u!1001 &1688889821
 PrefabInstance:
@@ -1405,7 +1453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400234, guid: 4f6b12e90531eaa4cb360f1dd60c3ab2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.24549
+      value: 16.76
       objectReference: {fileID: 0}
     - target: {fileID: 400234, guid: 4f6b12e90531eaa4cb360f1dd60c3ab2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1413,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400234, guid: 4f6b12e90531eaa4cb360f1dd60c3ab2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.708214
+      value: -27.71
       objectReference: {fileID: 0}
     - target: {fileID: 400234, guid: 4f6b12e90531eaa4cb360f1dd60c3ab2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1664,6 +1712,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedBlackRobot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5048780105765904244, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1207756008}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: sightRadius
+      value: 80.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7506310772738199635, guid: 6e8e822e1ebaf3c41841d33e6c674949, type: 3}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: bulletCollection
+      value: 
+      objectReference: {fileID: 1582731607}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
@@ -1769,6 +1841,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1857972457841839803, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
   m_PrefabInstance: {fileID: 1857972458117764306}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2095295080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095295081}
+  m_Layer: 0
+  m_Name: FirePoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2095295081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095295080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: 1.241, z: 0.174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1974502902}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2100062895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,6 +2073,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot_Soldier_Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 2790552720960578840, guid: 4d645a943b37eaa4d96448399fef09d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3086610816023379517, guid: 4d645a943b37eaa4d96448399fef09d4, type: 3}
       propertyPath: bulletPrefab
       value: 
@@ -2039,6 +2146,30 @@ PrefabInstance:
     - target: {fileID: 5048780105765904244, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: m_Name
       value: Robot_Soldier_Black
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048780105765904244, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1207756008}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: sightRadius
+      value: 80.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7506310772738199635, guid: 6e8e822e1ebaf3c41841d33e6c674949, type: 3}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: bulletCollection
+      value: 
+      objectReference: {fileID: 1582731607}
+    - target: {fileID: 8155303972577865946, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
