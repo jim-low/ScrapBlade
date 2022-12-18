@@ -10,6 +10,7 @@ public class KillEnemy : MonoBehaviour
         if (collider.gameObject.tag == "Sword" && SwordAttack.isAttacking)
         {
             GetComponent<Animator>().enabled = false;
+            GetComponent<RangedEnemy>().SetLiveStatus(false);
         }
     }
 }
