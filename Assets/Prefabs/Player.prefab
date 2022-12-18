@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 2985258290278243355}
   - component: {fileID: 2985258290278243346}
   - component: {fileID: 2985258290278243347}
+  - component: {fileID: 337897564}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -211,7 +212,7 @@ MonoBehaviour:
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   grounded: 0
   checksticking: 0
   maxSlopeAngle: 45
@@ -255,10 +256,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   wallRunForce: 200
   wallJumpUpForce: 7
   wallJumpSideForce: 12
@@ -298,6 +299,23 @@ MonoBehaviour:
   sphereCastRadius: 0.25
   maxWallLookAngle: 30
   cam: {fileID: 4121766708902262493}
+--- !u!114 &337897564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985258290278243354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304ce6b1558c4a1479eac019c1e21f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintText: {fileID: 0}
+  cam: {fileID: 701203241592785617}
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &3338533883723844331
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,12 +433,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4121766708901425438, guid: b393d3720cf0b8b4f81a5a80de0e9abd, type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 5722819167522446334}
+    - target: {fileID: 6332005148494475286, guid: b393d3720cf0b8b4f81a5a80de0e9abd, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7244266462149786261, guid: b393d3720cf0b8b4f81a5a80de0e9abd, type: 3}
       propertyPath: cameraPos
       value: 
       objectReference: {fileID: 5722819168409312787}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b393d3720cf0b8b4f81a5a80de0e9abd, type: 3}
+--- !u!20 &701203241592785617 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 701203241588903186, guid: b393d3720cf0b8b4f81a5a80de0e9abd, type: 3}
+  m_PrefabInstance: {fileID: 4179907}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4121766708873052117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4121766708871919638, guid: b393d3720cf0b8b4f81a5a80de0e9abd, type: 3}
