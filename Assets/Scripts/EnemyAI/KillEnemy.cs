@@ -9,7 +9,6 @@ public class KillEnemy : MonoBehaviour
     {
         if (collider.gameObject.tag == "Sword" && SwordAttack.isAttacking)
         {
-            Debug.Log(gameObject.name + " has been unalived");
             GetComponent<Animator>().enabled = false;
         }
     }
