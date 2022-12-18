@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1129000872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1129000873}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1129000873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129000872}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5825, y: 1.3793, z: 0.353}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5050814509158358936}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5048748731207370066
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +273,7 @@ GameObject:
   - component: {fileID: 5050739411082266587}
   - component: {fileID: 5050739411082266596}
   - component: {fileID: 14662774848531207}
+  - component: {fileID: 8155303972577865946}
   m_Layer: 0
   m_Name: RangedBlackRobot
   m_TagString: Enemy
@@ -332,6 +364,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7506310772738199635, guid: 6e8e822e1ebaf3c41841d33e6c674949, type: 3}
   bulletCollection: {fileID: 0}
+  player: {fileID: 0}
+  firePoint: {fileID: 1129000873}
+  sightRadius: 37.2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  recoilTime: 1.5
+  canShoot: 1
+  isAlive: 1
+--- !u!114 &8155303972577865946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048780105765904244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d67234d03e8eb4f8439ebec6571b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  bulletCollection: {fileID: 0}
+  player: {fileID: 0}
+  firePoint: {fileID: 0}
+  sightRadius: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  recoilTime: 1.5
+  canShoot: 1
+  isAlive: 1
 --- !u!1 &5048820769462187230
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +582,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1129000873}
   m_Father: {fileID: 5046277276834681660}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
