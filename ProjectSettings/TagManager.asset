@@ -7,6 +7,7 @@ TagManager:
   - Waypoint
   - Enemy
   - Sword
+  - Bullet
   layers:
   - Default
   - TransparentFX

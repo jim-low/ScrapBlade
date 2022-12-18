@@ -17,4 +17,10 @@ public class Bullet : MonoBehaviour
     {
         rb.AddRelativeForce(transform.forward * speed, ForceMode.Impulse);
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        Debug.Log(collider.gameObject.name);
+        Destroy(gameObject);
+    }
 }

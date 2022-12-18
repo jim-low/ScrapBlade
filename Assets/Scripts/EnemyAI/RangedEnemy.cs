@@ -44,7 +44,6 @@ public class RangedEnemy : MonoBehaviour
 		if (!canShoot)
 			return;
 
-		// calculate 
 		Vector3 direction = (firePoint.position - player.position).normalized;
 		Quaternion lookDirection = Quaternion.LookRotation(direction);
 
