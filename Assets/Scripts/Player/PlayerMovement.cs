@@ -8,6 +8,11 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     public float sprintSpeed;
     public float friction;
+    public float slideSpeed;
+    public float wallRunSpeed;
+
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
 
     [Header("Jumping")]
     public float jumpForce;
@@ -19,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     public float crouchSpeed;
     public float crouchYScale;
     private float startYScale;
-    bool isCrouching;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -28,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
+    public bool checksticking;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -36,6 +41,13 @@ public class PlayerMovement : MonoBehaviour
     private bool slopeJump;
 
     public Transform orientation;
+
+    [Header("Head Bob")]
+    public GameObject playerCam;
+    private float startCamPos;
+    private float bobSpeed;
+    public float bobAmount;
+
 
     //get movement input
     float xInput;
@@ -50,16 +62,25 @@ public class PlayerMovement : MonoBehaviour
     {
         sprinting,
         air,
-        crouching
+        wallrunning,
+        crouching,
+        climbing,
+        sliding
     }
 
+    public bool climbing;
+    public bool crouching;
+    public bool sliding;
+    public bool wallRunning;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerCam = this.gameObject.transform.GetChild(2).gameObject;
         readyToJump = true;
-
+        bobSpeed = Mathf.PI / 2;
+        startCamPos = playerCam.transform.localScale.y;
         startYScale = transform.localScale.y;
     }
 
@@ -80,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
+
        
     }
 
@@ -88,7 +110,6 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
         MovePlayer();
 
-        
     }
 
     private void MyInput()
@@ -98,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         yInput = Input.GetAxisRaw("Vertical");
 
         //when can jump
-        if(Input.GetKey(jumpKey) && readyToJump)
+        if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
             Jump();
@@ -108,13 +129,13 @@ public class PlayerMovement : MonoBehaviour
         //crouching
         if (Input.GetKeyDown(crouchKey))
         {
-            isCrouching = true;
+            crouching = true;
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
         if(Input.GetKeyUp(crouchKey))
         {
-            isCrouching = false;
+            crouching = false;
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
             
         }
@@ -126,19 +147,69 @@ public class PlayerMovement : MonoBehaviour
         if (grounded)       //mode sprinting
         {
             state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;
+            desiredMoveSpeed = sprintSpeed;
         }
-        else        //in air
+        
+        else if(crouching)       //mode crouching
+        {
+            state = MovementState.crouching;
+            desiredMoveSpeed = crouchSpeed;
+        }
+
+        else if (wallRunning)     //mode wallrun
+        {
+            state = MovementState.wallrunning;
+            desiredMoveSpeed = wallRunSpeed;
+        }
+        else if (climbing)
+        {
+            state = MovementState.climbing;
+        }
+
+        else if (sliding)        //mode sliding
+        {
+            state = MovementState.sliding;
+
+            if (OnSlope() && rb.velocity.y < 0.1f)//if player is on slope and moving downwards
+            {
+                desiredMoveSpeed = slideSpeed;
+            }
+            else
+            {
+                desiredMoveSpeed = sprintSpeed;
+            }
+        }
+        else                //in air, falling or jumping
         {
             state = MovementState.air;
         }
 
-        if(isCrouching)       //mode crouching
+
+        if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0) //check if desiredmovespeed changed a lot, ensure the player doesnt immediately change speed
         {
-            state = MovementState.crouching;
-            moveSpeed = crouchSpeed;
+            StartCoroutine(SmoothenMoveSpeed());
         }
-        
+        else                //if player not moving fast and stops
+        {
+            moveSpeed = desiredMoveSpeed;
+        }
+
+        lastDesiredMoveSpeed = desiredMoveSpeed;
+    }
+
+    private IEnumerator SmoothenMoveSpeed()     //changes the movespeed to the desiredMoveSpeed at a certain pace
+    {
+        float time = 0;
+        float diff = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startValue = moveSpeed;
+
+        while(time < diff)
+        {
+            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / diff);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        moveSpeed = desiredMoveSpeed;
     }
 
     private void MovePlayer()
@@ -161,15 +232,20 @@ public class PlayerMovement : MonoBehaviour
         //if normal ground
         if (grounded)
         {
+            
             rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
+            //HeadBob();
         }
         else if(!grounded){
             rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
-        // if want to turn off gravity for when on slope to avoid slipping down
-        //rb.useGravity = !OnSlope();
-
-        PlayerSpeedometer.speedMsg = "Speed: " + rb.velocity.magnitude;
+        //turn off gravity for when on slope to avoid slipping down hill
+        if (!wallRunning)
+        {
+            rb.useGravity = !OnSlope();
+        }
+        //speedometer
+        PlayerSpeedometer.speedMsg = "Speed:" + rb.velocity.magnitude;
     }
 
     private void SpeedControl()
@@ -177,9 +253,9 @@ public class PlayerMovement : MonoBehaviour
         //limit velocity when on slope
         if (OnSlope() && !slopeJump)
         {
-            if(rb.velocity.magnitude > moveSpeed)
+            if (rb.velocity.magnitude > desiredMoveSpeed)
             {
-                rb.velocity = rb.velocity.normalized * moveSpeed;
+                rb.velocity = rb.velocity.normalized * desiredMoveSpeed;
             }
         }
         else        //if not on slope
@@ -187,9 +263,9 @@ public class PlayerMovement : MonoBehaviour
             Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
             //limit velocity when hit max speed
-            if(flatVel.magnitude > moveSpeed)
+            if (flatVel.magnitude > desiredMoveSpeed)
             {
-                Vector3 limitedSpeed = flatVel.normalized * moveSpeed;
+                Vector3 limitedSpeed = flatVel.normalized * desiredMoveSpeed;
                 rb.velocity = new Vector3(limitedSpeed.x, rb.velocity.y, limitedSpeed.z);
             }
         }
