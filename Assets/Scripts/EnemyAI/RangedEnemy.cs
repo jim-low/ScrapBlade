@@ -20,11 +20,6 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private bool canShoot = true;
     [SerializeField] private bool isAlive = true;
 
-    void Start()
-    {
-        firePoint = transform.Find("Robot_Soldier_Rifle").Find("FirePoint");
-    }
-
     void Update()
     {
 		if (!isAlive)
