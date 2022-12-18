@@ -15,6 +15,6 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        rb.AddForce(Vector3.forward * speed, ForceMode.Impulse);
+        rb.AddRelativeForce(transform.forward * speed, ForceMode.Impulse);
     }
 }

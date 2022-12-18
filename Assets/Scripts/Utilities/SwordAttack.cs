@@ -41,8 +41,6 @@ public class SwordAttack : MonoBehaviour
 		{
 			isAttacking = isPlaying();
 		}
-
-		Debug.Log("isAttacking: " + isAttacking);
 	}
 
 	private bool isPlaying()
