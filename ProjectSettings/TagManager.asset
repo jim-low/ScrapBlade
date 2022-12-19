@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Sword
   - Bullet
+  - CameraPos
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Player
   - Wall
   - Interactable
-  - 
+  - Bullet
   - 
   - 
   - 

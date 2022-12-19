@@ -8,6 +8,7 @@ public class Boss : MonoBehaviour
 {
     private Animator anim;
     private RangedEnemy rangedBehavior;
+    private bool hasPlayedWin = false;
 
     void Start()
     {
@@ -18,17 +19,33 @@ public class Boss : MonoBehaviour
 
 	void Update()
 	{
-        if (Input.GetMouseButtonDown(1))
-        {
-            anim.SetBool("Win", true);
-            StartCoroutine(PrepareShoot(1.5f, true));
-        }
+		Attack();
 	}
 
-    IEnumerator PrepareShoot(float seconds, bool status)
-    {
-        yield return new WaitForSeconds(seconds);
-        rangedBehavior.SetCanShoot(status);
+	void Attack()
+	{
+		if (anim.GetBool("Win"))
+		{
+			if (!isPlayingWin())
+			{
+				rangedBehavior.SetCanShoot(true);
+			}
+		}
+		else
+		{
+			rangedBehavior.SetCanShoot(false);
+		}
+	}
 
-    }
+	IEnumerator PrepareShoot(float seconds, bool canShoot)
+	{
+		yield return new WaitForSeconds(seconds);
+		rangedBehavior.SetCanShoot(canShoot);
+	}
+
+	private bool isPlayingWin()
+	{
+		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+		return stateInfo.length > stateInfo.normalizedTime;
+	}
 }
