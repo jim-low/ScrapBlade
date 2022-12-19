@@ -20,7 +20,29 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider.gameObject.tag);
-        Destroy(gameObject);
-    }
+        bool isDestroyed = false;
+
+        if (collider.gameObject.tag == "BlockBullet")
+        {
+            if (Sword.isBlocking)
+            {
+                Destroy(gameObject);
+                Debug.Log("Bullet got BLOCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCKED");
+                ++RandomLiveManager.numberOfTimesBlockedBullet;
+                isDestroyed = true;
+            }
+        }
+
+		if (collider.gameObject.tag == "Player")
+		{
+			Destroy(gameObject);
+			Debug.Log("Player is died");
+			++RandomLiveManager.numberOfTimesDied;
+                isDestroyed = true;
+		}
+
+
+		if (!isDestroyed)
+			Destroy(gameObject);
+	}
 }

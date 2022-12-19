@@ -12,8 +12,10 @@ public class Sword : MonoBehaviour
     };
 	private int attackIndex = 0;
 	private int maxAttacks = 2;
+	private float blockDuration = 0.25f;
 	public static bool isAttacking = false;
 	public static bool isPickedUp = false;
+	public static bool isBlocking = false;
 	private Animator anim;
 
 	void Start()
@@ -23,12 +25,31 @@ public class Sword : MonoBehaviour
 
 	void Update()
 	{
-		Attack();
+		isAttacking = isPlaying();
+
+		if (Input.GetMouseButtonDown(0))
+			Attack();
+
+		if (Input.GetKeyDown(KeyCode.F))
+			BlockBullet();
+	}
+
+	void BlockBullet()
+	{
+		// create 2 animations for blocking bullets
+		isBlocking = true;
+		StartCoroutine(StopBlock());
+	}
+
+	IEnumerator StopBlock()
+	{
+		yield return new WaitForSeconds(blockDuration);
+		isBlocking = false;
 	}
 
 	void Attack()
 	{
-		if (isPickedUp && !isAttacking && Input.GetMouseButtonDown(0))
+		if (isPickedUp && !isAttacking)
 		{
 			anim.SetTrigger("Attack" + (attackIndex + 1));
 			isAttacking = isPlaying();
@@ -41,10 +62,6 @@ public class Sword : MonoBehaviour
 			{
 				attackIndex = 0;
 			}
-		}
-		else
-		{
-			isAttacking = isPlaying();
 		}
 	}
 
