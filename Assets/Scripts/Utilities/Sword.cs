@@ -5,14 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Sword : MonoBehaviour
 {
-    private string[] attackNames = {
-        "TopLeftBottomRightSlash",
-        "TopRightBottomLeftSlash",
-        "HorizontalSlash",
-    };
 	private int attackIndex = 0;
 	private int maxAttacks = 2;
-	private float blockDuration = 0.25f;
+	private int blockIndex = 0;
+	private int maxBlocks = 1;
+	private float blockDuration = 0.5f;
 	public static bool isAttacking = false;
 	public static bool isPickedUp = false;
 	public static bool isBlocking = false;
@@ -36,8 +33,20 @@ public class Sword : MonoBehaviour
 
 	void BlockBullet()
 	{
+		if (isAttacking)
+		{
+			return;
+		}
+
+		if (blockIndex >= maxBlocks + 1)
+		{
+			blockIndex = 0;
+		}
+
 		// create 2 animations for blocking bullets
 		isBlocking = true;
+		anim.SetTrigger("Block" + (blockIndex + 1));
+		++blockIndex;
 		StartCoroutine(StopBlock());
 	}
 
@@ -54,9 +63,6 @@ public class Sword : MonoBehaviour
 			anim.SetTrigger("Attack" + (attackIndex + 1));
 			isAttacking = isPlaying();
 			++attackIndex;
-
-			//Debug.Log("attack index: " + attackIndex);
-			//Debug.Log("attack name: " + attackNames[attackIndex]);
 
 			if (attackIndex >= maxAttacks + 1)
 			{
