@@ -7,11 +7,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Boss : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
     private Animator anim;
     private Rigidbody rb;
     private RangedEnemy rangedBehavior;
     private bool hasPlayedWin = false;
+    private PlayerMovement playerMovement;
 
     void Start()
     {
@@ -19,24 +20,26 @@ public class Boss : MonoBehaviour
         rangedBehavior = GetComponent<RangedEnemy>();
         rb = GetComponent<Rigidbody>();
         rangedBehavior.SetCanShoot(false);
+	playerMovement = player.GetComponent<PlayerMovement>();
     }
 
 	void Update()
 	{
-		Attack();
+		ShootAttack();
 	}
 
-	void Attack()
+	void ShootAttack()
 	{
-		if (anim.GetBool("Win"))
-		{
+		if (anim.GetBool("Win")) {
 			if (!isPlayingWin())
 			{
+				Debug.Log("yay is correct");
 				rangedBehavior.SetCanShoot(true);
 			}
 		}
 		else
 		{
+			Debug.Log("something is wrong hmmmmmmmmmmm");
 			rangedBehavior.SetCanShoot(false);
 		}
 	}
