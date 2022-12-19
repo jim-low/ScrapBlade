@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        rb.AddRelativeForce(transform.forward * speed, ForceMode.Impulse);
+        rb.AddRelativeForce(transform.forward * speed, ForceMode.Force);
     }
 
     void OnTriggerEnter(Collider collider)
@@ -23,24 +23,24 @@ public class Bullet : MonoBehaviour
         bool isDestroyed = false;
 
         if (collider.gameObject.tag == "BlockBullet")
-        {
-            if (Sword.isBlocking)
-            {
-                Destroy(gameObject);
-                Debug.Log("Bullet got BLOCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCKED");
-                ++RandomLiveManager.numberOfTimesBlockedBullet;
-                isDestroyed = true;
-            }
-        }
+		{
+			if (Sword.isBlocking)
+			{
+				Destroy(gameObject);
+				Debug.Log("Bullet got BLOCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCKED");
+
+				++RandomLiveManager.numberOfTimesBlockedBullet;
+				isDestroyed = true;
+			}
+		}
 
 		if (collider.gameObject.tag == "Player")
 		{
 			Destroy(gameObject);
 			Debug.Log("Player is died");
 			++RandomLiveManager.numberOfTimesDied;
-                isDestroyed = true;
+			isDestroyed = true;
 		}
-
 
 		if (!isDestroyed)
 			Destroy(gameObject);
