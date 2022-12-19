@@ -5,31 +5,30 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    private Rigidbody rb;
-    public float speed = 2f;
+	private Rigidbody rb;
+	public float speed = 2f;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+	void Start()
+	{
+		rb = GetComponent<Rigidbody>();
+	}
 
-    void Update()
-    {
-        rb.AddRelativeForce(transform.forward * speed, ForceMode.Force);
-    }
+	void Update()
+	{
+		rb.AddRelativeForce(transform.forward * speed, ForceMode.Force);
+	}
 
-    void OnTriggerEnter(Collider collider)
-    {
-        bool isDestroyed = false;
+	void OnTriggerEnter(Collider collider)
+	{
+		bool isDestroyed = false;
 
-        if (collider.gameObject.tag == "BlockBullet")
+		if (collider.gameObject.tag == "BlockBullet")
 		{
 			if (Sword.isBlocking)
 			{
 				Destroy(gameObject);
 				Debug.Log("Bullet got BLOCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCKED");
 
-				++RandomLiveManager.numberOfTimesBlockedBullet;
 				isDestroyed = true;
 			}
 		}
@@ -38,7 +37,6 @@ public class Bullet : MonoBehaviour
 		{
 			Destroy(gameObject);
 			Debug.Log("Player is died");
-			++RandomLiveManager.numberOfTimesDied;
 			isDestroyed = true;
 		}
 
