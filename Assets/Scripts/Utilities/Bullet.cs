@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
 	private Rigidbody rb;
 	public float speed = 2f;
+    public LayerMask blockBulletLayer;
 
 	void Start()
 	{
@@ -32,8 +33,7 @@ public class Bullet : MonoBehaviour
 				isDestroyed = true;
 			}
 		}
-
-		if (collider.gameObject.tag == "Player")
+		else if (collider.gameObject.tag == "Player")
 		{
 			Destroy(gameObject);
 			Debug.Log("Player is died");
