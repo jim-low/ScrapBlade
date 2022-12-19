@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     public bool grounded;
-    public bool checksticking;
+    public bool canSlide;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -42,12 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform orientation;
 
-    [Header("Head Bob")]
-    public GameObject playerCam;
-    private float startCamPos;
-    private float bobSpeed;
-    public float bobAmount;
-
+    [Header("References")]
+    public PlayerWallRun wallRunScript;
 
     //get movement input
     float xInput;
@@ -72,22 +68,20 @@ public class PlayerMovement : MonoBehaviour
     public bool crouching;
     public bool sliding;
     public bool wallRunning;
+    public bool inAir;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        playerCam = this.gameObject.transform.GetChild(2).gameObject;
         readyToJump = true;
-        bobSpeed = Mathf.PI / 2;
-        startCamPos = playerCam.transform.localScale.y;
         startYScale = transform.localScale.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
         MyInput();
         SpeedControl();
         StateHandler();
@@ -102,14 +96,20 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
         }
 
-       
     }
 
     void FixedUpdate()
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
+        if (wallRunScript.wallDetected)
+        {
+            rb.AddForce(Vector3.down * 5f, ForceMode.Force);
+        }
+        
         MovePlayer();
 
+
+        
     }
 
     private void MyInput()
@@ -148,27 +148,34 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
+            canSlide = true;
+            inAir = false;
         }
-        
         else if(crouching)       //mode crouching
         {
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
+            canSlide = true;
+            inAir = false;
         }
-
         else if (wallRunning)     //mode wallrun
         {
             state = MovementState.wallrunning;
             desiredMoveSpeed = wallRunSpeed;
+            canSlide = false;
+            inAir = false;
         }
         else if (climbing)
         {
             state = MovementState.climbing;
+            canSlide = false;
+            inAir = false;
         }
-
         else if (sliding)        //mode sliding
         {
             state = MovementState.sliding;
+            canSlide = true; 
+            inAir = false;
 
             if (OnSlope() && rb.velocity.y < 0.1f)//if player is on slope and moving downwards
             {
@@ -182,8 +189,9 @@ public class PlayerMovement : MonoBehaviour
         else                //in air, falling or jumping
         {
             state = MovementState.air;
+            inAir = true;
+            canSlide = false;
         }
-
 
         if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0) //check if desiredmovespeed changed a lot, ensure the player doesnt immediately change speed
         {
@@ -214,13 +222,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-
         //calc movement direction
         moveDir = orientation.forward * yInput + orientation.right * xInput;
 
         //if on slope
-        if (OnSlope() && !slopeJump)
+        if (OnSlope() && !slopeJump && !climbing)
         {
+            rb.useGravity = false;
             rb.AddForce(GetSlopeMoveDirection(moveDir) * moveSpeed * 20f, ForceMode.Force);
 
             if(rb.velocity.y > 0)
@@ -228,21 +236,20 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
             }
         }
-
+       
         //if normal ground
         if (grounded)
         {
-            
             rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
-            //HeadBob();
         }
-        else if(!grounded){
+        else if(!grounded && !wallRunScript.wallDetected)
+        {
             rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
-        //turn off gravity for when on slope to avoid slipping down hill
-        if (!wallRunning)
+        //turn on gravity when not wall runnnig or not on slope
+        if (!wallRunning && !OnSlope())
         {
-            rb.useGravity = !OnSlope();
+            rb.useGravity = true;
         }
         //speedometer
         PlayerSpeedometer.speedMsg = "Speed:" + rb.velocity.magnitude;
