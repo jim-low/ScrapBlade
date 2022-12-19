@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5098915591764021023}
   - component: {fileID: 3458962706760140560}
   - component: {fileID: 942302441483564080}
-  - component: {fileID: 1709873547362742598}
+  - component: {fileID: 5724223922693193005}
   m_Layer: 0
   m_Name: Sword_Cyber_Cyan
   m_TagString: Sword
@@ -120,7 +120,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f32442828616b1b4c9e1027923ad9a73, type: 3}
---- !u!114 &1709873547362742598
+--- !u!114 &5724223922693193005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,6 +129,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5086422066136354803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83676632d20e07e478862ce116c6be24, type: 3}
+  m_Script: {fileID: 11500000, guid: f12c78baabdaf6546bd259d9eaba6f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider.gameObject.name);
+        Debug.Log(collider.gameObject.tag);
         Destroy(gameObject);
     }
 }

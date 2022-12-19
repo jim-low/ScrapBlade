@@ -9,6 +9,7 @@ TagManager:
   - Sword
   - Bullet
   - CameraPos
+  - BlockBullet
   layers:
   - Default
   - TransparentFX

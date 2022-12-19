@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class SwordAttack : MonoBehaviour
+public class Sword : MonoBehaviour
 {
     private string[] attackNames = {
         "TopLeftBottomRightSlash",
@@ -22,6 +22,11 @@ public class SwordAttack : MonoBehaviour
 	}
 
 	void Update()
+	{
+		Attack();
+	}
+
+	void Attack()
 	{
 		if (isPickedUp && !isAttacking && Input.GetMouseButtonDown(0))
 		{
