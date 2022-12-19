@@ -55,9 +55,6 @@ public class Sword : MonoBehaviour
 			isAttacking = isPlaying();
 			++attackIndex;
 
-			//Debug.Log("attack index: " + attackIndex);
-			//Debug.Log("attack name: " + attackNames[attackIndex]);
-
 			if (attackIndex >= maxAttacks + 1)
 			{
 				attackIndex = 0;
