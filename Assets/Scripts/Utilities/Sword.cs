@@ -5,11 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Sword : MonoBehaviour
 {
-    private string[] attackNames = {
-        "TopLeftBottomRightSlash",
-        "TopRightBottomLeftSlash",
-        "HorizontalSlash",
-    };
 	private int attackIndex = 0;
 	private int maxAttacks = 2;
 	private float blockDuration = 0.25f;
