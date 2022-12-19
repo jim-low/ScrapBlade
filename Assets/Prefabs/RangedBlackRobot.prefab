@@ -273,7 +273,6 @@ GameObject:
   - component: {fileID: 5050739411082266587}
   - component: {fileID: 5050739411082266596}
   - component: {fileID: 14662774848531207}
-  - component: {fileID: 8155303972577865946}
   m_Layer: 0
   m_Name: RangedBlackRobot
   m_TagString: Enemy
@@ -370,29 +369,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
-  recoilTime: 1.5
-  canShoot: 1
-  isAlive: 1
---- !u!114 &8155303972577865946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5048780105765904244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4d67234d03e8eb4f8439ebec6571b42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  bulletCollection: {fileID: 0}
-  player: {fileID: 0}
-  firePoint: {fileID: 0}
-  sightRadius: 5
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
   recoilTime: 1.5
   canShoot: 1
   isAlive: 1
