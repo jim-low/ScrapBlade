@@ -53,10 +53,6 @@ public class SapphiArtChan_AnimManager : MonoBehaviour {
     private bool _SapphiArtChanFacial_Mouth_Tongue = false;
 
 
-
-
-
-
     void Start()
     {
         _SapphiArtChanAnimator = this.gameObject.GetComponent<Animator>();
@@ -455,7 +451,7 @@ public class SapphiArtChan_AnimManager : MonoBehaviour {
     {
         //Get Animation from UI
         GetAnimation();
-        
+
         //Set New Animation
         if (_SapphiArtChanLastAnimation != _SapphiArtChanAnimation)
             SetAnimation();
@@ -463,6 +459,8 @@ public class SapphiArtChan_AnimManager : MonoBehaviour {
         {
             ReturnToIdle();
         }
+
+        LateUpdate();
 
     }
 
