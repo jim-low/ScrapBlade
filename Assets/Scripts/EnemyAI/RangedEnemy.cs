@@ -41,6 +41,7 @@ public class RangedEnemy : MonoBehaviour
 		if (!canShoot)
 			return;
 
+		Debug.Log("Shooting!!!!");
 		Vector3 direction = (firePoint.position - target.position).normalized;
 		Quaternion lookDirection = Quaternion.LookRotation(direction);
 
