@@ -307,18 +307,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
-      propertyPath: minJumpHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985258290278243352, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
-      propertyPath: wallRunScript
-      value: 
-      objectReference: {fileID: 1185946289}
     - target: {fileID: 2985258290278243354, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1125,17 +1113,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1185946289 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
-  m_PrefabInstance: {fileID: 408310519}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9857db916fe0490478e90c4867f58259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1207756008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2985258290278243357, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
@@ -1608,7 +1585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869427044}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}

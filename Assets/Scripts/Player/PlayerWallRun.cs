@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerWallRun : MonoBehaviour
 {
-    [Header("Movement")]
-    public bool wallDetected;
-
     [Header("WallRunning")]
     public LayerMask whatIsWall;
     public LayerMask whatIsGround;
@@ -27,12 +24,8 @@ public class PlayerWallRun : MonoBehaviour
     public float minJumpHeight;
     private RaycastHit leftWallHit;
     private RaycastHit rightWallHit;
-    private RaycastHit frontWallHit;
-    private RaycastHit backWallHit;
     private bool wallLeft;
     private bool wallRight;
-    private bool wallFront;
-    private bool wallBack;
 
     [Header("Exit WallRun")]
     private bool exitWall;
@@ -72,20 +65,10 @@ public class PlayerWallRun : MonoBehaviour
         }
     }
 
-    public void CheckForWall()  //check if there is wall on right and left
+    private void CheckForWall()
     {
-        wallRight = Physics.Raycast(transform.position - new Vector3(0, 1, 0), orientation.right, out rightWallHit, wallCheckDistance, whatIsWall);
-        wallLeft = Physics.Raycast(transform.position - new Vector3(0, 1, 0), -orientation.right, out leftWallHit, wallCheckDistance, whatIsWall);
-        wallFront = Physics.Raycast(transform.position - new Vector3(0, 1,0), orientation.forward, out frontWallHit, wallCheckDistance, whatIsWall);
-        wallBack = Physics.Raycast(transform.position - new Vector3(0, 1, 0), -orientation.forward, out backWallHit, wallCheckDistance, whatIsWall);
-        if (wallRight || wallLeft || wallFront || wallBack)
-        {
-            wallDetected = true;
-        }
-        else
-        {
-            wallDetected = false;
-        }
+        wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallCheckDistance, whatIsWall);
+        wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallCheckDistance, whatIsWall);
     }
 
     private bool AboveGround()

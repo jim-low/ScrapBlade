@@ -39,7 +39,7 @@ public class PlayerSlide : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
 
-        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0) && playerMovement.canSlide)
+        if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0))
         {
             StartSlide();
         }
