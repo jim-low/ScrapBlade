@@ -215,16 +215,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   grounded: 0
-  checksticking: 0
-  maxSlopeAngle: 45
+  canSlide: 0
+  maxSlopeAngle: 60
   orientation: {fileID: 5722819167522446334}
-  playerCam: {fileID: 5722819167811988338}
-  bobAmount: 0.1
+  wallRunScript: {fileID: 2985258290278243346}
   state: 0
   climbing: 0
   crouching: 0
   sliding: 0
   wallRunning: 0
+  inAir: 0
 --- !u!114 &2985258290278243355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9857db916fe0490478e90c4867f58259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallDetected: 0
   whatIsWall:
     serializedVersion: 2
     m_Bits: 256
@@ -264,12 +265,12 @@ MonoBehaviour:
   wallRunForce: 200
   wallJumpUpForce: 7
   wallJumpSideForce: 12
-  fovChangeAmt: 90
+  fovChangeAmt: 70
   camTiltAmt: 5
-  originalFov: 80
+  originalFov: 60
   jumpKey: 32
   wallCheckDistance: 0.7
-  minJumpHeight: 2
+  minJumpHeight: 1
   exitWallTime: 0.2
   useGravity: 1
   gravityCounterForce: 6.14
