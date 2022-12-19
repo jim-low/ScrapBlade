@@ -287,6 +287,29 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: originalFov
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: fovChangeAmt
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: minJumpHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243352, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: wallRunScript
+      value: 
+      objectReference: {fileID: 1185946289}
+>>>>>>> Stashed changes
     - target: {fileID: 2985258290278243354, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Name
       value: Player
@@ -305,12 +328,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4121766708873052117, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< Updated upstream
       value: 0.4
+=======
+      value: 0.501
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 4121766708873052117, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 4121766708873052117, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121766708873052117, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121766708873052117, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 5722819167811988338, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Layer
       value: 0

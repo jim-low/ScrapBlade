@@ -9,7 +9,10 @@ TagManager:
   - Sword
   - Bullet
   - CameraPos
+<<<<<<< Updated upstream
   - BlockBullet
+=======
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,11 @@ TagManager:
   - Player
   - Wall
   - Interactable
+<<<<<<< Updated upstream
   - Bullet
+=======
+  - Ocean
+>>>>>>> Stashed changes
   - 
   - 
   - 
