@@ -23,9 +23,9 @@ public class Bullet : MonoBehaviour
 	{
 		bool isDestroyed = false;
 
-		if (collider.gameObject.tag == "BlockBullet")
+		if (Sword.isBlocking)
 		{
-			if (Sword.isBlocking)
+			if (collider.gameObject.tag == "BlockBullet")
 			{
 				Destroy(gameObject);
 				Debug.Log("Bullet got BLOCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCKED");
@@ -33,7 +33,8 @@ public class Bullet : MonoBehaviour
 				isDestroyed = true;
 			}
 		}
-		else if (collider.gameObject.tag == "Player")
+
+		if (collider.gameObject.tag == "Player")
 		{
 			Destroy(gameObject);
 			Debug.Log("Player is died");
