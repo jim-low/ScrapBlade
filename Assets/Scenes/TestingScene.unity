@@ -1827,14 +1827,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193028541}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4d67234d03e8eb4f8439ebec6571b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7541650513320603711, guid: e69078195663ad548bc3a9ed7bbc2fa2, type: 3}
   bulletCollection: {fileID: 1582731607}
-  player: {fileID: 9213619712625632527, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+  player: {fileID: 1207756008}
   firePoint: {fileID: 2095295081}
   sightRadius: 86.79
   playerLayer:

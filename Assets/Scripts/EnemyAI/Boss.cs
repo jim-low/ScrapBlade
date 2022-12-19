@@ -7,11 +7,28 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     private Animator anim;
-    [SerializeField] private Transform[] firePoints;
-    [SerializeField] private float recoilTime;
+    private RangedEnemy rangedBehavior;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        rangedBehavior = GetComponent<RangedEnemy>();
+        rangedBehavior.SetCanShoot(false);
+    }
+
+	void Update()
+	{
+        if (Input.GetMouseButtonDown(1))
+        {
+            anim.SetBool("Win", true);
+            StartCoroutine(PrepareShoot(1.5f, true));
+        }
+	}
+
+    IEnumerator PrepareShoot(float seconds, bool status)
+    {
+        yield return new WaitForSeconds(seconds);
+        rangedBehavior.SetCanShoot(status);
+
     }
 }
