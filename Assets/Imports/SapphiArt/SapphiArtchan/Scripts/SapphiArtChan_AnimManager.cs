@@ -53,10 +53,6 @@ public class SapphiArtChan_AnimManager : MonoBehaviour {
     private bool _SapphiArtChanFacial_Mouth_Tongue = false;
 
 
-
-
-
-
     void Start()
     {
         _SapphiArtChanAnimator = this.gameObject.GetComponent<Animator>();
@@ -79,6 +75,8 @@ public class SapphiArtChan_AnimManager : MonoBehaviour {
         }
         _SapphiArtChanRenderer_Tongue.enabled = false;
         _SapphiArtChanRenderer_TopTeeth.enabled = false;
+
+
     }
 
 
@@ -455,7 +453,7 @@ public class SapphiArtChan_AnimManager : MonoBehaviour {
     {
         //Get Animation from UI
         GetAnimation();
-        
+
         //Set New Animation
         if (_SapphiArtChanLastAnimation != _SapphiArtChanAnimation)
             SetAnimation();

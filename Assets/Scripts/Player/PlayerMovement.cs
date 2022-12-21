@@ -144,17 +144,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-        if (grounded)       //mode sprinting
-        {
-            state = MovementState.sprinting;
-            desiredMoveSpeed = sprintSpeed;
-            canSlide = true;
-            inAir = false;
-        }
-        else if(crouching)       //mode crouching
+        if (crouching)       //mode crouching
         {
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
+            canSlide = true;
+            inAir = false;
+        }
+        else if (grounded)       //mode sprinting
+        {
+            state = MovementState.sprinting;
+            desiredMoveSpeed = sprintSpeed;
             canSlide = true;
             inAir = false;
         }
@@ -174,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
         else if (sliding)        //mode sliding
         {
             state = MovementState.sliding;
-            canSlide = true; 
+            canSlide = true;
             inAir = false;
 
             if (OnSlope() && rb.velocity.y < 0.1f)//if player is on slope and moving downwards
@@ -229,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         if (OnSlope() && !slopeJump && !climbing)
         {
             rb.useGravity = false;
-            rb.AddForce(GetSlopeMoveDirection(moveDir) * moveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection(moveDir) * desiredMoveSpeed * 20f, ForceMode.Force);
 
             if(rb.velocity.y > 0)
             {
@@ -240,11 +240,11 @@ public class PlayerMovement : MonoBehaviour
         //if normal ground
         if (grounded)
         {
-            rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * desiredMoveSpeed * 10f, ForceMode.Force);
         }
         else if(!grounded && !wallRunScript.wallDetected)
         {
-            rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * desiredMoveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
         //turn on gravity when not wall runnnig or not on slope
         if (!wallRunning && !OnSlope())
