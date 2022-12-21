@@ -41,7 +41,7 @@ public class PickSword : Interactable
 
 		// setting flags
 		hasTakenSword = true;
-		SwordAttack.isPickedUp = true;
+		Sword.isPickedUp = true;
 		hint = "";
 	}
 }

@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Waypoint
+  - BlockBullet
+  - CameraPos
   - Enemy
   - Sword
   - Bullet
@@ -12,13 +13,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
-  - Player
   - Wall
-  - Interactable
+  - Bullet
+  - 
   - 
   - 
   - 

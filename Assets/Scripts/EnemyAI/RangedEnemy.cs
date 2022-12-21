@@ -7,7 +7,7 @@ public class RangedEnemy : MonoBehaviour
     [Header("Setup")]
     public GameObject bulletPrefab;
     public Transform bulletCollection;
-    public Transform player;
+    public Transform target;
     public Transform firePoint;
 
     [Header("Field Of View")]
@@ -17,11 +17,11 @@ public class RangedEnemy : MonoBehaviour
 
     [Header("Attack")]
     [SerializeField] private float recoilTime = 1.5f;
-    [SerializeField] private bool canShoot = true;
-    [SerializeField] private bool isAlive = true;
+	[SerializeField] private bool canShoot = false;
+	[SerializeField] private bool isAlive = true;
 
-    void Update()
-    {
+	void Update()
+	{
 		if (!isAlive)
 			return;
 
@@ -29,20 +29,20 @@ public class RangedEnemy : MonoBehaviour
 
 		if (inSight)
 		{
-			transform.LookAt(player);
-			Shoot();
+			Vector3 playerPostition = new Vector3(target.position.x, transform.position.y, target.position.z);
+			transform.LookAt(playerPostition);
+			firePoint.LookAt(target);
+			if (canShoot)
+				Shoot();
 		}
 	}
 
 	void Shoot()
 	{
-		if (!canShoot)
-			return;
-
-		Vector3 direction = (firePoint.position - player.position).normalized;
+		Vector3 direction = (firePoint.position - target.position).normalized;
 		Quaternion lookDirection = Quaternion.LookRotation(direction);
 
-		Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(-90f, 0, lookDirection.eulerAngles.y), bulletCollection);
+		Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(lookDirection.eulerAngles.x - 90f, 0, lookDirection.eulerAngles.y), bulletCollection);
 		canShoot = false;
 		StartCoroutine(Recoil());
 	}
@@ -62,5 +62,15 @@ public class RangedEnemy : MonoBehaviour
 	{
 		Gizmos.color = inSight ? Color.red : Color.gray;
 		Gizmos.DrawWireSphere(transform.position, sightRadius);
+	}
+
+	public void SetCanShoot(bool newCanShoot)
+	{
+		canShoot = newCanShoot;
+	}
+
+	public bool GetInSight()
+	{
+		return inSight;
 	}
 }
