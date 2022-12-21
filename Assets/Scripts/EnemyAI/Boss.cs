@@ -13,7 +13,7 @@ public class Boss : MonoBehaviour
 	private RangedEnemy rangedBehavior;
 	private bool hasPlayedWin = false;
 	private PlayerMovement playerState;
-	private BossMovement bossState;
+	private BossMovement bossMovement;
 
 	void Start()
 	{
@@ -22,7 +22,7 @@ public class Boss : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		rangedBehavior.SetCanShoot(false);
 		playerState = player.GetComponent<PlayerMovement>();
-		bossState = GetComponent<BossMovement>();
+		bossMovement = GetComponent<BossMovement>();
 	}
 
 	void Update()
@@ -30,12 +30,12 @@ public class Boss : MonoBehaviour
 		if (playerState.state == PlayerMovement.MovementState.wallrunning)
 		{
 			anim.SetBool("Win", true);
-			bossState.state = BossMovement.BossState.shooting;
+			bossMovement.SetSpeed("stop");
 		}
-		else if (playerState.state == PlayerMovement.MovementState.sprinting)
+		else if (playerState.state != PlayerMovement.MovementState.sprinting)
 		{
-			bossState.state = BossMovement.BossState.walking;
 			anim.SetBool("Win", false);
+			bossMovement.SetSpeed("walk");
 		}
 
 		ShootAttack();
