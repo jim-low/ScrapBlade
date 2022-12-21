@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7541146555371259686}
   - component: {fileID: -8519932234055339493}
   - component: {fileID: -980736727674119053}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: BossBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -127,5 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747122e6d0d363a40afc72d88d845e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  sparks: {fileID: 2337526299141920490, guid: 3a8bbee470c388b4cb560bd3fe09872f, type: 3}
+  speed: 420
+  blockBulletLayer:
+    serializedVersion: 2
+    m_Bits: 0

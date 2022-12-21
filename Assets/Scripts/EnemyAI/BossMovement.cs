@@ -18,6 +18,7 @@ public class BossMovement : MonoBehaviour
     [Header("References")]
     public Transform player;
     Rigidbody rb;
+    RangedEnemy rangedBehavior;
 
     public BossState state;
 
@@ -38,6 +39,8 @@ public class BossMovement : MonoBehaviour
     void Start()
     {
         follow = false;
+        rb = GetComponent<Rigidbody>();
+        rangedBehavior = GetComponent<RangedEnemy>();
     }
 
     // Update is called once per frame
@@ -45,7 +48,11 @@ public class BossMovement : MonoBehaviour
     {
         distanceToPlayer = Vector3.Distance(player.position, transform.position);       ///get distance from boss to player
 
-        if (running)
+        if (shooting)
+        {
+            movementSpeed = 0;
+        }
+        else if (running)
         {
             movementSpeed = runSpeed;
         }
@@ -57,6 +64,8 @@ public class BossMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        follow = rangedBehavior.GetInSight();
+
         FollowPlayer();
     }
 
@@ -86,17 +95,22 @@ public class BossMovement : MonoBehaviour
 
     void FollowPlayer()
     {
-        Vector3 direction = (player.position - transform.position).normalized;      //get direction of where the player is
-        
-        //Quaternion lookDirection = Quaternion.LookRotation(direction);
-        
-        if (!shooting && distanceToPlayer <= followDistance)        //if boss not shooting or distance from player is close enough
-        {
-            rb.AddForce(direction * movementSpeed * 20f, ForceMode.Force);      //head towards the player
-            follow = true;
-        }
+        if (!rangedBehavior.GetInSight())
+			return;
 
-        
+        Vector3 direction = (player.position - transform.position).normalized;      //get direction of where the player is
+
+		//Quaternion lookDirection = Quaternion.LookRotation(direction);
+
+		if (distanceToPlayer >= followDistance)        //if boss not shooting or distance from player is close enough
+		{
+            rb.AddForce(direction * movementSpeed, ForceMode.Force);      //head towards the player
+        }
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = follow ? Color.yellow : Color.black;
+        Gizmos.DrawWireSphere(transform.position, followDistance);
+    }
 }

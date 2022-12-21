@@ -17,8 +17,8 @@ public class RangedEnemy : MonoBehaviour
 
     [Header("Attack")]
     [SerializeField] private float recoilTime = 1.5f;
-    [SerializeField] private bool canShoot = true;
-    [SerializeField] private bool isAlive = true;
+	[SerializeField] private bool canShoot = false;
+	[SerializeField] private bool isAlive = true;
 
 	void Update()
 	{
@@ -32,16 +32,13 @@ public class RangedEnemy : MonoBehaviour
 			Vector3 playerPostition = new Vector3(target.position.x, transform.position.y, target.position.z);
 			transform.LookAt(playerPostition);
 			firePoint.LookAt(target);
-			Shoot();
+			if (canShoot)
+				Shoot();
 		}
 	}
 
 	void Shoot()
 	{
-		if (!canShoot)
-			return;
-
-		Debug.Log("Shooting!!!!");
 		Vector3 direction = (firePoint.position - target.position).normalized;
 		Quaternion lookDirection = Quaternion.LookRotation(direction);
 
@@ -70,5 +67,10 @@ public class RangedEnemy : MonoBehaviour
 	public void SetCanShoot(bool newCanShoot)
 	{
 		canShoot = newCanShoot;
+	}
+
+	public bool GetInSight()
+	{
+		return inSight;
 	}
 }
