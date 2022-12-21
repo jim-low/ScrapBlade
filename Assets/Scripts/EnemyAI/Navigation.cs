@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Navigation : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    public static NavMeshAgent agent;
     public static Transform target;
 
     void Start()

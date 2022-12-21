@@ -27,6 +27,9 @@ public class BossMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rangedBehavior = GetComponent<RangedEnemy>();
         speed = walkSpeed;
+
+        Navigation.agent.stoppingDistance = minFollowDistance;
+        Navigation.agent.autoBraking = true;
     }
 
     // Update is called once per frame
@@ -57,13 +60,13 @@ public class BossMovement : MonoBehaviour
     public void SetSpeed(string status)
     {
         if (status == "walk")
-            speed = walkSpeed;
+            Navigation.agent.speed = walkSpeed;
 
         if (status == "run")
-            speed = runSpeed;
+            Navigation.agent.speed = runSpeed;
 
         if (status == "stop")
-            speed = 0;
+            Navigation.agent.speed = 0;
     }
 
     void OnDrawGizmos()

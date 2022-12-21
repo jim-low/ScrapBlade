@@ -27,12 +27,16 @@ public class Boss : MonoBehaviour
 
 	void Update()
 	{
-		if (playerState.state == PlayerMovement.MovementState.wallrunning)
+		if (
+			playerState.state == PlayerMovement.MovementState.wallrunning ||
+			playerState.state == PlayerMovement.MovementState.climbing
+		)
 		{
+			// start shooting
 			anim.SetBool("Win", true);
 			bossMovement.SetSpeed("stop");
 		}
-		else if (playerState.state != PlayerMovement.MovementState.sprinting)
+		else if (playerState.state == PlayerMovement.MovementState.sprinting)
 		{
 			anim.SetBool("Win", false);
 			bossMovement.SetSpeed("walk");
