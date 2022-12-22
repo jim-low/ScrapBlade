@@ -208,5 +208,6 @@ public class PlayerWallRun : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);        //reset y velocity of player to make jumping feel smooth
         rb.AddForce(forceToApply, ForceMode.Impulse);
 
+        playerMovement.state = PlayerMovement.MovementState.wallRunJumping;
     }
 }
