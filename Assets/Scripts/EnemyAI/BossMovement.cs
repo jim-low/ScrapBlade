@@ -34,8 +34,7 @@ public class BossMovement : MonoBehaviour
 		anim = GetComponent<Animator>();
 
 		Navigation.agent.stoppingDistance = minFollowDistance;
-		//Navigation.agent.autoBraking = true;
-        playerState = GetComponent<Boss>().player.GetComponent<PlayerMovement>();
+		playerState = GetComponent<Boss>().player.GetComponent<PlayerMovement>();
 	}
 
 	// Update is called once per frame
@@ -48,7 +47,7 @@ public class BossMovement : MonoBehaviour
 		}
 
 		Movement();
-        CheckPlayerState();
+		CheckPlayerState();
 	}
 
 	void Movement()
@@ -79,14 +78,14 @@ public class BossMovement : MonoBehaviour
 		}
 	}
 
-    void CheckPlayerState()
+	void CheckPlayerState()
 	{
 		// shoot when player is wall running or climbing or jumping when wall run
 		shooting = (playerState.state == PlayerMovement.MovementState.wallrunning ||
-                        playerState.state == PlayerMovement.MovementState.climbing ||
-                        playerState.state == PlayerMovement.MovementState.wallRunJumping);
+			playerState.state == PlayerMovement.MovementState.climbing ||
+			playerState.state == PlayerMovement.MovementState.wallRunJumping);
 
-        anim.SetBool("Win", shooting);
+		anim.SetBool("Win", shooting);
 	}
 
 	void FixedUpdate()

@@ -120,8 +120,92 @@ public class BossManager : MonoBehaviour
     float mouthMovement = 0;
     bool closeMouth = true;
 
+    public static int currentScene = 1; //change the current scene
+
     //Cutscene Phases
+
+    void Scene1() {
+        _SapphiArtChanAnimation = walk;
+    }
+
+    void Scene2() {
+        AngryTalking();
+    }
+
+    void Scene3() {
+        HappyTalking();
+    }
+
+    void Walk() {
+        _SapphiArtChanAnimator.SetBool(param_idletowalk, true);
+    }
+
+    void AngryTalking() {
+
+        ReturnToIdle();
+
+        //=== reset ===
+        _FacialValue = 0;
+        _GeneralChangeType = mouth;
+        _MouthChangeType = mouthExtra02;
+        SetFacial();
+
+        _GeneralChangeType = eyes;
+        _EyesChangeType = happyR;
+        SetFacial();
+
+        _EyesChangeType = closedR;
+        SetFacial();
+
+        _EyesChangeType = closedL;
+        SetFacial();
+        //=============
+
+        if (mouthMovement <= 0)
+        {
+            closeMouth = true;
+
+        }
+        else if (mouthMovement >= 90)
+        {
+            closeMouth = false;
+        }
+
+        if (closeMouth == true) mouthMovement += (350 * Time.deltaTime);
+        else if (closeMouth == false) mouthMovement -= (350 * Time.deltaTime);
+
+        _GeneralChangeType = mouth;
+        _MouthChangeType = mouthJawOpen;
+        _FacialValue = mouthMovement;
+        SetFacial();
+
+        _GeneralChangeType = eyebrows;
+        _EyebrowsChangeType = angerR;
+        _FacialValue = 100;
+        SetFacial();
+
+        _EyebrowsChangeType = angerL;
+        _FacialValue = 100;
+        SetFacial();
+
+    }
+
     void HappyTalking() {
+        //===reset to idle===
+        _FacialValue = 0;
+        _GeneralChangeType = mouth;
+        _MouthChangeType = mouthJawOpen;
+        SetFacial();
+
+        _GeneralChangeType = eyebrows;
+        _EyebrowsChangeType = angerR;
+        SetFacial();
+
+        _EyebrowsChangeType = angerL;
+        SetFacial();
+        //======
+        ReturnToIdle();
+
         if (mouthMovement <= 0)
         {
             closeMouth = true;
@@ -139,6 +223,18 @@ public class BossManager : MonoBehaviour
         _MouthChangeType = mouthExtra02;
         _FacialValue = mouthMovement;
         SetFacial();
+
+        _GeneralChangeType = eyes;
+        _EyesChangeType = happyR;
+        _FacialValue = 100;
+        SetFacial();
+
+        _EyesChangeType = closedR;
+        SetFacial();
+
+        _EyesChangeType = closedL;
+        _FacialValue = 0;
+        SetFacial();
     }
     //Happy Expression
     void HappyFace() {
@@ -149,13 +245,14 @@ public class BossManager : MonoBehaviour
         _FacialValue = 100;
         SetFacial();
 
-        _EyesChangeType = happyL;
-        SetFacial();
+        //_EyesChangeType = happyL;
+        //SetFacial();
 
         _EyesChangeType = closedR;
         SetFacial();
 
         _EyesChangeType = closedL;
+        _FacialValue = 0;
         SetFacial();
 
         _GeneralChangeType = mouth;
@@ -554,13 +651,23 @@ public class BossManager : MonoBehaviour
 
     void Update()
     {
-        
-
         //Get Animation from UI
         GetAnimation();
 
-        HappyFace();
-        HappyTalking();
+        if (currentScene == 1)
+        {
+            Scene1();
+        }
+
+        else if (currentScene == 2) 
+        {
+            Scene2();
+        }
+
+        else if (currentScene == 3)
+        {
+            Scene3();
+        }
 
         //Set New Animation
         if (_SapphiArtChanLastAnimation != _SapphiArtChanAnimation)

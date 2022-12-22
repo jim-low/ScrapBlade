@@ -1160,11 +1160,12 @@ GameObject:
   - component: {fileID: 1857972457358151098}
   - component: {fileID: 1974502907}
   - component: {fileID: 1974502908}
-  - component: {fileID: 2701648522659885117}
   - component: {fileID: 1162665940033198865}
   - component: {fileID: 1974502904}
   - component: {fileID: 1974502906}
   - component: {fileID: 2074539223}
+  - component: {fileID: 1974502903}
+  - component: {fileID: 5603683460085301382}
   m_Layer: 0
   m_Name: BigBoss
   m_TagString: Untagged
@@ -1239,28 +1240,6 @@ CapsuleCollider:
   m_Height: 1.7234052
   m_Direction: 1
   m_Center: {x: 0, y: 0.85922796, z: 0}
---- !u!195 &2701648522659885117
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857972457841414747}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &1162665940033198865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,12 +1300,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1740007a0642b4bafdf380f5a115aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
-  runSpeed: 8
-  runningDistance: 15
-  minFollowDistance: 0
+  walkSpeed: 1.5
+  runSpeed: 10
+  runningDistance: 10
+  minFollowDistance: 2
   follow: 0
   player: {fileID: 0}
+--- !u!114 &1974502903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857972457841414747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0e3876cb1256c49873daabc7ee36ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &5603683460085301382
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857972457841414747}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1857972457841414749
 GameObject:
   m_ObjectHideFlags: 0

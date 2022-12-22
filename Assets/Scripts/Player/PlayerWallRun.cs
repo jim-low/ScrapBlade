@@ -15,7 +15,7 @@ public class PlayerWallRun : MonoBehaviour
     public float wallJumpSideForce;
     public float fovChangeAmt;
     public float camTiltAmt;
-    public float originalFov;
+    public float camSideMove;
 
     [Header("Input")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -29,10 +29,10 @@ public class PlayerWallRun : MonoBehaviour
     private RaycastHit rightWallHit;
     private RaycastHit frontWallHit;
     private RaycastHit backWallHit;
-    private bool wallLeft;
-    private bool wallRight;
-    private bool wallFront;
-    private bool wallBack;
+    public bool wallLeft;
+    public bool wallRight;
+    public bool wallFront;
+    public bool wallBack;
 
     [Header("Exit WallRun")]
     private bool exitWall;
@@ -161,6 +161,14 @@ public class PlayerWallRun : MonoBehaviour
     private void WallRunningMovement()
     {
         rb.useGravity = useGravity;//to toggle gravity in inspector
+        if (wallLeft)
+        {
+            cam.MoveHead(new Vector3(camSideMove, 0, 0));
+        }
+        else if (wallRight)
+        {
+            cam.MoveHead(new Vector3(-camSideMove, 0, 0));
+        }
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;    //check which wall to run on
         Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);             
@@ -190,9 +198,9 @@ public class PlayerWallRun : MonoBehaviour
     private void StopWallRun()
     {
         playerMovement.wallRunning = false;
-
         //reset camera effects;
-        cam.DoFovChanges(originalFov);
+        cam.ReturnHeadPos();
+        cam.DoFovChanges(playerMovement.originalFov);
         cam.DoTilt(0f);
     }
 

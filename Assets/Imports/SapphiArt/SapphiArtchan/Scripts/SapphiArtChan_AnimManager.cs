@@ -22,6 +22,7 @@ public class SapphiArtChan_AnimManager : MonoBehaviour {
     private float _SapphiArtChanLastFacial = 0.0f;    //Character Last Facial Parameter
     private bool _SapphiArtChanFacialBool = false;    //Character Facial Parameter Bool
     private bool _SapphiArtChanLastFacialBool = false;    //Character Last Facial Parameter Bool
+    
     //BlendShapeValues
     private float _SapphiArtChanFacial_Eye_L_Happy = 0.0f;
     private float _SapphiArtChanFacial_Eye_R_Happy = 0.0f;
