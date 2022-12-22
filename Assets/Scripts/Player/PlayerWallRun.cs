@@ -202,12 +202,12 @@ public class PlayerWallRun : MonoBehaviour
         exitWall = true;
         exitWallTimer = exitWallTime;
 
+		playerMovement.wallRunJump = true;
+
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);        //reset y velocity of player to make jumping feel smooth
         rb.AddForce(forceToApply, ForceMode.Impulse);
-
-        playerMovement.state = PlayerMovement.MovementState.wallRunJumping;
     }
 }

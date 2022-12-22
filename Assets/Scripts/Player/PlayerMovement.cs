@@ -290,7 +290,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         slopeJump = true;
-        wallRunJump = true;
+
         //reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 

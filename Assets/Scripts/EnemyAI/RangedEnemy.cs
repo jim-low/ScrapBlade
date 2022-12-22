@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class RangedEnemy : MonoBehaviour
 {
-    [Header("Setup")]
-    public GameObject bulletPrefab;
-    public Transform bulletCollection;
-    public Transform target;
-    public Transform firePoint;
+	[Header("Setup")]
+	public GameObject bulletPrefab;
+	public Transform bulletCollection;
+	public Transform target;
+	public Transform firePoint;
 
-    [Header("Field Of View")]
-    [Range(10f, 100f)] public float sightRadius = 5f;
-    private bool inSight = false;
-    public LayerMask playerLayer;
+	[Header("Field Of View")]
+	[Range(10f, 100f)] public float sightRadius = 5f;
+	private bool inSight = false;
+	public LayerMask playerLayer;
 
-    [Header("Attack")]
-    [SerializeField] private float recoilTime = 1.5f;
+	[Header("Attack")]
+	[SerializeField] private float recoilTime = 1.5f;
 	[SerializeField] private bool canShoot = false;
 	[SerializeField] private bool isAlive = true;
 
