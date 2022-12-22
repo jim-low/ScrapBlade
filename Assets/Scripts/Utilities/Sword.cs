@@ -76,5 +76,4 @@ public class Sword : MonoBehaviour
 		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 		return stateInfo.length > stateInfo.normalizedTime;
 	}
-
 }

@@ -229,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         if (OnSlope() && !slopeJump && !climbing)
         {
             rb.useGravity = false;
-            rb.AddForce(GetSlopeMoveDirection(moveDir) * moveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection(moveDir) * desiredMoveSpeed * 20f, ForceMode.Force);
 
             if(rb.velocity.y > 0)
             {
