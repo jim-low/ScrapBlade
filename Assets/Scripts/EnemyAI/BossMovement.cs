@@ -65,7 +65,7 @@ public class BossMovement : MonoBehaviour
 		{
 			anim.SetBool("Idle", false);
 
-			if (distance >= runningDistance)
+			if (distance >= minFollowDistance + runningDistance)
 			{
 				anim.SetBool("Running", true);
 				SetSpeed("run");
