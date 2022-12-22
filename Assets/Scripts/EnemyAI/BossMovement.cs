@@ -34,7 +34,7 @@ public class BossMovement : MonoBehaviour
 		anim = GetComponent<Animator>();
 
 		Navigation.agent.stoppingDistance = minFollowDistance;
-		Navigation.agent.autoBraking = true;
+		//Navigation.agent.autoBraking = true;
         playerState = GetComponent<Boss>().player.GetComponent<PlayerMovement>();
 	}
 
