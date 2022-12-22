@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
             canSlide = true;
             inAir = false;
         }
-        else if (grounded)       //mode sprinting
+        if (grounded)       //mode sprinting
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
@@ -240,11 +240,11 @@ public class PlayerMovement : MonoBehaviour
         //if normal ground
         if (grounded)
         {
-            rb.AddForce(moveDir.normalized * desiredMoveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
         }
         else if(!grounded && !wallRunScript.wallDetected)
         {
-            rb.AddForce(moveDir.normalized * desiredMoveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
         //turn on gravity when not wall runnnig or not on slope
         if (!wallRunning && !OnSlope())
