@@ -10,12 +10,14 @@ public class PlayerClimbing : MonoBehaviour
     public Rigidbody rb;
     public PlayerMovement playerMovement;
     public LayerMask whatIsWall;
-    public float climbTiltAmt;
+    public PlayerWallRun playerWallRun;
 
     [Header("Climbing")]
     public float climbSpeed;
     public float maxClimbTime;
     private float climbTimer;
+    public float climbTiltAmt;
+    public float climbFOVAmt;
 
     [Header("Detection")]
     public float detectionLength;
@@ -76,8 +78,8 @@ public class PlayerClimbing : MonoBehaviour
 
     private void WallCheck()
     {
-        wallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
-        wallLookAngle = Vector3.Angle(orientation.forward, -frontWallHit.normal);
+        wallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, whatIsWall);   //check if wall in front is big enough
+        wallLookAngle = Vector3.Angle(orientation.forward, -frontWallHit.normal);           //get the wall normal
 
         if (playerMovement.grounded)
         {
@@ -92,23 +94,26 @@ public class PlayerClimbing : MonoBehaviour
     private void ClimbingMovement()
     {
         rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
-        StartCoroutine(ClimbTiltMovement());
+        cam.DoFovChanges(climbFOVAmt);
+        //StartCoroutine(ClimbTiltMovement());
         
     }
 
-    private IEnumerator ClimbTiltMovement()
-    {
-        cam.DoTilt(-climbTiltAmt);
-        yield return new WaitForSeconds(0.3f);
-        cam.DoTilt(climbTiltAmt);
-        if (!playerMovement.climbing)
-        {
-            cam.DoTilt(0f);
-        }
-    }
+    //private IEnumerator ClimbTiltMovement()
+    //{
+        
+    //    cam.DoTilt(-climbTiltAmt);
+    //    yield return new WaitForSeconds(0.3f);
+    //    cam.DoTilt(climbTiltAmt);
+    //    if (!playerMovement.climbing)
+    //    {
+    //        cam.DoTilt(0f);
+    //    }
+    //}
 
     private void StopClimb()
     {
+        cam.DoFovChanges(playerMovement.originalFov);
         playerMovement.climbing = false;
     }
 

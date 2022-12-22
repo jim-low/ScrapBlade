@@ -121,6 +121,36 @@ public class BossManager : MonoBehaviour
     bool closeMouth = true;
 
     //Cutscene Phases
+
+    void AngryTalking() {
+        if (mouthMovement <= 0)
+        {
+            closeMouth = true;
+
+        }
+        else if (mouthMovement >= 90)
+        {
+            closeMouth = false;
+        }
+
+        if (closeMouth == true) mouthMovement += (350 * Time.deltaTime);
+        else if (closeMouth == false) mouthMovement -= (350 * Time.deltaTime);
+
+        _GeneralChangeType = mouth;
+        _MouthChangeType = mouthJawOpen;
+        _FacialValue = mouthMovement;
+        SetFacial();
+
+        _GeneralChangeType = eyebrows;
+        _EyebrowsChangeType = angerR;
+        _FacialValue = 100;
+        SetFacial();
+
+        _EyebrowsChangeType = angerL;
+        _FacialValue = 100;
+        SetFacial();
+
+    }
     void HappyTalking() {
         if (mouthMovement <= 0)
         {
@@ -149,13 +179,14 @@ public class BossManager : MonoBehaviour
         _FacialValue = 100;
         SetFacial();
 
-        _EyesChangeType = happyL;
-        SetFacial();
+        //_EyesChangeType = happyL;
+        //SetFacial();
 
         _EyesChangeType = closedR;
         SetFacial();
 
         _EyesChangeType = closedL;
+        _FacialValue = 0;
         SetFacial();
 
         _GeneralChangeType = mouth;
@@ -561,6 +592,7 @@ public class BossManager : MonoBehaviour
 
         HappyFace();
         HappyTalking();
+        //AngryTalking();
 
         //Set New Animation
         if (_SapphiArtChanLastAnimation != _SapphiArtChanAnimation)

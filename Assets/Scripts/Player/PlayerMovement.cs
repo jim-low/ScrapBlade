@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float friction;
     public float slideSpeed;
     public float wallRunSpeed;
+    public float originalFov;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
@@ -40,10 +41,11 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool slopeJump;
 
-    public Transform orientation;
 
     [Header("References")]
     public PlayerWallRun wallRunScript;
+    public Transform orientation;
+    public PlayerCam cam;
 
     //get movement input
     float xInput;
@@ -73,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam.DoFovChanges(originalFov);
         rb = GetComponent<Rigidbody>();
         readyToJump = true;
         startYScale = transform.localScale.y;
@@ -101,9 +104,9 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
-        if (wallRunScript.wallDetected)
+        if (wallRunScript.wallDetected && inAir && yInput > 0)
         {
-            rb.AddForce(Vector3.down * 5f, ForceMode.Force);
+            rb.AddForce(Vector3.down * 25f, ForceMode.Force);
         }
         
         MovePlayer();
@@ -226,23 +229,36 @@ public class PlayerMovement : MonoBehaviour
         moveDir = orientation.forward * yInput + orientation.right * xInput;
 
         //if on slope
-        if (OnSlope() && !slopeJump && !climbing)
+        if (OnSlope() && !slopeJump && !climbing && !wallRunScript.wallDetected)
         {
             rb.useGravity = false;
-            rb.AddForce(GetSlopeMoveDirection(moveDir) * desiredMoveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection(moveDir) * moveSpeed * 20f, ForceMode.Force);
 
-            if(rb.velocity.y > 0)
+            if (rb.velocity.y > 0)
             {
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
             }
         }
-       
+
         //if normal ground
         if (grounded)
         {
             rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
+
+            if (wallRunScript.wallDetected && yInput > 0)
+            {
+                if (wallRunScript.wallLeft)
+                {
+                    rb.AddForce(Vector3.left * moveSpeed * 9f, ForceMode.Force);
+                }
+                else if (wallRunScript.wallRight)
+                {
+                    rb.AddForce(Vector3.right * moveSpeed * 9f, ForceMode.Force);
+                }
+            }
         }
-        else if(!grounded && !wallRunScript.wallDetected)
+        
+        else if (!grounded || (!grounded && !wallRunScript.wallDetected))
         {
             rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }

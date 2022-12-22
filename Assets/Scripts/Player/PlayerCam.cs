@@ -6,16 +6,17 @@ using DG.Tweening;
 public class PlayerCam : MonoBehaviour
 {
     //look sensitivityy
+    [Header("Sensitivity")]
     public float sensX; 
     public float sensY;
 
     //player orientation
+    [Header("References")]
     public Transform orientation;
     public Transform camHolder;
 
     float xRotate;
     float yRotate;
-    
     // Start is called before the first frame update
     private void Start()
     {
@@ -46,5 +47,15 @@ public class PlayerCam : MonoBehaviour
     public void DoTilt(float zTilt)     //tilt to side when wall running
     {
         transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
+    }
+        
+    public void MoveHead(Vector3 headMoveAmt)       //moves the head away from wall to avoid clipping on wall
+    {
+        transform.localPosition = headMoveAmt;
+    }
+
+    public void ReturnHeadPos()
+    {
+        transform.localPosition = new Vector3(0,0,0);
     }
 }
