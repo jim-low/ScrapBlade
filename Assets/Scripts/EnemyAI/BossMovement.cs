@@ -5,13 +5,13 @@ using UnityEngine;
 public class BossMovement : MonoBehaviour
 {
     [Header("Boss Movement")]
-    private float movementSpeed;
+    private float speed;
     public float walkSpeed;
     public float runSpeed;
 
     [Header("Boss Mechanic")]
     private float distanceToPlayer;
-    public float followDistance;
+    public float minFollowDistance;
     public bool follow;
     private Vector3 moveDir;
 
@@ -20,77 +20,30 @@ public class BossMovement : MonoBehaviour
     Rigidbody rb;
     RangedEnemy rangedBehavior;
 
-    public BossState state;
-
-    public enum BossState
-    {
-        running, 
-        shooting,
-        walking,
-        death
-    }
-
-    public bool running;
-    public bool shooting;
-    public bool walking;
-    public bool death;
-
     // Start is called before the first frame update
     void Start()
     {
         follow = false;
         rb = GetComponent<Rigidbody>();
         rangedBehavior = GetComponent<RangedEnemy>();
+        speed = walkSpeed;
+
+        Navigation.agent.stoppingDistance = minFollowDistance;
+        Navigation.agent.autoBraking = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distanceToPlayer = Vector3.Distance(player.position, transform.position);       ///get distance from boss to player
-
-        if (shooting)
-        {
-            movementSpeed = 0;
-        }
-        else if (running)
-        {
-            movementSpeed = runSpeed;
-        }
-        else if (walking)
-        {
-            movementSpeed = walkSpeed;
-        }
+        if (rangedBehavior.GetInSight())
+            Navigation.target = player;
     }
 
     void FixedUpdate()
     {
-        follow = rangedBehavior.GetInSight();
+        //follow = rangedBehavior.GetInSight();
 
-        FollowPlayer();
-    }
-
-    private void StateHandler()
-    {
-        if (death)      //if boss is defeated
-        {
-            state = BossState.death;
-            follow = false;
-        }
-        else if (walking)       //early boss stage ( boss will walk while fighting)
-        {
-            state = BossState.walking;
-            movementSpeed = walkSpeed;
-        }
-        else if(running)        //after few hits ( boss will speed up)
-        {
-            state = BossState.running;
-            movementSpeed = runSpeed;
-        }
-        else if (shooting)      //if player too far or during certain interval ( boss will shoot)
-        {
-            state = BossState.shooting;
-            follow = false;
-        }
+        //FollowPlayer();
     }
 
     void FollowPlayer()
@@ -98,19 +51,27 @@ public class BossMovement : MonoBehaviour
         if (!rangedBehavior.GetInSight())
 			return;
 
-        Vector3 direction = (player.position - transform.position).normalized;      //get direction of where the player is
-
-		//Quaternion lookDirection = Quaternion.LookRotation(direction);
-
-		if (distanceToPlayer >= followDistance)        //if boss not shooting or distance from player is close enough
+		if (distanceToPlayer >= minFollowDistance)        //if boss not shooting or distance from player is close enough
 		{
-            rb.AddForce(direction * movementSpeed, ForceMode.Force);      //head towards the player
+            Debug.Log("walkig menacingly towards the player");
         }
+    }
+
+    public void SetSpeed(string status)
+    {
+        if (status == "walk")
+            Navigation.agent.speed = walkSpeed;
+
+        if (status == "run")
+            Navigation.agent.speed = runSpeed;
+
+        if (status == "stop")
+            Navigation.agent.speed = 0;
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = follow ? Color.yellow : Color.black;
-        Gizmos.DrawWireSphere(transform.position, followDistance);
+        Gizmos.DrawWireSphere(transform.position, minFollowDistance);
     }
 }

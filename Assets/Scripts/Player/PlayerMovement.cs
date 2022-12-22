@@ -144,17 +144,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
+        if (crouching)       //mode crouching
+        {
+            state = MovementState.crouching;
+            desiredMoveSpeed = crouchSpeed;
+            canSlide = true;
+            inAir = false;
+        }
         if (grounded)       //mode sprinting
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
-            canSlide = true;
-            inAir = false;
-        }
-        else if(crouching)       //mode crouching
-        {
-            state = MovementState.crouching;
-            desiredMoveSpeed = crouchSpeed;
             canSlide = true;
             inAir = false;
         }
@@ -174,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
         else if (sliding)        //mode sliding
         {
             state = MovementState.sliding;
-            canSlide = true; 
+            canSlide = true;
             inAir = false;
 
             if (OnSlope() && rb.velocity.y < 0.1f)//if player is on slope and moving downwards
@@ -229,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         if (OnSlope() && !slopeJump && !climbing)
         {
             rb.useGravity = false;
-            rb.AddForce(GetSlopeMoveDirection(moveDir) * moveSpeed * 20f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection(moveDir) * desiredMoveSpeed * 20f, ForceMode.Force);
 
             if(rb.velocity.y > 0)
             {

@@ -7,7 +7,6 @@ public class Bullet : MonoBehaviour
 {
 	private Rigidbody rb;
 	public float speed = 2f;
-    public LayerMask blockBulletLayer;
 
 	void Start()
 	{
@@ -21,27 +20,17 @@ public class Bullet : MonoBehaviour
 
 	void OnTriggerEnter(Collider collider)
 	{
-		bool isDestroyed = false;
-
-		if (Sword.isBlocking)
+		if (collider.gameObject.tag == "BlockBullet" && Sword.isBlocking)
 		{
-			if (collider.gameObject.tag == "BlockBullet")
-			{
-				Destroy(gameObject);
-				Debug.Log("Bullet got BLOCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCKED");
-
-				isDestroyed = true;
-			}
+			Debug.Log("Bullet got BLOCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCKED");
+			IndicatorManager.blockedTimes++;
+		}
+		else if (collider.gameObject.tag == "Player")
+		{
+			Debug.Log("Player is dieded");
+			IndicatorManager.diedTimes++;
 		}
 
-		if (collider.gameObject.tag == "Player")
-		{
-			Destroy(gameObject);
-			Debug.Log("Player is died");
-			isDestroyed = true;
-		}
-
-		if (!isDestroyed)
-			Destroy(gameObject);
+		Destroy(gameObject);
 	}
 }
