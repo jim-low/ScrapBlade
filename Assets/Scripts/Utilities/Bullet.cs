@@ -22,13 +22,12 @@ public class Bullet : MonoBehaviour
 	{
 		if (collider.gameObject.tag == "BlockBullet" && Sword.isBlocking)
 		{
-			Debug.Log("Bullet got BLOCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCKED");
 			IndicatorManager.blockedTimes++;
 		}
 		else if (collider.gameObject.tag == "Player")
 		{
-			Debug.Log("Player is dieded");
 			IndicatorManager.diedTimes++;
+			Player.isDied = true;
 		}
 
 		Destroy(gameObject);
