@@ -24,12 +24,10 @@ public class Bullet : MonoBehaviour
 		if (collider.gameObject.tag == "BlockBullet")
 		{
 			bulletBlocked = true;
-			Debug.Log("bullet got BLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOCKED");
 		}
 		else if (collider.gameObject.tag == "Player" && !bulletBlocked)
 		{
 			Player.isDied = true;
-			Debug.Log("Player is dieded");
 		}
 
 		Destroy(gameObject);
