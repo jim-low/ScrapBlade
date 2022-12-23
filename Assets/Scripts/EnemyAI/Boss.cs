@@ -58,7 +58,8 @@ public class Boss : MonoBehaviour
 			canKick = false;
 		}
 
-		BossAttack.isKicking = isPlayingAnimation(); // this does not work
+		BossAttack.isKicking = isPlayingKick(); // this does not work
+		//Debug.Log("Boss is kicking: " + BossAttack.isKicking);
 		ShootAttack();
 	}
 
@@ -72,7 +73,7 @@ public class Boss : MonoBehaviour
 	{
 		if (anim.GetBool("Win"))
 		{
-			if (!isPlayingAnimation())
+			if (!isPlayingKick())
 			{
 				rangedBehavior.SetCanShoot(true);
 			}
@@ -83,10 +84,10 @@ public class Boss : MonoBehaviour
 		}
 	}
 
-	private bool isPlayingAnimation()
+	private bool isPlayingKick()
 	{
 		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-		return stateInfo.length > stateInfo.normalizedTime;
+		return stateInfo.IsName("hit01") && stateInfo.normalizedTime < 1.0f;
 	}
 
 	public void SetCanKick(bool canKickMou)
