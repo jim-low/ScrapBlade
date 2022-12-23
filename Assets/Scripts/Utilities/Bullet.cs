@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
 		}
 		else if (collider.gameObject.tag == "Player" && !bulletBlocked)
 		{
-			//Player.isDied = true;
+			Player.isDied = true;
 			Debug.Log("Player is dieded");
 		}
 
