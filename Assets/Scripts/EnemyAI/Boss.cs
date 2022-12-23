@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +16,7 @@ public class Boss : MonoBehaviour
 	private bool canKick = false;
 	private int maxHitTimes = 5;
 	private int hitTimes = 0;
+	private bool isHit = false;
 
 	void Start()
 	{
@@ -37,37 +37,40 @@ public class Boss : MonoBehaviour
 			return;
 		}
 
-		ShootAttack();
-		CheckHealth();
-		if (!Player.isDied && canKick)
-			Kick();
-	}
-
-	void CheckHealth()
-	{
 		if (hitTimes >= maxHitTimes)
 		{
-			Debug.Log("Boss is dieded this time");
+			Die();
+			return;
 		}
+
+		if (!Player.isDied && canKick)
+		{
+			Kick();
+		}
+
+		ShootAttack();
+	}
+
+	void Die()
+	{
+		anim.SetBool("KO", true);
 	}
 
 	void ShootAttack()
 	{
+		Debug.Log("ShootAttack() is playing now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (anim.GetBool("Win"))
 		{
 			if (!isPlayingWin())
+			{
 				rangedBehavior.SetCanShoot(true);
+				Debug.Log("set to can shoot ady");
+			}
 		}
 		else
 		{
 			rangedBehavior.SetCanShoot(false);
 		}
-	}
-
-	IEnumerator PrepareShoot(float seconds, bool canShoot)
-	{
-		yield return new WaitForSeconds(seconds);
-		rangedBehavior.SetCanShoot(canShoot);
 	}
 
 	private bool isPlayingWin()
@@ -86,12 +89,15 @@ public class Boss : MonoBehaviour
 		anim.SetTrigger("Hit1");
 	}
 
-	void OnCollisionEnter(Collision collision)
+	public void SetIsHit(bool hasBeenHit)
 	{
-		if (collision.gameObject.tag == "Sword")
-		{
-			++hitTimes;
-			Debug.Log("boss is hit! " + (maxHitTimes - hitTimes) + " more hits left");
-		}
+		anim.SetTrigger("Damage");
+		++hitTimes;
+		isHit = hasBeenHit;
+	}
+
+	void Damaged()
+	{
+		isHit = false;
 	}
 }

@@ -1226,7 +1226,7 @@ GameObject:
   - component: {fileID: 5603683460085301382}
   m_Layer: 0
   m_Name: BigBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1360,10 +1360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1740007a0642b4bafdf380f5a115aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1.5
+  walkSpeed: 2
   runSpeed: 10
   runningDistance: 10
-  minFollowDistance: 1.5
+  minFollowDistance: 1.6
   follow: 0
   player: {fileID: 0}
 --- !u!195 &5603683460085301382
