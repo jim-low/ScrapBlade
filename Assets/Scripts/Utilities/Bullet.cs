@@ -20,13 +20,16 @@ public class Bullet : MonoBehaviour
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.tag == "BlockBullet" && Sword.isBlocking)
+		bool bulletBlocked = false;
+		if (collider.gameObject.tag == "BlockBullet")
 		{
+			bulletBlocked = true;
 			Debug.Log("bullet got BLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOCKED");
 		}
-		else if (collider.gameObject.tag == "Player")
+		else if (collider.gameObject.tag == "Player" && !bulletBlocked)
 		{
-			Player.isDied = true;
+			//Player.isDied = true;
+			Debug.Log("Player is dieded");
 		}
 
 		Destroy(gameObject);

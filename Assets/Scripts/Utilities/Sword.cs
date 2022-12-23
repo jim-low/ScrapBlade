@@ -13,11 +13,13 @@ public class Sword : MonoBehaviour
 	public static bool isAttacking = false;
 	public static bool isPickedUp = false;
 	public static bool isBlocking = false;
+	BoxCollider blockBulletCollider;
 	private Animator anim;
 
 	void Start()
 	{
 		anim = GetComponent<Animator>();
+		blockBulletCollider = GameObject.Find("PlayerStuff").transform.Find("Player").Find("BlockBulletCollider").GetComponent<BoxCollider>(); // what the fuck??
 	}
 
 	void Update()
@@ -32,6 +34,8 @@ public class Sword : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.F))
 			BlockBullet();
+
+		blockBulletCollider.enabled = isBlocking;
 	}
 
 	void BlockBullet()
