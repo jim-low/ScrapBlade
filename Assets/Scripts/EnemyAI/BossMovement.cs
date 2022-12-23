@@ -11,7 +11,7 @@ public class BossMovement : MonoBehaviour
 	public float runSpeed;
 
 	[Header("Boss Mechanic")]
-	public float runningDistance;
+	public float walkDistance;
 	public float minFollowDistance;
 	public bool follow;
 	private Vector3 moveDir;
@@ -70,7 +70,7 @@ public class BossMovement : MonoBehaviour
 		{
 			anim.SetBool("Idle", false);
 
-			if (distance >= minFollowDistance + runningDistance)
+			if (distance >= minFollowDistance + walkDistance)
 			{
 				anim.SetBool("Running", true);
 				SetSpeed("run");
