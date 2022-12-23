@@ -251,19 +251,19 @@ public class PlayerMovement : MonoBehaviour
         //if normal ground
         if (grounded)
         {
-            rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
 
             if (wallRunScript.wallDetected && yInput > 0)
             {
                 if (wallRunScript.wallLeft)
                 {
-                    rb.AddForce(Vector3.left * moveSpeed * 9f, ForceMode.Force);
+                    rb.AddForce(Vector3.left * moveSpeed * 10f, ForceMode.Force);
                 }
                 else if (wallRunScript.wallRight)
                 {
-                    rb.AddForce(Vector3.right * moveSpeed * 9f, ForceMode.Force);
+                    rb.AddForce(Vector3.right * moveSpeed * 10f, ForceMode.Force);
                 }
             }
+            rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
         }
         
         else if (!grounded || (!grounded && !wallRunScript.wallDetected))
