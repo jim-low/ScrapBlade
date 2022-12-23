@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.01969904, g: 0.01969904, b: 0.01969904, a: 1}
+  m_IndirectSpecularColor: {r: 0.019653285, g: 0.019653285, b: 0.019653285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -394,9 +394,29 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: camSideMove
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: minJumpHeight
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: whatIsWall.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: gravityCounterForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243347, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: climbFOVAmt
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243347, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: playerWallRun
+      value: 
+      objectReference: {fileID: 408310520}
     - target: {fileID: 2985258290278243347, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: whatIsWall.m_Bits
       value: 128
@@ -405,6 +425,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 715005417}
+    - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: originalFov
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2985258290278243354, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Name
       value: Player
@@ -475,6 +499,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+--- !u!114 &408310520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+  m_PrefabInstance: {fileID: 408310519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658566782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9857db916fe0490478e90c4867f58259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &426984723
 GameObject:
   m_ObjectHideFlags: 0

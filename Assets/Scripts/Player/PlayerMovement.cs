@@ -63,8 +63,7 @@ public class PlayerMovement : MonoBehaviour
         wallrunning,
         crouching,
         climbing,
-        sliding,
-        wallRunJumping
+        sliding
     }
 
     public bool climbing;
@@ -72,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
     public bool sliding;
     public bool wallRunning;
     public bool inAir;
-    public bool wallRunJump;
 
     // Start is called before the first frame update
     void Start()
@@ -190,12 +188,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 desiredMoveSpeed = sprintSpeed;
             }
-        }
-        else if (wallRunJump)
-        {
-            state = MovementState.wallRunJumping;
-            canSlide = false;
-            inAir = true;
         }
         else                //in air, falling or jumping
         {
