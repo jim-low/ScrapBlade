@@ -61,8 +61,10 @@ public class BossMovement : MonoBehaviour
 		{
 			anim.SetBool("Running", false);
 			anim.SetBool("Idle", true);
-			boss.SetCanKick(true);
 			SetSpeed("stop");
+
+			if (!shooting)
+				boss.SetCanKick(true);
 		}
 		else if (distance > minFollowDistance)
 		{
