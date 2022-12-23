@@ -11,7 +11,7 @@ public class BossMovement : MonoBehaviour
 	public float runSpeed;
 
 	[Header("Boss Mechanic")]
-	public float runningDistance = 15f;
+	public float runningDistance;
 	public float minFollowDistance;
 	public bool follow;
 	private Vector3 moveDir;
