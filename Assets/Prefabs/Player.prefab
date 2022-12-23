@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 9003720508900645013}
   - component: {fileID: 2966205975746609417}
   - component: {fileID: 7689385214705117807}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: PlayerObj
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!114 &2985258290278243353
 MonoBehaviour:
@@ -312,11 +312,11 @@ MonoBehaviour:
   friction: 5
   slideSpeed: 30
   wallRunSpeed: 8.5
-  originalFov: 0
+  originalFov: 60
   jumpForce: 7
   jumpCd: 0.25
   airMultiplier: 0.4
-  crouchSpeed: 3.5
+  crouchSpeed: 3
   crouchYScale: 0.5
   jumpKey: 32
   crouchKey: 99
@@ -326,7 +326,7 @@ MonoBehaviour:
     m_Bits: 64
   grounded: 0
   canSlide: 0
-  maxSlopeAngle: 60
+  maxSlopeAngle: 45
   wallRunScript: {fileID: 2985258290278243346}
   orientation: {fileID: 5722819167522446334}
   cam: {fileID: 4121766708902262493}
@@ -376,10 +376,10 @@ MonoBehaviour:
     m_Bits: 64
   wallRunForce: 200
   wallJumpUpForce: 7
-  wallJumpSideForce: 12
-  fovChangeAmt: 70
+  wallJumpSideForce: 24
+  fovChangeAmt: 53
   camTiltAmt: 5
-  camSideMove: 0
+  camSideMove: 0.5
   jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 1
@@ -414,7 +414,7 @@ MonoBehaviour:
   climbSpeed: 10
   maxClimbTime: 0.3
   climbTiltAmt: 3
-  climbFOVAmt: 0
+  climbFOVAmt: 90
   detectionLength: 0.7
   sphereCastRadius: 0.25
   maxWallLookAngle: 30
