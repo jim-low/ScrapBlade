@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BossMovement : MonoBehaviour
 {
@@ -17,23 +18,23 @@ public class BossMovement : MonoBehaviour
 
 	[Header("References")]
 	public Transform player;
-	Rigidbody rb;
 	RangedEnemy rangedBehavior;
 	private bool engagedPlayer = false;
 	private Animator anim;
 	private PlayerMovement playerState;
 	private bool shooting = false;
+	private Navigation navigation;
+	private NavMeshAgent agent;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		follow = false;
-		rb = GetComponent<Rigidbody>();
 		rangedBehavior = GetComponent<RangedEnemy>();
 		speed = walkSpeed;
 		anim = GetComponent<Animator>();
-
-		Navigation.agent.stoppingDistance = minFollowDistance;
+		navigation = GetComponent<Navigation>();
+		agent = navigation.GetAgent();
 		playerState = GetComponent<Boss>().player.GetComponent<PlayerMovement>();
 	}
 
@@ -42,7 +43,7 @@ public class BossMovement : MonoBehaviour
 	{
 		if (follow && !engagedPlayer)
 		{
-			Navigation.target = player;
+			navigation.SetTarget(player);
 			engagedPlayer = true;
 		}
 
@@ -96,13 +97,13 @@ public class BossMovement : MonoBehaviour
 	public void SetSpeed(string status)
 	{
 		if (status == "walk")
-			Navigation.agent.speed = walkSpeed;
+			navigation.SetSpeed(walkSpeed);
 
 		if (status == "run")
-			Navigation.agent.speed = runSpeed;
+			navigation.SetSpeed(runSpeed);
 
 		if (status == "stop")
-			Navigation.agent.speed = 0;
+			navigation.SetSpeed(0);
 	}
 
 	void OnDrawGizmos()
