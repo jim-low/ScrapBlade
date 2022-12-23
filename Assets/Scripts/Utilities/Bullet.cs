@@ -22,11 +22,10 @@ public class Bullet : MonoBehaviour
 	{
 		if (collider.gameObject.tag == "BlockBullet" && Sword.isBlocking)
 		{
-			IndicatorManager.blockedTimes++;
+			Debug.Log("bullet got BLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOCKED");
 		}
 		else if (collider.gameObject.tag == "Player")
 		{
-			IndicatorManager.diedTimes++;
 			Player.isDied = true;
 		}
 
