@@ -22,6 +22,9 @@ public class Sword : MonoBehaviour
 
 	void Update()
 	{
+		if (Player.isDied)
+			return;
+
 		isAttacking = isPlaying();
 
 		if (Input.GetMouseButtonDown(0))
@@ -80,7 +83,8 @@ public class Sword : MonoBehaviour
 
 		if (collider.gameObject.tag == "Boss")
 		{
-			collider.gameObject.GetComponent<Boss>().SetIsHit(true);
+			collider.gameObject.GetComponent<Boss>().Damaged();
+			Debug.Log("boss has been hit");
 		}
 	}
 

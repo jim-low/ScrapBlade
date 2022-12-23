@@ -16,6 +16,7 @@ public class Boss : MonoBehaviour
 	private bool canKick = false;
 	private int maxHitTimes = 5;
 	private int hitTimes = 0;
+	private bool died = false;
 	private bool isHit = false;
 
 	void Start()
@@ -30,6 +31,11 @@ public class Boss : MonoBehaviour
 
 	void Update()
 	{
+		if (died)
+		{
+			return;
+		}
+
 		if (Player.isDied)
 		{
 			anim.SetBool("Win", true);
@@ -40,12 +46,16 @@ public class Boss : MonoBehaviour
 		if (hitTimes >= maxHitTimes)
 		{
 			Die();
+			died = true;
+			GetComponent<RangedEnemy>().enabled = false;
+			GetComponent<CapsuleCollider>().enabled = false;
 			return;
 		}
 
 		if (!Player.isDied && canKick)
 		{
 			Kick();
+			canKick = false;
 		}
 
 		ShootAttack();
@@ -53,18 +63,17 @@ public class Boss : MonoBehaviour
 
 	void Die()
 	{
+		GetComponent<Navigation>().enabled = false;
 		anim.SetBool("KO", true);
 	}
 
 	void ShootAttack()
 	{
-		Debug.Log("ShootAttack() is playing now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (anim.GetBool("Win"))
 		{
 			if (!isPlayingWin())
 			{
 				rangedBehavior.SetCanShoot(true);
-				Debug.Log("set to can shoot ady");
 			}
 		}
 		else
@@ -89,15 +98,9 @@ public class Boss : MonoBehaviour
 		anim.SetTrigger("Hit1");
 	}
 
-	public void SetIsHit(bool hasBeenHit)
+	public void Damaged()
 	{
 		anim.SetTrigger("Damage");
 		++hitTimes;
-		isHit = hasBeenHit;
-	}
-
-	void Damaged()
-	{
-		isHit = false;
 	}
 }
