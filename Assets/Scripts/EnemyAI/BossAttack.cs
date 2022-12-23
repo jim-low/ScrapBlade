@@ -8,11 +8,9 @@ public class BossAttack : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Boss is kicking: " + isKicking);
         if (collider.gameObject.tag == "Player" && isKicking)
         {
             Player.isDied = true;
-            Debug.Log("Boss has kicked the player");
         }
     }
 }
