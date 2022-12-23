@@ -7,10 +7,12 @@ public class Player : MonoBehaviour
 {
 	public static bool isDied = false;
 	public Text gameOverText;
+	public GameObject diedButtons;
 
 	void Start()
 	{
 		gameOverText.enabled = false;
+		diedButtons.SetActive(false);
 	}
 
 	void Update()
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour
 		if (isDied)
 		{
 			gameOverText.enabled = true;
+			diedButtons.SetActive(true);
 		}
 	}
 }
