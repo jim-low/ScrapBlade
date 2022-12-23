@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1075678404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075678405}
+  m_Layer: 0
+  m_Name: FocusArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1075678405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075678404}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.518, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9213619712625632527}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &741408529058924779
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +151,7 @@ GameObject:
   - component: {fileID: 9003720508900645013}
   - component: {fileID: 2966205975746609417}
   - component: {fileID: 7689385214705117807}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: PlayerObj
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -221,6 +252,7 @@ GameObject:
   - component: {fileID: 2985258290278243346}
   - component: {fileID: 2985258290278243347}
   - component: {fileID: 337897564}
+  - component: {fileID: 658566789}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -244,6 +276,7 @@ Transform:
   - {fileID: 5722819167522446334}
   - {fileID: 5722819168409312787}
   - {fileID: 4121766708873052117}
+  - {fileID: 1075678405}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -279,6 +312,7 @@ MonoBehaviour:
   friction: 5
   slideSpeed: 30
   wallRunSpeed: 8.5
+  originalFov: 0
   jumpForce: 7
   jumpCd: 0.25
   airMultiplier: 0.4
@@ -293,14 +327,16 @@ MonoBehaviour:
   grounded: 0
   canSlide: 0
   maxSlopeAngle: 60
-  orientation: {fileID: 5722819167522446334}
   wallRunScript: {fileID: 2985258290278243346}
+  orientation: {fileID: 5722819167522446334}
+  cam: {fileID: 4121766708902262493}
   state: 0
   climbing: 0
   crouching: 0
   sliding: 0
   wallRunning: 0
   inAir: 0
+  wallRunJump: 0
 --- !u!114 &2985258290278243355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +370,7 @@ MonoBehaviour:
   wallDetected: 0
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -343,10 +379,14 @@ MonoBehaviour:
   wallJumpSideForce: 12
   fovChangeAmt: 70
   camTiltAmt: 5
-  originalFov: 60
+  camSideMove: 0
   jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 1
+  wallLeft: 0
+  wallRight: 0
+  wallFront: 0
+  wallBack: 0
   exitWallTime: 0.2
   useGravity: 1
   gravityCounterForce: 6.14
@@ -369,10 +409,12 @@ MonoBehaviour:
   playerMovement: {fileID: 2985258290278243353}
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 256
-  climbTiltAmt: 3
+    m_Bits: 128
+  playerWallRun: {fileID: 0}
   climbSpeed: 10
   maxClimbTime: 0.3
+  climbTiltAmt: 3
+  climbFOVAmt: 0
   detectionLength: 0.7
   sphereCastRadius: 0.25
   maxWallLookAngle: 30
@@ -394,6 +436,19 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &658566789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985258290278243354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e0d0b6f80b0644a888a8b43d648f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverText: {fileID: 0}
 --- !u!1 &3338533883723844331
 GameObject:
   m_ObjectHideFlags: 0

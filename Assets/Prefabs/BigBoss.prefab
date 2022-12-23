@@ -1164,7 +1164,6 @@ GameObject:
   - component: {fileID: 1974502904}
   - component: {fileID: 1974502906}
   - component: {fileID: 2074539223}
-  - component: {fileID: 1974502903}
   - component: {fileID: 5603683460085301382}
   m_Layer: 0
   m_Name: BigBoss
@@ -1252,6 +1251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0e3876cb1256c49873daabc7ee36ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  target: {fileID: 0}
 --- !u!114 &1974502904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1306,18 +1307,6 @@ MonoBehaviour:
   minFollowDistance: 2
   follow: 0
   player: {fileID: 0}
---- !u!114 &1974502903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857972457841414747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe0e3876cb1256c49873daabc7ee36ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &5603683460085301382
 NavMeshAgent:
   m_ObjectHideFlags: 0
