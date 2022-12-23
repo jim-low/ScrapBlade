@@ -16,6 +16,7 @@ public class PlayerWallRun : MonoBehaviour
     public float fovChangeAmt;
     public float camTiltAmt;
     public float camSideMove;
+    public bool wallRunJump;
 
     [Header("Input")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -130,7 +131,6 @@ public class PlayerWallRun : MonoBehaviour
                 exitWall = false;
             }
         }
-
         else
         {
             if (playerMovement.wallRunning)
@@ -142,6 +142,7 @@ public class PlayerWallRun : MonoBehaviour
 
     private void StartWallRun()
     {
+        wallRunJump = false;
         playerMovement.wallRunning = true;
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
@@ -207,10 +208,10 @@ public class PlayerWallRun : MonoBehaviour
     private void WallJump()
     {
         //exit wall
+        wallRunJump = true;
         exitWall = true;
         exitWallTimer = exitWallTime;
 
-		playerMovement.wallRunJump = true;
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;

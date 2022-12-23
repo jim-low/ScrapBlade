@@ -87,8 +87,9 @@ public class BossMovement : MonoBehaviour
 	{
 		// shoot when player is wall running or climbing or jumping when wall run
 		shooting = (playerState.state == PlayerMovement.MovementState.wallrunning ||
-			playerState.state == PlayerMovement.MovementState.climbing ||
-			playerState.state == PlayerMovement.MovementState.wallRunJumping);
+			playerState.state == PlayerMovement.MovementState.climbing);
+			//||
+			//playerState.state == PlayerMovement.MovementState.wallRunJumping);
 
 		anim.SetBool("Win", shooting);
 	}
