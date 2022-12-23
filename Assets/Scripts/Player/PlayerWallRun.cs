@@ -100,7 +100,7 @@ public class PlayerWallRun : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
-        //State1 - wallrunning
+        //State1 - tallrunning
         if ((wallLeft || wallRight) && yInput > 0 && AboveGround() && !exitWall)//check for walls, if player is moving forward and aboveground
         {
             //start wallrun

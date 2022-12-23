@@ -86,10 +86,10 @@ public class BossMovement : MonoBehaviour
 	void CheckPlayerState()
 	{
 		// shoot when player is wall running or climbing or jumping when wall run
-		shooting = (playerState.state == PlayerMovement.MovementState.wallrunning ||
-			playerState.state == PlayerMovement.MovementState.climbing);
-			//||
-			//playerState.state == PlayerMovement.MovementState.wallRunJumping);
+		if (playerState.state == PlayerMovement.MovementState.wallrunning)
+			shooting = true;
+		else if (playerState.grounded)
+			shooting = false;
 
 		anim.SetBool("Win", shooting);
 	}
