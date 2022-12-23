@@ -23,6 +23,7 @@ public class BossMovement : MonoBehaviour
 	private Animator anim;
 	private PlayerMovement playerState;
 	private bool shooting = false;
+	private Boss boss;
 	private Navigation navigation;
 	private NavMeshAgent agent;
 
@@ -35,6 +36,7 @@ public class BossMovement : MonoBehaviour
 		anim = GetComponent<Animator>();
 		navigation = GetComponent<Navigation>();
 		agent = navigation.GetAgent();
+		boss = GetComponent<Boss>();
 		playerState = GetComponent<Boss>().player.GetComponent<PlayerMovement>();
 	}
 
@@ -59,7 +61,7 @@ public class BossMovement : MonoBehaviour
 		{
 			anim.SetBool("Running", false);
 			anim.SetBool("Idle", true);
-			anim.SetTrigger("Hit1");
+			boss.SetCanKick(true);
 			SetSpeed("stop");
 		}
 		else if (distance > minFollowDistance)

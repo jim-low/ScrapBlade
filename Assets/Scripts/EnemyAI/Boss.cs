@@ -14,8 +14,7 @@ public class Boss : MonoBehaviour
 	private bool hasPlayedWin = false;
 	private PlayerMovement playerState;
 	private BossMovement bossMovement;
-
-	[Header("Boss Health")]
+	private bool canKick = false;
 	private int maxHitTimes = 5;
 	private int hitTimes = 0;
 
@@ -33,6 +32,8 @@ public class Boss : MonoBehaviour
 	{
 		ShootAttack();
 		CheckHealth();
+		if (!Player.isDied && canKick)
+			Kick();
 	}
 
 	void CheckHealth()
@@ -66,6 +67,16 @@ public class Boss : MonoBehaviour
 	{
 		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 		return stateInfo.length > stateInfo.normalizedTime;
+	}
+
+	public void SetCanKick(bool canKickMou)
+	{
+		canKick = canKickMou;
+	}
+
+	void Kick()
+	{
+		anim.SetTrigger("Hit1");
 	}
 
 	void OnCollisionEnter(Collision collision)
