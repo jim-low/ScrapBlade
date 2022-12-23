@@ -89,6 +89,11 @@ public class PlayerWallRun : MonoBehaviour
         }
     }
 
+    public bool CheckForObstacleWall()
+    {
+        return (Physics.Raycast(transform.position - new Vector3(0, 1, 0), orientation.right, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), -orientation.right, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), orientation.forward, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), -orientation.forward, wallCheckDistance, whatIsGround));
+    }
+
     private bool AboveGround()
     {
         return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight, whatIsGround);
@@ -136,7 +141,9 @@ public class PlayerWallRun : MonoBehaviour
             if (playerMovement.wallRunning)
             {
                 StopWallRun();
-            }
+               
+            } 
+            wallRunJump = false;
         }
     }
 

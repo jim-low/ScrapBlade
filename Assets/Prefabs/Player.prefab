@@ -326,10 +326,11 @@ MonoBehaviour:
     m_Bits: 64
   grounded: 0
   canSlide: 0
-  maxSlopeAngle: 45
+  stuckAgainstGround: 0
+  maxSlopeAngle: 60
   wallRunScript: {fileID: 2985258290278243346}
   orientation: {fileID: 5722819167522446334}
-  cam: {fileID: 4121766708902262493}
+  cam: {fileID: 0}
   state: 0
   climbing: 0
   crouching: 0
@@ -409,7 +410,7 @@ MonoBehaviour:
   playerMovement: {fileID: 2985258290278243353}
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   playerWallRun: {fileID: 0}
   climbSpeed: 10
   maxClimbTime: 0.3

@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    public bool grounded;
     public bool canSlide;
 
     [Header("Slope Handling")]
@@ -66,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         sliding
     }
 
+    public bool grounded;
     public bool climbing;
     public bool crouching;
     public bool sliding;
@@ -88,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+        
         MyInput();
         SpeedControl();
         StateHandler();
@@ -107,14 +108,12 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
-        if (wallRunScript.wallDetected && inAir && yInput > 0)
+        if (wallRunScript.wallDetected && inAir || (wallRunScript.CheckForObstacleWall() && inAir) && (yInput != 0 || xInput != 0))
         {
             rb.AddForce(Vector3.down * 25f, ForceMode.Force);
         }
         
         MovePlayer();
-
-
         
     }
 
