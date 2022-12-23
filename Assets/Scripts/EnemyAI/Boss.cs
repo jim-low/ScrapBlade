@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,10 +13,10 @@ public class Boss : MonoBehaviour
 	private bool hasPlayedWin = false;
 	private PlayerMovement playerState;
 	private BossMovement bossMovement;
-
-	[Header("Boss Health")]
+	private bool canKick = false;
 	private int maxHitTimes = 5;
 	private int hitTimes = 0;
+	private bool isHit = false;
 
 	void Start()
 	{
@@ -31,35 +30,47 @@ public class Boss : MonoBehaviour
 
 	void Update()
 	{
-		ShootAttack();
-		CheckHealth();
-	}
+		if (Player.isDied)
+		{
+			anim.SetBool("Win", true);
+			rangedBehavior.SetCanShoot(false);
+			return;
+		}
 
-	void CheckHealth()
-	{
 		if (hitTimes >= maxHitTimes)
 		{
-			Debug.Log("Boss is dieded this time");
+			Die();
+			return;
 		}
+
+		if (!Player.isDied && canKick)
+		{
+			Kick();
+		}
+
+		ShootAttack();
+	}
+
+	void Die()
+	{
+		anim.SetBool("KO", true);
 	}
 
 	void ShootAttack()
 	{
+		Debug.Log("ShootAttack() is playing now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		if (anim.GetBool("Win"))
 		{
 			if (!isPlayingWin())
+			{
 				rangedBehavior.SetCanShoot(true);
+				Debug.Log("set to can shoot ady");
+			}
 		}
 		else
 		{
 			rangedBehavior.SetCanShoot(false);
 		}
-	}
-
-	IEnumerator PrepareShoot(float seconds, bool canShoot)
-	{
-		yield return new WaitForSeconds(seconds);
-		rangedBehavior.SetCanShoot(canShoot);
 	}
 
 	private bool isPlayingWin()
@@ -68,12 +79,25 @@ public class Boss : MonoBehaviour
 		return stateInfo.length > stateInfo.normalizedTime;
 	}
 
-	void OnCollisionEnter(Collision collision)
+	public void SetCanKick(bool canKickMou)
 	{
-		if (collision.gameObject.tag == "Sword")
-		{
-			++hitTimes;
-			Debug.Log("boss is hit! " + (maxHitTimes - hitTimes) + " more hits left");
-		}
+		canKick = canKickMou;
+	}
+
+	void Kick()
+	{
+		anim.SetTrigger("Hit1");
+	}
+
+	public void SetIsHit(bool hasBeenHit)
+	{
+		anim.SetTrigger("Damage");
+		++hitTimes;
+		isHit = hasBeenHit;
+	}
+
+	void Damaged()
+	{
+		isHit = false;
 	}
 }

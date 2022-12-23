@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BossMovement : MonoBehaviour
 {
@@ -10,30 +11,32 @@ public class BossMovement : MonoBehaviour
 	public float runSpeed;
 
 	[Header("Boss Mechanic")]
-	public float runningDistance = 15f;
+	public float runningDistance;
 	public float minFollowDistance;
 	public bool follow;
 	private Vector3 moveDir;
 
 	[Header("References")]
 	public Transform player;
-	Rigidbody rb;
 	RangedEnemy rangedBehavior;
 	private bool engagedPlayer = false;
 	private Animator anim;
 	private PlayerMovement playerState;
 	private bool shooting = false;
+	private Boss boss;
+	private Navigation navigation;
+	private NavMeshAgent agent;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		follow = false;
-		rb = GetComponent<Rigidbody>();
 		rangedBehavior = GetComponent<RangedEnemy>();
 		speed = walkSpeed;
 		anim = GetComponent<Animator>();
-
-		Navigation.agent.stoppingDistance = minFollowDistance;
+		navigation = GetComponent<Navigation>();
+		agent = navigation.GetAgent();
+		boss = GetComponent<Boss>();
 		playerState = GetComponent<Boss>().player.GetComponent<PlayerMovement>();
 	}
 
@@ -42,7 +45,7 @@ public class BossMovement : MonoBehaviour
 	{
 		if (follow && !engagedPlayer)
 		{
-			Navigation.target = player;
+			navigation.SetTarget(player);
 			engagedPlayer = true;
 		}
 
@@ -58,8 +61,10 @@ public class BossMovement : MonoBehaviour
 		{
 			anim.SetBool("Running", false);
 			anim.SetBool("Idle", true);
-			anim.SetTrigger("Hit1");
 			SetSpeed("stop");
+
+			if (!shooting)
+				boss.SetCanKick(true);
 		}
 		else if (distance > minFollowDistance)
 		{
@@ -81,9 +86,10 @@ public class BossMovement : MonoBehaviour
 	void CheckPlayerState()
 	{
 		// shoot when player is wall running or climbing or jumping when wall run
-		shooting = (playerState.state == PlayerMovement.MovementState.wallrunning ||
-			playerState.state == PlayerMovement.MovementState.climbing ||
-			playerState.state == PlayerMovement.MovementState.wallRunJumping);
+		if (playerState.state == PlayerMovement.MovementState.wallrunning)
+			shooting = true;
+		else if (playerState.grounded)
+			shooting = false;
 
 		anim.SetBool("Win", shooting);
 	}
@@ -96,13 +102,13 @@ public class BossMovement : MonoBehaviour
 	public void SetSpeed(string status)
 	{
 		if (status == "walk")
-			Navigation.agent.speed = walkSpeed;
+			navigation.SetSpeed(walkSpeed);
 
 		if (status == "run")
-			Navigation.agent.speed = runSpeed;
+			navigation.SetSpeed(runSpeed);
 
 		if (status == "stop")
-			Navigation.agent.speed = 0;
+			navigation.SetSpeed(0);
 	}
 
 	void OnDrawGizmos()

@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Sword
   - Bullet
+  - BossKick
+  - Boss
   layers:
   - Default
   - TransparentFX

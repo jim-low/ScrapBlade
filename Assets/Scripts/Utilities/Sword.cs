@@ -71,6 +71,19 @@ public class Sword : MonoBehaviour
 		}
 	}
 
+	void OnTriggerEnter(Collider collider)
+	{
+		if (!isAttacking)
+		{
+			return;
+		}
+
+		if (collider.gameObject.tag == "Boss")
+		{
+			collider.gameObject.GetComponent<Boss>().SetIsHit(true);
+		}
+	}
+
 	private bool isPlaying()
 	{
 		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);

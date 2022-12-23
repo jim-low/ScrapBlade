@@ -16,6 +16,7 @@ public class PlayerWallRun : MonoBehaviour
     public float fovChangeAmt;
     public float camTiltAmt;
     public float camSideMove;
+    public bool wallRunJump;
 
     [Header("Input")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -88,6 +89,11 @@ public class PlayerWallRun : MonoBehaviour
         }
     }
 
+    public bool CheckForObstacleWall()
+    {
+        return (Physics.Raycast(transform.position - new Vector3(0, 1, 0), orientation.right, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), -orientation.right, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), orientation.forward, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), -orientation.forward, wallCheckDistance, whatIsGround));
+    }
+
     private bool AboveGround()
     {
         return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight, whatIsGround);
@@ -99,7 +105,7 @@ public class PlayerWallRun : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
-        //State1 - wallrunning
+        //State1 - tallrunning
         if ((wallLeft || wallRight) && yInput > 0 && AboveGround() && !exitWall)//check for walls, if player is moving forward and aboveground
         {
             //start wallrun
@@ -130,18 +136,20 @@ public class PlayerWallRun : MonoBehaviour
                 exitWall = false;
             }
         }
-
         else
         {
             if (playerMovement.wallRunning)
             {
                 StopWallRun();
-            }
+               
+            } 
+            wallRunJump = false;
         }
     }
 
     private void StartWallRun()
     {
+        wallRunJump = false;
         playerMovement.wallRunning = true;
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
@@ -207,10 +215,10 @@ public class PlayerWallRun : MonoBehaviour
     private void WallJump()
     {
         //exit wall
+        wallRunJump = true;
         exitWall = true;
         exitWallTimer = exitWallTime;
 
-		playerMovement.wallRunJump = true;
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;

@@ -8,8 +8,8 @@ public class BossAttack : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Debug.Log("Boss has kicked the player");
             Player.isDied = true;
+            Debug.Log("Boss has kicked the player");
         }
     }
 }
