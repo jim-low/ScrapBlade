@@ -749,6 +749,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &383268446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 864456761, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+  m_PrefabInstance: {fileID: 695086113}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &389482368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1336,6 +1347,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611646856}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &646403698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+  m_PrefabInstance: {fileID: 1419967641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9857db916fe0490478e90c4867f58259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &695086113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2628,7 +2650,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b, type: 3}
-    m_FontSize: 41
+    m_FontSize: 37
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2639,7 +2661,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.24
-  m_Text: LEMMY PUT DEEZ NUTS IN YOUR MOUTH
+  m_Text: "LEMMY PUT DEEZ NUTS IN YOUR MOUTH \n- Jim 2022"
 --- !u!222 &1163473602
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3272,6 +3294,10 @@ PrefabInstance:
       propertyPath: hintText
       value: 
       objectReference: {fileID: 135838597}
+    - target: {fileID: 658566789, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: gameOverText
+      value: 
+      objectReference: {fileID: 383268446}
     - target: {fileID: 741408529058924779, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -3306,8 +3332,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: gravityCounterForce
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243347, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: playerWallRun
+      value: 
+      objectReference: {fileID: 646403698}
     - target: {fileID: 2985258290278243347, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: maxWallLookAngle
       value: 50
@@ -4603,8 +4633,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.08
-  m_Text: "Special Thanks to \nThe Great Mr Andrew\nAnd Youtube\n\nPress Esc To Exit
-    Game"
+  m_Text: "Special Thanks to \nThe Great \nMr Andrew\nAnd Youtube\n\nPress Esc To
+    Exit Game"
 --- !u!222 &2009311239
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
-        if (wallRunScript.wallDetected && inAir || (wallRunScript.CheckForObstacleWall() && inAir) && (yInput != 0 || xInput != 0))
+        if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && (yInput != 0 || xInput != 0))
         {
             rb.AddForce(Vector3.down * 25f, ForceMode.Force);
         }
@@ -242,7 +242,7 @@ public class PlayerMovement : MonoBehaviour
         //if normal ground
         if (grounded)
         {
-
+            cam.ClimbDoneMotion();
             if (wallRunScript.wallDetected && yInput > 0)
             {
                 if (wallRunScript.wallLeft)

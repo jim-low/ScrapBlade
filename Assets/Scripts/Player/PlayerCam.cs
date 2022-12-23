@@ -58,4 +58,15 @@ public class PlayerCam : MonoBehaviour
     {
         transform.localPosition = new Vector3(0,0,0);
     }
+
+    public void ClimbUpMotion()
+    {
+        transform.DOLocalRotate(new Vector3(45, 0, 0), 0.25f);
+    }
+
+    public void ClimbDoneMotion()
+    {
+        transform.DOLocalRotate(new Vector3(0, 0, 0), 0.25f);
+    }
+
 }

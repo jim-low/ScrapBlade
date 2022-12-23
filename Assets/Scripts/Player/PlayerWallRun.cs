@@ -91,7 +91,7 @@ public class PlayerWallRun : MonoBehaviour
 
     public bool CheckForObstacleWall()
     {
-        return (Physics.Raycast(transform.position - new Vector3(0, 1, 0), orientation.right, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), -orientation.right, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), orientation.forward, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position - new Vector3(0, 1, 0), -orientation.forward, wallCheckDistance, whatIsGround));
+        return (Physics.Raycast(transform.position, orientation.right, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position, -orientation.right, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position, orientation.forward, wallCheckDistance, whatIsGround) || Physics.Raycast(transform.position, -orientation.forward, wallCheckDistance, whatIsGround));
     }
 
     private bool AboveGround()
@@ -105,7 +105,7 @@ public class PlayerWallRun : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
-        //State1 - tallrunning
+        //State1 - wallrunning
         if ((wallLeft || wallRight) && yInput > 0 && AboveGround() && !exitWall)//check for walls, if player is moving forward and aboveground
         {
             //start wallrun

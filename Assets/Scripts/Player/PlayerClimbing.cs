@@ -9,8 +9,9 @@ public class PlayerClimbing : MonoBehaviour
     public Transform orientation;
     public Rigidbody rb;
     public PlayerMovement playerMovement;
-    public LayerMask whatIsWall;
     public PlayerWallRun playerWallRun;
+    public PlayerCam cam;
+    public LayerMask whatIsWall;
 
     [Header("Climbing")]
     public float climbSpeed;
@@ -24,10 +25,10 @@ public class PlayerClimbing : MonoBehaviour
     public float sphereCastRadius;
     public float maxWallLookAngle;
     private float wallLookAngle;
-    public PlayerCam cam;
 
     private RaycastHit frontWallHit;
     private bool wallFront;
+    public bool topWall;
     
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,8 @@ public class PlayerClimbing : MonoBehaviour
         {
             ClimbingMovement();
         }
+
+        topWall = Physics.SphereCast(transform.position + new Vector3(0, 0.2f, 0), sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, playerMovement.whatIsGround);
     }
 
     private void StateMachine()
@@ -56,6 +59,13 @@ public class PlayerClimbing : MonoBehaviour
             if(!playerMovement.climbing && climbTimer > 0)
             {
                 StartClimb();
+                
+            }else if(playerMovement.climbing)
+            {
+                if (topWall)       //if the player climbs up to the ground
+                {
+                    StartCoroutine(ClimbOverMovement());
+                }
             }
             //timer
             if(climbTimer > 0)
@@ -91,25 +101,23 @@ public class PlayerClimbing : MonoBehaviour
     {
         playerMovement.climbing = true;
     }
+
     private void ClimbingMovement()
     {
-        rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);              //sets the velocity upwards to climb
         cam.DoFovChanges(climbFOVAmt);
-        //StartCoroutine(ClimbTiltMovement());
         
     }
 
-    //private IEnumerator ClimbTiltMovement()
-    //{
-        
-    //    cam.DoTilt(-climbTiltAmt);
-    //    yield return new WaitForSeconds(0.3f);
-    //    cam.DoTilt(climbTiltAmt);
-    //    if (!playerMovement.climbing)
-    //    {
-    //        cam.DoTilt(0f);
-    //    }
-    //}
+    private IEnumerator ClimbOverMovement()
+    {
+        //transform.Translate(0, 100.0f * Time.deltaTime, 0);                                         //pushes the player up the cliff
+        rb.AddForce(Vector3.up * 70.0f, ForceMode.Force);
+        cam.ClimbUpMotion();                                                   //rotate the camera down 45 degree
+        yield return new WaitForSeconds(0.5f);
+        //rb.AddForce(Vector3.forward * 10.0f, ForceMode.Force);                         //pushes the player front and over the cliff
+        cam.ClimbDoneMotion();
+    }
 
     private void StopClimb()
     {
