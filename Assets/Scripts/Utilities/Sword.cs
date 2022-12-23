@@ -27,7 +27,7 @@ public class Sword : MonoBehaviour
 
 		isAttacking = isPlaying();
 
-		if (Input.GetMouseButtonDown(0))
+		if (!isAttacking && Input.GetMouseButtonDown(0))
 			Attack();
 
 		if (Input.GetKeyDown(KeyCode.F))
