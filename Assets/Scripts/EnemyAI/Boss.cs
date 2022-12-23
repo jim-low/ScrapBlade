@@ -30,6 +30,13 @@ public class Boss : MonoBehaviour
 
 	void Update()
 	{
+		if (Player.isDied)
+		{
+			anim.SetBool("Win", true);
+			rangedBehavior.SetCanShoot(false);
+			return;
+		}
+
 		ShootAttack();
 		CheckHealth();
 		if (!Player.isDied && canKick)
