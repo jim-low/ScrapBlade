@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.019653285, g: 0.019653285, b: 0.019653285, a: 1}
+  m_IndirectSpecularColor: {r: 0.01969904, g: 0.01969904, b: 0.01969904, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -354,6 +354,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+--- !u!114 &334054254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4121766708902262493, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+  m_PrefabInstance: {fileID: 408310519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6c9990e05c3cd4a8c2e8e841a4fcd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &346611254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400066, guid: 535511bb156e7f54f83f305d96a1c4ce, type: 3}
@@ -385,6 +396,10 @@ PrefabInstance:
       propertyPath: hintText
       value: 
       objectReference: {fileID: 574720473}
+    - target: {fileID: 658566789, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: gameOverText
+      value: 
+      objectReference: {fileID: 864456761}
     - target: {fileID: 2439452380495441070, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -424,7 +439,7 @@ PrefabInstance:
     - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 715005417}
+      objectReference: {fileID: 334054254}
     - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: originalFov
       value: 60
@@ -1900,7 +1915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2074539223, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
       propertyPath: minFollowDistance
-      value: 1.6
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1857972457841414747, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
       propertyPath: m_Name
