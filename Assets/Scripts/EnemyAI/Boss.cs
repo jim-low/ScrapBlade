@@ -15,6 +15,10 @@ public class Boss : MonoBehaviour
 	private PlayerMovement playerState;
 	private BossMovement bossMovement;
 
+	[Header("Boss Health")]
+	private int maxHitTimes = 5;
+	private int hitTimes = 0;
+
 	void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -27,22 +31,16 @@ public class Boss : MonoBehaviour
 
 	void Update()
 	{
-		if (
-			playerState.state == PlayerMovement.MovementState.wallrunning ||
-			playerState.state == PlayerMovement.MovementState.climbing
-		)
-		{
-			// start shooting
-			anim.SetBool("Win", true);
-			bossMovement.SetSpeed("stop");
-		}
-		else if (playerState.state == PlayerMovement.MovementState.sprinting)
-		{
-			anim.SetBool("Win", false);
-			bossMovement.SetSpeed("walk");
-		}
-
 		ShootAttack();
+		CheckHealth();
+	}
+
+	void CheckHealth()
+	{
+		if (hitTimes >= maxHitTimes)
+		{
+			Debug.Log("Boss is dieded this time");
+		}
 	}
 
 	void ShootAttack()
@@ -68,5 +66,14 @@ public class Boss : MonoBehaviour
 	{
 		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 		return stateInfo.length > stateInfo.normalizedTime;
+	}
+
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.tag == "Sword")
+		{
+			++hitTimes;
+			Debug.Log("boss is hit! " + (maxHitTimes - hitTimes) + " more hits left");
+		}
 	}
 }

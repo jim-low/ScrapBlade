@@ -27,4 +27,9 @@ public class Navigation : MonoBehaviour
     {
         agent.speed = speed;
     }
+
+    public NavMeshAgent GetAgent()
+    {
+        return agent;
+    }
 }
