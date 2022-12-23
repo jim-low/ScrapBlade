@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 		{
 			gameOverText.enabled = true;
 			diedButtons.SetActive(true);
+			Cursor.lockState = CursorLockMode.None;
 		}
 	}
 }
