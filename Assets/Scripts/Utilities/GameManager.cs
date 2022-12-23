@@ -14,4 +14,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void MainMenu()
+    {
+        Debug.Log("currently this does nothing");
+    }
+
+    public void SettingPage()
+    {
+        Debug.Log("currently this does nothing");
+    }
 }
