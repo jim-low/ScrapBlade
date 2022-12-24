@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 2129138485}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: sightRadius
-      value: 55.9
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: bulletCollection
@@ -1820,7 +1820,7 @@ PrefabInstance:
       objectReference: {fileID: 1682904466}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: sightRadius
-      value: 55.9
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: bulletCollection
@@ -4691,7 +4691,7 @@ PrefabInstance:
       objectReference: {fileID: 1562451103}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: sightRadius
-      value: 55.9
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: bulletCollection
@@ -10458,7 +10458,7 @@ PrefabInstance:
       objectReference: {fileID: 1682904466}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: sightRadius
-      value: 55.9
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 14662774848531207, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: bulletCollection
