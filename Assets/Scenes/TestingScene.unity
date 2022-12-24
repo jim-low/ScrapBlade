@@ -547,6 +547,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1873583283}
     - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 658566782}
+    - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: originalFov
       value: 60
       objectReference: {fileID: 0}
@@ -1785,7 +1789,7 @@ GameObject:
   - component: {fileID: 1135956819}
   - component: {fileID: 1135956818}
   - component: {fileID: 1135956817}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

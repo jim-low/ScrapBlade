@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     public bool canSlide;
+    public string groundLayer;
+
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerWallRun wallRunScript;
     public Transform orientation;
     public PlayerCam cam;
+    public GameObject player;
 
     //get movement input
     float xInput;
@@ -105,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
+        
         if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && (yInput != 0 || xInput != 0))
         {
             rb.AddForce(Vector3.down * 25f, ForceMode.Force);
@@ -112,6 +116,14 @@ public class PlayerMovement : MonoBehaviour
         
         MovePlayer();
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(player.layer == LayerMask.NameToLayer(groundLayer) && inAir)
+            {
+            rb.AddForce(Vector3.down * 25f, ForceMode.Force);
+        }
     }
 
     private void MyInput()
