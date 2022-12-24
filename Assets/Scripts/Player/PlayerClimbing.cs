@@ -47,7 +47,7 @@ public class PlayerClimbing : MonoBehaviour
             ClimbingMovement();
         }
 
-        topWall = Physics.SphereCast(transform.position + new Vector3(0, 0.3f, 0), sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
+        topWall = Physics.Raycast(transform.position + new Vector3(0, 0.3f, 0), orientation.forward, out frontWallHit, detectionLength, whatIsWall);
     }
 
     private void StateMachine()
