@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1397912178970749996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473340597432016929}
+  - component: {fileID: 5432695020293099092}
+  - component: {fileID: 4211066554070881731}
+  m_Layer: 9
+  m_Name: SwordInteractable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &473340597432016929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397912178970749996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2751887579129551715}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5432695020293099092
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397912178970749996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2.42
+  m_Height: 11.96
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4211066554070881731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397912178970749996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88d919b2176121418578b6562303b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hint: 
+  spawnPoint: {fileID: 0}
+  swordPrefab: {fileID: 5086422066136354803, guid: a651f000f14517f48a73db36178221da, type: 3}
 --- !u!1 &2751887578026460753
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,8 +120,7 @@ GameObject:
   - component: {fileID: 2751887579130763119}
   - component: {fileID: 2751887579131854247}
   - component: {fileID: 2751887579127680905}
-  - component: {fileID: 4582518930620597303}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SwordPedestal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,6 +141,7 @@ Transform:
   m_Children:
   - {fileID: 2751887578026460752}
   - {fileID: 2751887579534790538}
+  - {fileID: 473340597432016929}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -150,21 +212,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 806d243665386404cb481e60e75eb50b, type: 3}
---- !u!114 &4582518930620597303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751887579129616145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88d919b2176121418578b6562303b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hint: 
-  spawnPoint: {fileID: 0}
-  swordPrefab: {fileID: 5086422066136354803, guid: a651f000f14517f48a73db36178221da, type: 3}
 --- !u!1 &2751887579534790539
 GameObject:
   m_ObjectHideFlags: 0

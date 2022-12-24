@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 {
     public void Restart()
     {
+        Player.isDied = false;
+        GameObject.Find("PlayerUI").transform.Find("Buttons").gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

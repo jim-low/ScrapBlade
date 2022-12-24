@@ -32,7 +32,7 @@ public class Sword : MonoBehaviour
 		if (!isAttacking && Input.GetMouseButtonDown(0))
 			Attack();
 
-		if (Input.GetKeyDown(KeyCode.F))
+		if (Input.GetMouseButtonDown(1))
 			BlockBullet();
 
 		blockBulletCollider.enabled = isBlocking;

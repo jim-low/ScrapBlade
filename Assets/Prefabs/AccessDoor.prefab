@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2647596717697709913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4721896987284929375}
+  - component: {fileID: 1752607967972977168}
+  - component: {fileID: 1441730213868388993}
+  m_Layer: 9
+  m_Name: DoorInteractable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4721896987284929375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2647596717697709913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4046463676255018996}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1752607967972977168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2647596717697709913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.974535, y: 3.9954991, z: 1}
+  m_Center: {x: 0.00915575, y: 2.0153205, z: 0}
+--- !u!114 &1441730213868388993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2647596717697709913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91cb903649c1dfe42b5173a27fc0dd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hint: 
 --- !u!1 &4046463676255045660
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,8 +72,7 @@ GameObject:
   - component: {fileID: 4046463676253084380}
   - component: {fileID: 4046463676245632682}
   - component: {fileID: 4046463676257358358}
-  - component: {fileID: 4046463677203116182}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: AccessDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,6 +93,7 @@ Transform:
   m_Children:
   - {fileID: 4046463676254954486}
   - {fileID: 4046463676254948726}
+  - {fileID: 4721896987284929375}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -122,19 +181,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 4e1b01f9c50ee5343afe22990d2feba9, type: 3}
---- !u!114 &4046463677203116182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4046463676255045660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91cb903649c1dfe42b5173a27fc0dd83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hint: Open Door
 --- !u!1 &4046463676255246018
 GameObject:
   m_ObjectHideFlags: 0

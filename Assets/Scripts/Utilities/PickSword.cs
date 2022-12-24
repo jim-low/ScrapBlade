@@ -12,7 +12,7 @@ public class PickSword : Interactable
 	void Start()
 	{
 		hint = "Take Sword";
-		spotlight = GetComponentInChildren<Light>();
+		spotlight = transform.parent.GetComponentInChildren<Light>();
 	}
 
 	void Update()
@@ -33,7 +33,7 @@ public class PickSword : Interactable
 			return;
 
 		// Destroy pivot point
-		Destroy(GameObject.Find("SwordRotationPivot"));
+		transform.parent.Find("SwordRotationPivot").gameObject.SetActive(false);
 
 		// instantiate sword in player hand
 		GameObject swordInstance = Instantiate(swordPrefab, spawnPoint);

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Door : Interactable
 {
-    private bool isOpen = false;
-    private Animator anim;
+	private bool isOpen = false;
+	private Animator anim;
 
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-        hint = "Open Door";
-    }
+	void Start()
+	{
+		anim = transform.parent.GetComponent<Animator>();
+		hint = "Open Door";
+	}
 
 	protected override void Action()
 	{

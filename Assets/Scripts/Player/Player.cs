@@ -17,11 +17,8 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
-		if (isDied)
-		{
-			gameOverText.enabled = true;
-			diedButtons.SetActive(true);
-			Cursor.lockState = CursorLockMode.None;
-		}
+		gameOverText.enabled = isDied;
+		diedButtons.SetActive(isDied);
+		Cursor.lockState = isDied ? CursorLockMode.None : CursorLockMode.Locked;
 	}
 }
