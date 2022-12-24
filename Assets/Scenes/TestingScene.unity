@@ -4289,6 +4289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedBlackRobot
       objectReference: {fileID: 0}
+    - target: {fileID: 5048780105765904244, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5050985465431435582, guid: 1ecc4ec6e8df85049b782fcc10d1b8e5, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.65249914
