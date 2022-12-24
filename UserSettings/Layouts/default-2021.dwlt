@@ -27,6 +27,7 @@ MonoBehaviour:
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
+  m_Maximized: 1
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -258,6 +259,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
@@ -785,6 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 12014, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_MinSize: {x: 230, y: 250}
   m_MaxSize: {x: 10000, y: 10000}
   m_TitleContent:
@@ -801,7 +806,11 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
   m_SearchFilter:
+    m_NameFilter: 
     m_NameFilter: 
     m_ClassNames: []
     m_AssetLabels: []
@@ -810,12 +819,15 @@ MonoBehaviour:
     m_SoftLockControlStates: []
     m_ReferencingInstanceIDs: 
     m_SceneHandles: 
+    m_ReferencingInstanceIDs: 
+    m_SceneHandles: 
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
     - Assets/Scenes
     m_Globs: []
+    m_OriginalText: 
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -834,32 +846,6 @@ MonoBehaviour:
       m_UserAcceptedRename: 0
       m_Name: 
       m_OriginalName: 
-      m_EditFieldRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      m_UserData: 0
-      m_IsWaitingForDelay: 0
-      m_IsRenaming: 0
-      m_OriginalEventType: 11
-      m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
-    m_SearchString: 
-    m_CreateAssetUtility:
-      m_EndAction: {fileID: 0}
-      m_InstanceID: 0
-      m_Path: 
-      m_Icon: {fileID: 0}
-      m_ResourceFile: 
-  m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d07c0000d27c0000d47c0000d67c0000d87c0000da7c0000dc7c0000de7c0000e27c0000e47c0000e67c0000e87c0000ea7c0000ec7c0000ee7c0000f07c0000ca460200a4510200325502004255020000ca9a3b
-    m_RenameOverlay:
-      m_UserAcceptedRename: 0
       m_Name: 
       m_OriginalName: 
       m_EditFieldRect:
@@ -875,11 +861,48 @@ MonoBehaviour:
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 0}
     m_SearchString: 
+    m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
       m_Path: 
+      m_Path: 
       m_Icon: {fileID: 0}
+      m_ResourceFile: 
+      m_ResourceFile: 
+  m_AssetTreeState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 00000000d07c0000d27c0000d47c0000d67c0000d87c0000da7c0000dc7c0000de7c0000e27c0000e47c0000e67c0000e87c0000ea7c0000ec7c0000ee7c0000f07c0000ca460200a4510200325502004255020000ca9a3b
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+      m_Name: 
+      m_OriginalName: 
+      m_EditFieldRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      m_UserData: 0
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 11
+      m_IsRenamingFilename: 1
+      m_ClientGUIView: {fileID: 0}
+    m_SearchString: 
+    m_SearchString: 
+    m_CreateAssetUtility:
+      m_EndAction: {fileID: 0}
+      m_InstanceID: 0
+      m_Path: 
+      m_Path: 
+      m_Icon: {fileID: 0}
+      m_ResourceFile: 
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs: b4890000
@@ -890,6 +913,8 @@ MonoBehaviour:
       m_UserAcceptedRename: 0
       m_Name: 
       m_OriginalName: 
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
@@ -906,7 +931,9 @@ MonoBehaviour:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
       m_Path: 
+      m_Path: 
       m_Icon: {fileID: 0}
+      m_ResourceFile: 
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
@@ -953,6 +980,8 @@ MonoBehaviour:
   m_Script: {fileID: 12019, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
@@ -969,7 +998,11 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
   m_ObjectsLockedBeforeSerialization: []
+  m_InstanceIDsLockedBeforeSerialization: 
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
     m_CachedPref: -160
@@ -994,6 +1027,8 @@ MonoBehaviour:
   m_Script: {fileID: 12061, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
@@ -1010,6 +1045,9 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
@@ -1018,6 +1056,8 @@ MonoBehaviour:
       m_ExpandedIDs: e2b3fbffeab3fbfff0b3fbff12b4fbff16b6fbff92b6fbff96b6fbffa0b6fbffe8b6fbff54bafbfff2bafbff6ebbfbff72bbfbff7cbbfbffc4bbfbffdcbefbff94bffbffd2bffbffd6bffbff1ac0fbff24c0fbff2ec0fbff32c0fbffaec0fbffb2c0fbffbcc0fbff04c1fbff40c1fbfff8fdfcff3634fdff7a34fdff8434fdff8e34fdff9234fdff0e35fdff1235fdff1c35fdff6435fdff5022ffff2e4affff304affff344affff4e4affff364dffff6c50ffff7450ffffc053ffff1461ffff3661fffffc61ffff4c62ffffc668ffff4a77ffff2e89ffffc88bfffffa9effff4ca1ffff6ea1ffff0ea8ffff6ab0ffff20c9fffff0dbfffffadbffff00dcffff46dfffff36fbffffe00d0100320e0100a4c60300
       m_RenameOverlay:
         m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
         m_Name: 
         m_OriginalName: 
         m_EditFieldRect:
