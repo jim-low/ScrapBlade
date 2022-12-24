@@ -19,6 +19,7 @@ public class PlayerClimbing : MonoBehaviour
     private float climbTimer;
     public float climbTiltAmt;
     public float climbFOVAmt;
+    public float ledgeClimbForce;
 
     [Header("Detection")]
     public float detectionLength;
@@ -47,7 +48,7 @@ public class PlayerClimbing : MonoBehaviour
             ClimbingMovement();
         }
 
-        topWall = Physics.Raycast(transform.position + new Vector3(0, 0.3f, 0), orientation.forward, out frontWallHit, detectionLength, whatIsWall);
+        topWall = Physics.SphereCast(transform.position + new Vector3(0, 0.4f, 0), sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
     }
 
     private void StateMachine()
@@ -62,8 +63,9 @@ public class PlayerClimbing : MonoBehaviour
                 
             }else if(playerMovement.climbing)
             {
-                if (!topWall)       //if the player climbs up to the ground
+                if (!topWall)       //if the player climbs up to the top of the wall
                 {
+                    rb.velocity = Vector3.zero;                                             //stops the player from flying forward with additional force
                     StartCoroutine(ClimbOverMovement());
                 }
             }
@@ -111,7 +113,7 @@ public class PlayerClimbing : MonoBehaviour
 
     private IEnumerator ClimbOverMovement()
     {
-        transform.Translate(0, 1.0f, 0);                                         //pushes the player up the cliff
+        transform.Translate(0, ledgeClimbForce, 0);                                         //pushes the player up the cliff
         //rb.AddForce(Vector3.up * 40.0f, ForceMode.Force);
         cam.ClimbUpMotion();                                                   //rotate the camera down 45 degree
         yield return new WaitForSeconds(0.5f);
