@@ -111,8 +111,8 @@ public class PlayerClimbing : MonoBehaviour
 
     private IEnumerator ClimbOverMovement()
     {
-        //transform.Translate(0, 100.0f * Time.deltaTime, 0);                                         //pushes the player up the cliff
-        rb.AddForce(Vector3.up * 70.0f, ForceMode.Force);
+        transform.Translate(0, 1.0f, 0);                                         //pushes the player up the cliff
+        //rb.AddForce(Vector3.up * 40.0f, ForceMode.Force);
         cam.ClimbUpMotion();                                                   //rotate the camera down 45 degree
         yield return new WaitForSeconds(0.5f);
         //rb.AddForce(Vector3.forward * 10.0f, ForceMode.Force);                         //pushes the player front and over the cliff

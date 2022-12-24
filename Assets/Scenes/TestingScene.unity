@@ -479,6 +479,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 337897564, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 408310521}
+    - target: {fileID: 337897564, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: hintText
       value: 
       objectReference: {fileID: 574720473}
@@ -603,6 +607,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9857db916fe0490478e90c4867f58259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &408310521 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4686948353464889384, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+  m_PrefabInstance: {fileID: 408310519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &426984723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,7 +2655,7 @@ SphereCollider:
   m_GameObject: {fileID: 2069920685}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.09
   m_Center: {x: 0, y: 0, z: 0}
