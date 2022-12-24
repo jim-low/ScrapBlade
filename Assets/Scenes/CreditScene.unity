@@ -645,6 +645,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 465308, guid: e521c664fa8f8c845a0f2f463f0d05b2, type: 3}
   m_PrefabInstance: {fileID: 250439227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &307868816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2607006141061308560, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+  m_PrefabInstance: {fileID: 695086113}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &366773395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3303,6 +3308,10 @@ PrefabInstance:
       propertyPath: hintText
       value: 
       objectReference: {fileID: 135838597}
+    - target: {fileID: 658566789, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: diedButtons
+      value: 
+      objectReference: {fileID: 307868816}
     - target: {fileID: 658566789, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: gameOverText
       value: 
