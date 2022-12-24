@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
     public bool canSlide;
     public string groundLayer;
 
-
     [Header("Slope Handling")]
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
@@ -120,9 +119,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(player.layer == LayerMask.NameToLayer(groundLayer) && inAir)
-            {
-            rb.AddForce(Vector3.down * 25f, ForceMode.Force);
+        if ((collision.gameObject.layer == LayerMask.NameToLayer(groundLayer)) && inAir && !grounded)       //checks if the player is stuck on ground Layered wall
+        {
+            rb.velocity = Vector3.zero;                                 //disable any force to make the player stick to walls
+            rb.AddForce(Vector3.down * 200f, ForceMode.Force);
         }
     }
 
