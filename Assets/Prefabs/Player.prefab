@@ -40,9 +40,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6585999469690974930}
+  - component: {fileID: 387102396}
   m_Layer: 0
   m_Name: BlockBulletCollider
-  m_TagString: Untagged
+  m_TagString: BlockBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,6 +63,19 @@ Transform:
   m_Father: {fileID: 9213619712625632527}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &387102396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082680486908214281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.22, y: 1.8136148, z: 1.32}
+  m_Center: {x: 0, y: 0.06851062, z: 0}
 --- !u!1 &2439452380495441070
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +88,7 @@ GameObject:
   - component: {fileID: 9003720508900645013}
   - component: {fileID: 2966205975746609417}
   - component: {fileID: 7689385214705117807}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerObj
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -306,14 +320,14 @@ MonoBehaviour:
   wallRunJump: 0
   jumpKey: 32
   wallCheckDistance: 0.7
-  minJumpHeight: 1
+  minJumpHeight: 1.5
   wallLeft: 0
   wallRight: 0
   wallFront: 0
   wallBack: 0
   exitWallTime: 0.2
   useGravity: 1
-  gravityCounterForce: 6.14
+  gravityCounterForce: 1
   orientation: {fileID: 5722819167522446334}
   cam: {fileID: 8179446117041933348}
 --- !u!114 &2985258290278243347
@@ -335,11 +349,12 @@ MonoBehaviour:
   cam: {fileID: 8179446117041933348}
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   climbSpeed: 10
-  maxClimbTime: 0.3
+  maxClimbTime: 0.5
   climbTiltAmt: 3
   climbFOVAmt: 90
+  ledgeClimbForce: 0.4
   detectionLength: 0.7
   sphereCastRadius: 0.25
   maxWallLookAngle: 30
@@ -357,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hintText: {fileID: 0}
-  cam: {fileID: 0}
+  cam: {fileID: 4686948353464889384}
   interactableLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -502,6 +517,11 @@ PrefabInstance:
       objectReference: {fileID: 5722819168409312787}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
+--- !u!20 &4686948353464889384 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3961043674711230977, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
+  m_PrefabInstance: {fileID: 8643276907822512681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8179446117041933348 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 463919576399443469, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
