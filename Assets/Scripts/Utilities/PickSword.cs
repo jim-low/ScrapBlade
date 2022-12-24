@@ -41,7 +41,7 @@ public class PickSword : Interactable
 
 		// setting flags
 		hasTakenSword = true;
-		Sword.isPickedUp = true;
+		swordInstance.GetComponent<Sword>().SetIsPickedUp(true);
 		hint = "";
 	}
 }

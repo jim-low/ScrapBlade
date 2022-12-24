@@ -10,8 +10,8 @@ public class Sword : MonoBehaviour
 	private int blockIndex = 0;
 	private int maxBlocks = 1;
 	private float blockDuration = 0.5f;
+	public bool isPickedUp = false;
 	public static bool isAttacking = false;
-	public static bool isPickedUp = false;
 	public static bool isBlocking = false;
 	BoxCollider blockBulletCollider;
 	private Animator anim;
@@ -19,7 +19,7 @@ public class Sword : MonoBehaviour
 	void Start()
 	{
 		anim = GetComponent<Animator>();
-		blockBulletCollider = GameObject.Find("PlayerStuff").transform.Find("Player").Find("BlockBulletCollider").GetComponent<BoxCollider>(); // what the fuck??
+		blockBulletCollider = GameObject.Find("Player").transform.Find("BlockBulletCollider").GetComponent<BoxCollider>(); // what the fuck??
 	}
 
 	void Update()
@@ -96,5 +96,10 @@ public class Sword : MonoBehaviour
 	{
 		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 		return stateInfo.length > stateInfo.normalizedTime;
+	}
+
+	public void SetIsPickedUp(bool picked)
+	{
+		isPickedUp = picked;
 	}
 }

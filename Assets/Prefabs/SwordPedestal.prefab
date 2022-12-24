@@ -364,7 +364,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword_Cyber_Cyan
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5724223922693193005, guid: a651f000f14517f48a73db36178221da, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a651f000f14517f48a73db36178221da, type: 3}
 --- !u!4 &6967280048178511674 stripped
 Transform:
