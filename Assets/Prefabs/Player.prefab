@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6585999469690974930}
   - component: {fileID: 387102396}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BlockBulletCollider
   m_TagString: BlockBullet
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 2985258290278243347}
   - component: {fileID: 337897564}
   - component: {fileID: 658566789}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -263,10 +263,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   canSlide: 0
-  maxSlopeAngle: 60
+  groundLayer: 
+  maxSlopeAngle: 45
   wallRunScript: {fileID: 2985258290278243346}
   orientation: {fileID: 5722819167522446334}
   cam: {fileID: 8179446117041933348}
+  player: {fileID: 0}
   state: 0
   grounded: 0
   climbing: 0
@@ -312,9 +314,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   wallRunForce: 200
-  wallJumpUpForce: 7
-  wallJumpSideForce: 24
-  fovChangeAmt: 53
+  wallJumpUpForce: 8
+  wallJumpSideForce: 15
+  fovChangeAmt: 70
   camTiltAmt: 5
   camSideMove: 0.5
   wallRunJump: 0
@@ -351,7 +353,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   climbSpeed: 10
-  maxClimbTime: 0.5
+  maxClimbTime: 0.4
   climbTiltAmt: 3
   climbFOVAmt: 90
   ledgeClimbForce: 0.4
@@ -430,7 +432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5722819168409312787}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraPos
   m_TagString: CameraPos
   m_Icon: {fileID: 0}
@@ -511,10 +513,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 3219915238791828120, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809873452285508544, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3821686635914168379, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6614544757774122374, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
       propertyPath: cameraPos
       value: 
       objectReference: {fileID: 5722819168409312787}
+    - target: {fileID: 7156710833983351900, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
 --- !u!20 &4686948353464889384 stripped
