@@ -47,7 +47,7 @@ public class PlayerClimbing : MonoBehaviour
             ClimbingMovement();
         }
 
-        topWall = Physics.SphereCast(transform.position + new Vector3(0, 0.2f, 0), sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, playerMovement.whatIsGround);
+        topWall = Physics.SphereCast(transform.position + new Vector3(0, 0.3f, 0), sphereCastRadius, orientation.forward, out frontWallHit, detectionLength, whatIsWall);
     }
 
     private void StateMachine()
@@ -62,7 +62,7 @@ public class PlayerClimbing : MonoBehaviour
                 
             }else if(playerMovement.climbing)
             {
-                if (topWall)       //if the player climbs up to the ground
+                if (!topWall)       //if the player climbs up to the ground
                 {
                     StartCoroutine(ClimbOverMovement());
                 }
