@@ -116,7 +116,7 @@ public class PlayerClimbing : MonoBehaviour
         transform.Translate(0, ledgeClimbForce, 0);                                         //pushes the player up the cliff
         //rb.AddForce(Vector3.up * 40.0f, ForceMode.Force);
         cam.ClimbUpMotion();                                                   //rotate the camera down 45 degree
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         //rb.AddForce(Vector3.forward * 10.0f, ForceMode.Force);                         //pushes the player front and over the cliff
         cam.ClimbDoneMotion();
     }
