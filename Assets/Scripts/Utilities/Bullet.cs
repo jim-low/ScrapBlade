@@ -20,16 +20,19 @@ public class Bullet : MonoBehaviour
 
 	void OnTriggerEnter(Collider collider)
 	{
-		bool bulletBlocked = false;
 		if (collider.gameObject.tag == "BlockBullet")
 		{
-			bulletBlocked = true;
+			Destroy(gameObject);
 		}
-		else if (collider.gameObject.tag == "Player" && !bulletBlocked)
+		else if (collider.gameObject.tag == "Player")
 		{
 			Player.isDied = true;
+			Destroy(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
 		}
 
-		Destroy(gameObject);
 	}
 }

@@ -34,7 +34,7 @@ public class Sword : MonoBehaviour
 		if (!isBlocking && Input.GetMouseButtonDown(1))
 			BlockBullet();
 
-		blockBulletCollider.enabled = isBlocking;
+		blockBulletCollider.enabled = true;
 	}
 
 	void BlockBullet()
