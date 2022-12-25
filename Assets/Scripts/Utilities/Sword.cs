@@ -9,10 +9,11 @@ public class Sword : MonoBehaviour
 	private int maxAttacks = 2;
 	private int blockIndex = 0;
 	private int maxBlocks = 1;
-	private float blockDuration = 0.25f;
 	public bool isPickedUp = false;
 	public static bool isAttacking = false;
+	private float attackDuration = 0.9f;
 	public static bool isBlocking = false;
+	private float blockDuration = 0.25f;
 	BoxCollider blockBulletCollider;
 	private Animator anim;
 
@@ -24,15 +25,13 @@ public class Sword : MonoBehaviour
 
 	void Update()
 	{
-		if (Player.isDied)
+		if (!isPickedUp || Player.isDied)
 			return;
-
-		isAttacking = isPlaying();
 
 		if (!isAttacking && Input.GetMouseButtonDown(0))
 			Attack();
 
-		if (Input.GetMouseButtonDown(1))
+		if (!isBlocking && Input.GetMouseButtonDown(1))
 			BlockBullet();
 
 		blockBulletCollider.enabled = isBlocking;
@@ -59,17 +58,21 @@ public class Sword : MonoBehaviour
 
 	void Attack()
 	{
-		if (isPickedUp && !isAttacking)
+		if (attackIndex >= maxAttacks + 1)
 		{
-			anim.SetTrigger("Attack" + (attackIndex + 1));
-			isAttacking = isPlaying();
-			++attackIndex;
-
-			if (attackIndex >= maxAttacks + 1)
-			{
-				attackIndex = 0;
-			}
+			attackIndex = 0;
 		}
+
+		isAttacking = true;
+		anim.SetTrigger("Attack" + (attackIndex + 1));
+		++attackIndex;
+		StartCoroutine(StopAttack());
+	}
+
+	IEnumerator StopAttack()
+	{
+		yield return new WaitForSeconds(attackDuration);
+		isAttacking = false;
 	}
 
 	void OnTriggerEnter(Collider collider)

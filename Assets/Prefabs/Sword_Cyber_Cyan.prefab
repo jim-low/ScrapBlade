@@ -132,4 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12c78baabdaf6546bd259d9eaba6f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sparks: {fileID: 2337526299141920490, guid: 3a8bbee470c388b4cb560bd3fe09872f, type: 3}
+  isPickedUp: 0
