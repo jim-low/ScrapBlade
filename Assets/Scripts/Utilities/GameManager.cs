@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 // Things handled:
 // Restart level
-// Go to main menu (we dont have it yet)
-// Go to settings page (we dont have it yet)
+// Go to main menu
+// Go to settings page
+// Play level 1
 
 [RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
@@ -28,16 +29,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void MainMenu()
+    private void LoadSceneAndPlayClick(string sceneName)
     {
-
-        Debug.Log("currently this does nothing");
+        SceneManager.LoadScene(sceneName);
         buttonSource.Play();
     }
 
-    public void SettingPage()
+    public void MainMenu()
     {
-        Debug.Log("currently this does nothing");
-        buttonSource.Play();
+        LoadSceneAndPlayClick("MainMenu");
+    }
+
+    public void StartGame()
+    {
+        LoadSceneAndPlayClick("Level1");
     }
 }
