@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1075678405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FocusArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 0}
   diedButtons: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 92b169dbf0b85704cbbc8ed57535eca0, type: 3}
 --- !u!1 &3338533883723844331
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5722819167522446334}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

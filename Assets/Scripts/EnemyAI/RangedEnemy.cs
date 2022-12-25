@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class RangedEnemy : MonoBehaviour
 {
 	[Header("Setup")]
@@ -19,6 +20,16 @@ public class RangedEnemy : MonoBehaviour
 	[SerializeField] private float recoilTime = 1.5f;
 	[SerializeField] private bool canShoot = false;
 	[SerializeField] private bool isAlive = true;
+
+	[Header("Sound Effect")]
+	public AudioClip shootSound;
+	private AudioSource source;
+
+	void Start()
+	{
+		source = GetComponent<AudioSource>();
+		source.clip = shootSound;
+	}
 
 	void Update()
 	{
@@ -44,6 +55,7 @@ public class RangedEnemy : MonoBehaviour
 
 		Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(lookDirection.eulerAngles.x - 90f, 0, lookDirection.eulerAngles.y), bulletCollection);
 		canShoot = false;
+		source.Play();
 		StartCoroutine(Recoil());
 	}
 

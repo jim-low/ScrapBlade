@@ -26,7 +26,13 @@ public class Bullet : MonoBehaviour
 		}
 		else if (collider.gameObject.tag == "Player")
 		{
-			Player.isDied = true;
+			Transform currGO = collider.gameObject.transform;
+			while (currGO.GetComponent<Player>() == null)
+			{
+				currGO = currGO.transform.parent;
+			}
+			currGO.GetComponent<Player>().Die();
+
 			Destroy(gameObject);
 		}
 		else

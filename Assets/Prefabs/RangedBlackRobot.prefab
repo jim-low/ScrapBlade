@@ -423,6 +423,7 @@ MonoBehaviour:
   recoilTime: 1.5
   canShoot: 1
   isAlive: 1
+  shootSound: {fileID: 8300000, guid: b2b50ab75d00ee44aadfe1d85720b91e, type: 3}
 --- !u!114 &2909398704665053375
 MonoBehaviour:
   m_ObjectHideFlags: 0

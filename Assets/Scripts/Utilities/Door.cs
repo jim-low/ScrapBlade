@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Door : Interactable
 {
 	private bool isOpen = false;
@@ -13,7 +14,7 @@ public class Door : Interactable
 	void Start()
 	{
 		anim = transform.parent.GetComponent<Animator>();
-		source = transform.parent.GetComponent<AudioSource>();
+		source = GetComponent<AudioSource>();
 		hint = "Open Door";
 	}
 
