@@ -110,10 +110,11 @@ namespace SlimUI.ModernMenu{
 			}
 		}
 
-		public void PlayCampaign(){
-			exitMenu.SetActive(false);
-			if(extrasMenu) extrasMenu.SetActive(false);
-			playMenu.SetActive(true);
+		public void PlayGame(){
+			LoadScene("Level1");
+			//exitMenu.SetActive(false);
+			//if(extrasMenu) extrasMenu.SetActive(false);
+			//playMenu.SetActive(true);
 		}
 		
 		public void PlayCampaignMobile(){

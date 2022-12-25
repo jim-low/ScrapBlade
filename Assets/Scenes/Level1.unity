@@ -17240,6 +17240,10 @@ PrefabInstance:
       propertyPath: gameOverText
       value: 
       objectReference: {fileID: 1233858510}
+    - target: {fileID: 1486935649391777397, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: wallJumpUpForce
       value: 7
