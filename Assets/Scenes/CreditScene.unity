@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.25330132, g: 0.21698837, b: 0.2331919, a: 1}
+  m_IndirectSpecularColor: {r: 0.25330302, g: 0.21698889, b: 0.23319246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -298,7 +298,7 @@ MonoBehaviour:
     Enemy AI - Jim
 
     Voice
-    Overs - Brian And Wen Wei
+    Overs - Jim''s Idea and Wen Wei
 
     Assets - Unity Asset Store'
 --- !u!222 &76398820
@@ -936,7 +936,7 @@ MonoBehaviour:
     Thanks to all of these developers
 
     Level Design
-    - jasper
+    - Jasper
 
     Player Animation - Wen Wei
 

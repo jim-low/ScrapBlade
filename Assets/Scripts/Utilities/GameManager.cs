@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public void MainMenu()
     {
+
         Debug.Log("currently this does nothing");
     }
 
