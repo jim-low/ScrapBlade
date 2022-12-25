@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - BossKick
   - Boss
+  - KillFloor
   layers:
   - Default
   - TransparentFX
