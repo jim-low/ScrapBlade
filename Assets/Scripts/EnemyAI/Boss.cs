@@ -8,7 +8,6 @@ public class Boss : MonoBehaviour
 {
 	public GameObject player;
 	private Animator anim;
-	private Rigidbody rb;
 	private RangedEnemy rangedBehavior;
 	private bool hasPlayedWin = false;
 	private PlayerMovement playerState;
@@ -23,7 +22,6 @@ public class Boss : MonoBehaviour
 	{
 		anim = GetComponent<Animator>();
 		rangedBehavior = GetComponent<RangedEnemy>();
-		rb = GetComponent<Rigidbody>();
 		rangedBehavior.SetCanShoot(false);
 		playerState = player.GetComponent<PlayerMovement>();
 		bossMovement = GetComponent<BossMovement>();
@@ -46,9 +44,6 @@ public class Boss : MonoBehaviour
 		if (hitTimes >= maxHitTimes)
 		{
 			Die();
-			died = true;
-			GetComponent<RangedEnemy>().enabled = false;
-			GetComponent<CapsuleCollider>().enabled = false;
 			return;
 		}
 
@@ -65,8 +60,14 @@ public class Boss : MonoBehaviour
 
 	void Die()
 	{
-		GetComponent<Navigation>().enabled = false;
+		Navigation navigation = GetComponent<Navigation>();
+		navigation.agent.enabled = false;
+		navigation.enabled = false;
+		GetComponent<Rigidbody>().isKinematic = true;
+		GetComponent<CapsuleCollider>().enabled = false;
+		GetComponent<RangedEnemy>().enabled = false;
 		anim.SetBool("KO", true);
+		died = true;
 	}
 
 	void ShootAttack()
