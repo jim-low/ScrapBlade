@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour
 	private int maxAttacks = 2;
 	private int blockIndex = 0;
 	private int maxBlocks = 1;
-	private float blockDuration = 0.5f;
+	private float blockDuration = 0.25f;
 	public bool isPickedUp = false;
 	public static bool isAttacking = false;
 	public static bool isBlocking = false;
@@ -40,17 +40,11 @@ public class Sword : MonoBehaviour
 
 	void BlockBullet()
 	{
-		if (isAttacking)
-		{
-			return;
-		}
-
 		if (blockIndex >= maxBlocks + 1)
 		{
 			blockIndex = 0;
 		}
 
-		// create 2 animations for blocking bullets
 		isBlocking = true;
 		anim.SetTrigger("Block" + (blockIndex + 1));
 		++blockIndex;

@@ -9848,6 +9848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwordPedestal
       objectReference: {fileID: 0}
+    - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1375228045}
     - target: {fileID: 4582518930620597303, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
       propertyPath: spawnPoint
       value: 
