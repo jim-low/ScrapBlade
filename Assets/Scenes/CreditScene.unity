@@ -3402,7 +3402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: Loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Pitch
@@ -3414,7 +3414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: DopplerLevel
@@ -3422,7 +3422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: BypassReverbZones
@@ -3447,7 +3447,11 @@ PrefabInstance:
     - target: {fileID: 6368163114866499697, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: footSteps
       value: 
-      objectReference: {fileID: 8300000, guid: 8b15d2aea5639ad46ab57c02c3cacab9, type: 3}
+      objectReference: {fileID: 8300000, guid: 6158927a8d2195848a0569bab33b1af8, type: 3}
+    - target: {fileID: 6368163114866499697, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: JumpStopTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6368163114866499697, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: playerMovement
       value: 
@@ -3470,7 +3474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9213619712625632527, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 99.91
+      value: 99.798
       objectReference: {fileID: 0}
     - target: {fileID: 9213619712625632527, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_LocalPosition.z

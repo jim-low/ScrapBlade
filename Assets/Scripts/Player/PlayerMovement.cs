@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCd;
     public float airMultiplier;
     bool readyToJump;
-    bool fallingFromJump;
+    public bool fallingFromJump;
     private Vector3 previousPosition;
 
     [Header("Crouching")]
@@ -85,7 +85,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         readyToJump = true;
         startYScale = transform.localScale.y;
-        isRunning = false;
+        isRunning = false; 
+        fallingFromJump = false;
+        previousPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -101,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
-        if ((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && grounded)          //if player input is detected and is on ground            
+        if ((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && (grounded || wallRunning))          //if player is running            
         {
             isRunning = true;
         }

@@ -256,6 +256,7 @@ MonoBehaviour:
   jumpForce: 7
   jumpCd: 0.25
   airMultiplier: 0.4
+  fallingFromJump: 0
   crouchSpeed: 3
   crouchYScale: 0.5
   jumpKey: 32
@@ -265,7 +266,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   canSlide: 0
-  groundLayer: 
+  groundLayer: Ground
   maxSlopeAngle: 45
   wallRunScript: {fileID: 2985258290278243346}
   orientation: {fileID: 5722819167522446334}
@@ -273,6 +274,7 @@ MonoBehaviour:
   player: {fileID: 2985258290278243354}
   playerSound: {fileID: 6368163114866499697}
   state: 0
+  isRunning: 0
   grounded: 0
   climbing: 0
   crouching: 0
@@ -395,6 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 0}
   diedButtons: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!82 &3840178568145402262
 AudioSource:
   m_ObjectHideFlags: 0
@@ -503,9 +506,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8603cf6a3a93a46b5d11c7ac1d02d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footSteps: {fileID: 8300000, guid: 081b821c6966e6b4bac5b0f0658628a0, type: 3}
+  footSteps: {fileID: 8300000, guid: 6158927a8d2195848a0569bab33b1af8, type: 3}
   jumpSound: {fileID: 8300000, guid: 6767d6400369071428f0f7888542c079, type: 3}
-  deathSound: {fileID: 8300000, guid: 92b169dbf0b85704cbbc8ed57535eca0, type: 3}
+  audio: {fileID: 3840178568145402262}
+  toggleSound: 0
+  playerMovement: {fileID: 2985258290278243353}
 --- !u!1 &3338533883723844331
 GameObject:
   m_ObjectHideFlags: 0

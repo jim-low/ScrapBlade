@@ -8,42 +8,42 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip footSteps;
     public AudioClip jumpSound;
     public AudioSource audio;
-    public float footStepDelayTime;
+    AudioClip noSound;
+    public bool toggleSound;
 
     [Header("References")]
     public PlayerMovement playerMovement;
     
-    void Start()
+    void Update()
     {
-
+        if(toggleSound && !audio.isPlaying)             //ensure the sound doesnt play when not needed
+        {
+            toggleSound = false;
+            audio.Stop();
+            audio.clip = noSound;
+        }
     }
 
     public void PlayFootStepsSound()
     {
-        audio = GetComponent<AudioSource>();
-        StartCoroutine(PlayFootSteps());
-    }
-
-    private IEnumerator PlayFootSteps()
-    {
-        if (playerMovement.isRunning == true)       //check if player is moving on ground
+        if (playerMovement.isRunning == true && !audio.isPlaying)       //check if player is moving on ground
         {
-            audio.enabled = true;
+            audio = GetComponent<AudioSource>();
             audio.clip = footSteps;
             audio.Play();
-            yield return new WaitForSeconds(footStepDelayTime);     //delay footstep
 
         }
-        else
-        {
-            audio.Stop();
-            audio.enabled = false;
-        }
+
     }
 
-    public void PlayJumpSound()  
+    public void StopAudio()
     {
-        audio.enabled = true;
+        audio.Stop();
+    }
+
+    public void PlayJumpSound()
+    {
+        toggleSound = true;
         audio = GetComponent<AudioSource>();
         audio.clip = jumpSound;
         audio.Play();
