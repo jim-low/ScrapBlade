@@ -29,22 +29,25 @@ public class GameManager : MonoBehaviour
     {
 		Cursor.visible = !paused || Player.isDied;
 
+        Debug.Log("Paused: " + paused);
+
 		if (!Player.isDied && Input.GetKeyDown(KeyCode.Escape))
         {
             paused = !paused;
             if (paused)
             {
-                ResumeGame();
+                PauseGame();
             }
             else
             {
-                PauseGame();
+                ResumeGame();
             }
         }
     }
 
     public void PauseGame()
     {
+        paused = true;
         GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().Pause(); // stop music
         Time.timeScale = 0; // stop gameplay
 		Cursor.lockState = CursorLockMode.None; // release mouse lock
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        paused = false;
         GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().UnPause(); // continue music
         Time.timeScale = 1; // continue gameplay
 		Cursor.lockState = CursorLockMode.Locked; // lock mouse
