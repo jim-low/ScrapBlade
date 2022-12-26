@@ -129,22 +129,23 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
         
-        if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && isRunning)
+        if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && (yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0))
         {
             rb.AddForce(Vector3.down * 25f, ForceMode.Force);
         }
         MovePlayer();
 
+        if (isRunning)                      
+        {
+            playerSound.PlayFootStepsSound();
+        }
         if (fallingFromJump && grounded)        //if player landed on ground
         {
             playerSound.PlayJumpSound();
-            fallingFromJump= false;
+            fallingFromJump = false;
         }
+
         
-        if (isRunning)                      
-        {
-            playerSound.PlayFootStepsSound();          
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -165,7 +166,6 @@ public class PlayerMovement : MonoBehaviour
         //when can jump
         if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
-            playerSound.StartAudio();
             readyToJump = false;
             Jump();
             Invoke(nameof(ResetJump), jumpCd);

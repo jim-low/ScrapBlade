@@ -13,6 +13,11 @@ public class PlayerSounds : MonoBehaviour
     [Header("References")]
     public PlayerMovement playerMovement;
     
+    void Start()
+    {
+
+    }
+
     public void PlayFootStepsSound()
     {
         audio = GetComponent<AudioSource>();
@@ -36,13 +41,9 @@ public class PlayerSounds : MonoBehaviour
         }
     }
 
-    public void StartAudio()
-    {
-        audio.enabled = true;
-    }
-
     public void PlayJumpSound()  
     {
+        audio.enabled = true;
         audio = GetComponent<AudioSource>();
         audio.clip = jumpSound;
         audio.Play();
