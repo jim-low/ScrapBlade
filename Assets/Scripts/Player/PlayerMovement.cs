@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float slideSpeed;
     public float wallRunSpeed;
     public float originalFov;
-    bool isRunning;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
@@ -58,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDir;
     Rigidbody rb;
 
+    [Header("Movement States")]
     public MovementState state;
 
     public enum MovementState
@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         sliding
     }
 
+    public bool isRunning;
     public bool grounded;
     public bool climbing;
     public bool crouching;
@@ -84,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         readyToJump = true;
         startYScale = transform.localScale.y;
+        isRunning = false;
     }
 
     // Update is called once per frame
@@ -99,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
-        if((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && grounded)          //if player input is detected and is on ground
+        if ((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && grounded)          //if player input is detected and is on ground            
         {
             isRunning = true;
         }
@@ -141,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (isRunning)                      
         {
-            playerSound.PlayFootStepsSound();               //error, only play sound after stop and (on start non-stop)
+            playerSound.PlayFootStepsSound();          
         }
     }
 
@@ -163,6 +165,7 @@ public class PlayerMovement : MonoBehaviour
         //when can jump
         if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
+            playerSound.StartAudio();
             readyToJump = false;
             Jump();
             Invoke(nameof(ResetJump), jumpCd);
