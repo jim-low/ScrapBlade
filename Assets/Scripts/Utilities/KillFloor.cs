@@ -8,7 +8,7 @@ public class KillFloor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Player.isDied = true;
+            collision.gameObject.GetComponent<Player>().Die();
         }
     }
 }
