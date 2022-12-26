@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float slideSpeed;
     public float wallRunSpeed;
     public float originalFov;
-    bool isRunning;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
@@ -21,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCd;
     public float airMultiplier;
     bool readyToJump;
-    bool fallingFromJump;
+    public bool fallingFromJump;
     private Vector3 previousPosition;
 
     [Header("Crouching")]
@@ -58,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDir;
     Rigidbody rb;
 
+    [Header("Movement States")]
     public MovementState state;
 
     public enum MovementState
@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         sliding
     }
 
+    public bool isRunning;
     public bool grounded;
     public bool climbing;
     public bool crouching;
@@ -84,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         readyToJump = true;
         startYScale = transform.localScale.y;
+        isRunning = false; 
+        fallingFromJump = false;
+        previousPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -99,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
-        if((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && grounded)          //if player input is detected and is on ground
+        if ((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && (grounded || wallRunning))          //if player is running            
         {
             isRunning = true;
         }
@@ -127,22 +131,23 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
         
-        if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && isRunning)
+        if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && (yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0))
         {
             rb.AddForce(Vector3.down * 25f, ForceMode.Force);
         }
         MovePlayer();
 
+        if (isRunning)                      
+        {
+            playerSound.PlayFootStepsSound();
+        }
         if (fallingFromJump && grounded)        //if player landed on ground
         {
             playerSound.PlayJumpSound();
-            fallingFromJump= false;
+            fallingFromJump = false;
         }
+
         
-        if (isRunning)                      
-        {
-            playerSound.PlayFootStepsSound();               //error, only play sound after stop and (on start non-stop)
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
