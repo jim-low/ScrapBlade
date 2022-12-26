@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+		Cursor.visible = !paused || Player.isDied;
+
+		if (!Player.isDied && Input.GetKeyDown(KeyCode.Escape))
         {
             paused = !paused;
             if (paused)
