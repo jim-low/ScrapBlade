@@ -1503,6 +1503,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 819040577230390857, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1465990108}
+    - target: {fileID: 819040577230390857, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603591228927122645, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1465990108}
+    - target: {fileID: 1603591228927122645, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4521449763467700046, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3451,6 +3467,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2244289512522111691, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1465990108}
+    - target: {fileID: 2244289512522111691, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244289513204593933, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1465990108}
+    - target: {fileID: 2244289513204593933, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
 --- !u!1001 &1402703395
@@ -3866,6 +3898,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1465990108 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1010131740597532173, guid: fb84fd949631b9442972d4c7a8edb216, type: 3}
+  m_PrefabInstance: {fileID: 1596861690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ab65c6a27b5fe429720885fd5fb00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1547995793
 GameObject:
   m_ObjectHideFlags: 0
