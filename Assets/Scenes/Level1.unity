@@ -22278,6 +22278,10 @@ PrefabInstance:
       propertyPath: maxClimbTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243347, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: ledgeClimbForce
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: player
       value: 
