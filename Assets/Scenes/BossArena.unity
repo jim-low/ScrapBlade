@@ -1436,6 +1436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9213619712625632527, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2959,7 +2963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &997520265
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5184,9 +5188,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 998576922}
     - target: {fileID: 1974502906, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: intro
+      value: 
+      objectReference: {fileID: 8300000, guid: 1181f267283b99c4bb3974fd1cd40891, type: 3}
+    - target: {fileID: 1974502906, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 32970273}
+    - target: {fileID: 1974502906, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: winSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 270829c09cb8c834cb2003d9815377be, type: 3}
+    - target: {fileID: 1974502906, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: kickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b54f8e847cb79fe478e7a06ad6b33543, type: 3}
+    - target: {fileID: 1974502906, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: midHealth
+      value: 
+      objectReference: {fileID: 8300000, guid: 30dfb7c83138aec45b77214533774d47, type: 3}
+    - target: {fileID: 1974502906, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fab7966454a86f24fb1b920850f7bd44, type: 3}
+    - target: {fileID: 1974502906, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: lastHealth
+      value: 
+      objectReference: {fileID: 8300000, guid: df844db3cf0292f49ac05c6b4d6d1616, type: 3}
+    - target: {fileID: 1974502906, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: damagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fd15310222060d64680f9821eb40d6ed, type: 3}
     - target: {fileID: 2074539223, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
       propertyPath: player
       value: 
