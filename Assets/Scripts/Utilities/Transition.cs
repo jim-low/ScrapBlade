@@ -16,6 +16,6 @@ public class Transition : MonoBehaviour
     IEnumerator GoToBossScene()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("BossArena");
+        SceneManager.LoadScene("BossCutScene");
     }
 }
