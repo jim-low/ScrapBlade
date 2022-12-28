@@ -256,7 +256,6 @@ MonoBehaviour:
   jumpForce: 7
   jumpCd: 0.25
   airMultiplier: 0.4
-  fallingFromJump: 0
   crouchSpeed: 3
   crouchYScale: 0.5
   jumpKey: 32
@@ -274,7 +273,6 @@ MonoBehaviour:
   player: {fileID: 2985258290278243354}
   playerSound: {fileID: 6368163114866499697}
   state: 0
-  isRunning: 0
   grounded: 0
   climbing: 0
   crouching: 0
@@ -334,7 +332,7 @@ MonoBehaviour:
   wallBack: 0
   exitWallTime: 0.2
   useGravity: 1
-  gravityCounterForce: 1
+  gravityCounterForce: 3.02
   orientation: {fileID: 5722819167522446334}
   cam: {fileID: 8179446117041933348}
 --- !u!114 &2985258290278243347
@@ -409,7 +407,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -510,7 +508,6 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 6767d6400369071428f0f7888542c079, type: 3}
   audio: {fileID: 3840178568145402262}
   toggleSound: 0
-  playerMovement: {fileID: 2985258290278243353}
 --- !u!1 &3338533883723844331
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,6 +620,14 @@ PrefabInstance:
     - target: {fileID: 463919576370757381, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 463919576399443469, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
+      propertyPath: sensX
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 463919576399443469, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
+      propertyPath: sensY
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 463919576399443469, guid: 1e2a20cb60f836045bbe7f15e905e2fe, type: 3}
       propertyPath: orientation
