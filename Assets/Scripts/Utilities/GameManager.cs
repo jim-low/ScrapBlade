@@ -27,9 +27,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-		Cursor.visible = !paused || Player.isDied;
-
-        Debug.Log("Paused: " + paused);
+		Cursor.visible = paused || Player.isDied;
+        Cursor.lockState = paused || Player.isDied ? CursorLockMode.None : CursorLockMode.Locked;
 
 		if (!Player.isDied && Input.GetKeyDown(KeyCode.Escape))
         {

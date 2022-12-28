@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.019653285, g: 0.019653285, b: 0.019653285, a: 1}
+  m_IndirectSpecularColor: {r: 0.01969904, g: 0.01969904, b: 0.01969904, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -560,6 +560,22 @@ PrefabInstance:
     - target: {fileID: 2244289511951883628, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244289512522111691, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 94889106}
+    - target: {fileID: 2244289512522111691, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244289513204593933, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 94889106}
+    - target: {fileID: 2244289513204593933, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e32e226a3f73b4485735cda3d6016b, type: 3}
@@ -2668,7 +2684,7 @@ Transform:
   - {fileID: 1418639376}
   - {fileID: 1193560477}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &928757222 stripped
 Transform:
@@ -5093,6 +5109,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1665938028}
     m_Modifications:
+    - target: {fileID: 2647596717697709913, guid: e570bfb909d26f0489367e26cecf7540, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4046463676255018996, guid: e570bfb909d26f0489367e26cecf7540, type: 3}
       propertyPath: m_RootOrder
       value: 5

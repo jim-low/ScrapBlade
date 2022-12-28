@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
 		source.clip = deathSound;
 	}
 
+	void Update()
+	{
+		Cursor.lockState = isDied ? CursorLockMode.None : CursorLockMode.Locked;
+	}
+
 	public void Die()
 	{
 		if (isDied)
@@ -29,6 +34,5 @@ public class Player : MonoBehaviour
 		source.Play();
 		gameOverText.enabled = isDied;
 		diedButtons.SetActive(isDied);
-		Cursor.lockState = isDied ? CursorLockMode.None : CursorLockMode.Locked;
 	}
 }
