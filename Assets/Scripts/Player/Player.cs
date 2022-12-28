@@ -20,11 +20,6 @@ public class Player : MonoBehaviour
 		source.clip = deathSound;
 	}
 
-	void Update()
-	{
-		Cursor.lockState = isDied ? CursorLockMode.None : CursorLockMode.Locked;
-	}
-
 	public void Die()
 	{
 		if (isDied)
