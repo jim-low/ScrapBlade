@@ -2872,7 +2872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Swing to swing the sword
+  m_Text: Swing to swing the sword ;)
 --- !u!222 &78373056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18623,6 +18623,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwordPedestal
       objectReference: {fileID: 0}
+    - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
+      propertyPath: moveIn
+      value: 
+      objectReference: {fileID: 7400000, guid: 7a251ac691c47c049b50de0b025b37f6, type: 2}
+    - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
+      propertyPath: moveOut
+      value: 
+      objectReference: {fileID: 7400000, guid: 8aa4a5668047986478504cc4b2a2d14a, type: 2}
+    - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 855255580}
     - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
       propertyPath: spawnPoint
       value: 
