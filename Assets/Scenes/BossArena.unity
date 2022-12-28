@@ -2963,7 +2963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &997520265
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2971,7 +2971,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997520264}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fdd4605f81c4fc54c882e521a43e71b4, type: 3}
@@ -5270,6 +5270,18 @@ PrefabInstance:
     - target: {fileID: 1857972457841839803, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546880063634692853, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: Priority
+      value: 204
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546880063634692853, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546880063634692853, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cc52de03e061d48a6596914145b6cc, type: 3}
