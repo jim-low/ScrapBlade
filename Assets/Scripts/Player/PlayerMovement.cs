@@ -4,145 +4,153 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
-    private float moveSpeed;
-    public float sprintSpeed;
-    public float friction;
-    public float slideSpeed;
-    public float wallRunSpeed;
-    public float originalFov;
+	[Header("Movement")]
+	private float moveSpeed;
+	public float sprintSpeed;
+	public float friction;
+	public float slideSpeed;
+	public float wallRunSpeed;
+	public float originalFov;
 
-    private float desiredMoveSpeed;
-    private float lastDesiredMoveSpeed;
+	private float desiredMoveSpeed;
+	private float lastDesiredMoveSpeed;
 
-    [Header("Kill Floor")]
-    public LayerMask killFloorLayer;
-    bool hitKillFloor;
+	[Header("Kill Floor")]
+	public LayerMask killFloorLayer;
+	bool hitKillFloor;
 
-    [Header("Jumping")]
-    public float jumpForce;
-    public float jumpCd;
-    public float airMultiplier;
-    bool readyToJump;
-    private Vector3 previousPosition;
+	[Header("Jumping")]
+	public float jumpForce;
+	public float jumpCd;
+	public bool fallingFromJump;
+	public float airMultiplier;
+	bool readyToJump;
+	private Vector3 previousPosition;
 
-    [Header("Crouching")]
-    public float crouchSpeed;
-    public float crouchYScale;
-    private float startYScale;
+	[Header("Crouching")]
+	public float crouchSpeed;
+	public float crouchYScale;
+	private float startYScale;
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode crouchKey = KeyCode.C;
+	[Header("Keybinds")]
+	public KeyCode jumpKey = KeyCode.Space;
+	public KeyCode crouchKey = KeyCode.C;
 
-    [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    public bool canSlide;
-    public string groundLayer;
+	[Header("Ground Check")]
+	public float playerHeight;
+	public LayerMask whatIsGround;
+	public bool canSlide;
+	public string groundLayer;
 
-    [Header("Slope Handling")]
-    public float maxSlopeAngle;
-    private RaycastHit slopeHit;
-    private bool slopeJump;
+	[Header("Slope Handling")]
+	public float maxSlopeAngle;
+	private RaycastHit slopeHit;
+	private bool slopeJump;
 
-    [Header("References")]
-    public PlayerWallRun wallRunScript;
-    public Transform orientation;
-    public PlayerCam cam;
-    public GameObject player;
-    public PlayerSounds playerSound;
+	[Header("References")]
+	public PlayerWallRun wallRunScript;
+	public Transform orientation;
+	public PlayerCam cam;
+	public GameObject player;
+	public PlayerSounds playerSound;
 
-    //get movement input
-    float xInput;
-    float yInput;
+	//get movement input
+	float xInput;
+	float yInput;
 
-    Vector3 moveDir;
-    Rigidbody rb;
+	Vector3 moveDir;
+	Rigidbody rb;
 
-    [Header("Movement States")]
-    public MovementState state;
+	[Header("Movement States")]
+	public MovementState state;
 
-    public enum MovementState
-    {
-        sprinting,
-        air,
-        wallrunning,
-        crouching,
-        climbing,
-        sliding
-    }
+	public enum MovementState
+	{
+		sprinting,
+		air,
+		wallrunning,
+		crouching,
+		climbing,
+		sliding
+	}
 
-    public bool grounded;
-    public bool climbing;
-    public bool crouching;
-    public bool sliding;
-    public bool wallRunning;
-    public bool inAir;
+	public bool isRunning;
+	public bool grounded;
+	public bool climbing;
+	public bool crouching;
+	public bool sliding;
+	public bool wallRunning;
+	public bool inAir;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        cam.DoFovChanges(originalFov);
-        rb = GetComponent<Rigidbody>();
-        readyToJump = true;
-        startYScale = transform.localScale.y;
-        previousPosition = transform.position;
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+		cam.DoFovChanges(originalFov);
+		rb = GetComponent<Rigidbody>();
+		readyToJump = true;
+		startYScale = transform.localScale.y;
+		isRunning = false;
+		fallingFromJump = false;
+		previousPosition = transform.position;
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Player.isDied)
-        {
-            return;
-        }
+	// Update is called once per frame
+	void Update()
+	{
+		if (Player.isDied)
+		{
+			return;
+		}
 
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
-        hitKillFloor = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.5f, killFloorLayer);
-        
-        MyInput();
-        SpeedControl();
-        StateHandler();
+		grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+		hitKillFloor = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.5f, killFloorLayer);
 
-        if ((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && (grounded || wallRunning))          //if player is running            
-        {
-            playerSound.PlayFootStepsSound();
-        }
+		MyInput();
+		SpeedControl();
+		StateHandler();
 
-        if(transform.position.y > previousPosition.y + 0.5f)        //if player is falling after jumping
-        {
-            if (grounded)        //if player landed on ground
-            {
-                playerSound.PlayJumpSound();
-            }
-        }
+		if ((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && (grounded || wallRunning))          //if player is running            
+		{
+			isRunning = true;
+			playerSound.PlayFootStepsSound();
+		}
+		else
+		{
+			isRunning = false;
+		}
 
-        //apply friction
-        if (grounded)
-        {
-            rb.drag = friction;
-        }
-        else
-        {
-            rb.drag = 0;
-        }
-       
-    }
+		if (transform.position.y > previousPosition.y + 0.5f)        //if player is falling after jumping
+		{
+			fallingFromJump = true;
+			if (grounded)        //if player landed on ground
+			{
+				playerSound.PlayJumpSound();
+			}
+		}
 
-    void FixedUpdate()
-    {
-        rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
-        
-        if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && !climbing)
-        {
-            rb.AddForce(Vector3.down * 35f, ForceMode.Force);
-        }
-        MovePlayer();
-    }
+		//apply friction
+		if (grounded)
+		{
+			rb.drag = friction;
+		}
+		else
+		{
+			rb.drag = 0;
+		}
 
-        if (hitKillFloor)
-        {
+	}
+
+	void FixedUpdate()
+	{
+		rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
+
+		if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && !climbing)
+		{
+			rb.AddForce(Vector3.down * 35f, ForceMode.Force);
+		}
+		MovePlayer();
+		if (hitKillFloor)
+		{
 			transform.GetComponent<Player>().Die();
 		}
 
@@ -158,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 	}
+
 
 	private void OnCollisionEnter(Collision collision)
 	{
@@ -380,5 +389,4 @@ public class PlayerMovement : MonoBehaviour
 	{
 		return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
 	}
-
 }
