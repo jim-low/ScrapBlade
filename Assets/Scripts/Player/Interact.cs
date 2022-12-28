@@ -18,7 +18,7 @@ public class Interact : MonoBehaviour
 
 		if (canInteract && Input.GetKeyDown(KeyCode.E))
 		{
-            hit.collider.GetComponent<Interactable>().Interact();
+			hit.collider.GetComponent<Interactable>().Interact();
 		}
 	}
 
@@ -27,10 +27,13 @@ public class Interact : MonoBehaviour
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(ray, out hit, 3f, interactableLayer))
 		{
-            string text = hit.collider.GetComponent<Interactable>().hint;
+			string text = hit.collider.GetComponent<Interactable>().hint;
+			bool addPrefx = hit.collider.GetComponent<Interactable>().addPrefix;
 			if (text.Length > 0)
 			{
-				hintText.text = text + " (E)";
+				hintText.text = text;
+				if (addPrefx)
+					hintText.text = text + " (E)";
 				hintText.enabled = true;
 				canInteract = true;
 			}
