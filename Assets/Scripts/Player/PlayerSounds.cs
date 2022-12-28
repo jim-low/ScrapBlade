@@ -11,8 +11,6 @@ public class PlayerSounds : MonoBehaviour
     AudioClip noSound;
     public bool toggleSound;
 
-    [Header("References")]
-    public PlayerMovement playerMovement;
     
     void Update()
     {
@@ -26,12 +24,11 @@ public class PlayerSounds : MonoBehaviour
 
     public void PlayFootStepsSound()
     {
-        if (playerMovement.isRunning == true && !audio.isPlaying)       //check if player is moving on ground
+        if (!audio.isPlaying)                        //check if there is any existing sound playing ady
         {
             audio = GetComponent<AudioSource>();
             audio.clip = footSteps;
             audio.Play();
-
         }
 
     }

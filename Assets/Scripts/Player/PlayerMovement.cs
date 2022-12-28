@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCd;
     public float airMultiplier;
     bool readyToJump;
-    public bool fallingFromJump;
     private Vector3 previousPosition;
 
     [Header("Crouching")]
@@ -74,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
         sliding
     }
 
-    public bool isRunning;
     public bool grounded;
     public bool climbing;
     public bool crouching;
@@ -89,8 +87,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         readyToJump = true;
         startYScale = transform.localScale.y;
-        isRunning = false; 
-        fallingFromJump = false;
         previousPosition = transform.position;
     }
 
@@ -108,18 +104,20 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+
         if ((yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0) && (grounded || wallRunning))          //if player is running            
         {
-            isRunning = true;
+            playerSound.PlayFootStepsSound();
         }
-        else
-        {
-            isRunning = false;
-        }
+
         if(transform.position.y > previousPosition.y + 0.5f)        //if player is falling after jumping
         {
-            fallingFromJump = true;
+            if (grounded)        //if player landed on ground
+            {
+                playerSound.PlayJumpSound();
+            }
         }
+
         //apply friction
         if (grounded)
         {
@@ -136,11 +134,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
         
-        if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && (yInput > 0 || yInput < 0 || xInput > 0 || xInput < 0))
+        if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && !climbing)
         {
-            rb.AddForce(Vector3.down * 25f, ForceMode.Force);
+            rb.AddForce(Vector3.down * 35f, ForceMode.Force);
         }
         MovePlayer();
+    }
 
         if (hitKillFloor)
         {
