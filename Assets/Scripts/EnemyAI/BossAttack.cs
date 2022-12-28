@@ -10,7 +10,11 @@ public class BossAttack : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player" && isKicking)
         {
-            Player.isDied = true;
+            Transform curr = collider.gameObject.transform;
+            if (curr.GetComponent<Player>() == null)
+                curr = curr.parent;
+        
+            curr.GetComponent<Player>().Die();
         }
     }
 }
