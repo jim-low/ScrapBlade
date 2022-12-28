@@ -6263,10 +6263,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-<<<<<<< Updated upstream
-  m_SourcePrefab: {fileID: 100100000, guid: 7f83c849ebc7c304e8ffbc4bfe60857a, type: 3}
---- !u!1 &513849377
-=======
   m_SourcePrefab: {fileID: 100100000, guid: 8641c0ea619290f46a68c207dc6ff828, type: 3}
 --- !u!1 &658728843
 GameObject:
@@ -6366,7 +6362,6 @@ MeshFilter:
   m_GameObject: {fileID: 658728843}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &662437667
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6845,17 +6840,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-  m_GameObject: {fileID: 552237924}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -29.641169, y: -0.95, z: 11.4}
-  m_LocalScale: {x: 1.5976517, y: 17.120436, z: 25.897095}
-=======
   m_GameObject: {fileID: 722628477}
   m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -41.753143, y: 26.196228, z: 53.59}
   m_LocalScale: {x: 4.394664, y: 15.382948, z: 3.348183}
->>>>>>> Stashed changes
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2099759410}
@@ -21580,8 +21568,6 @@ PrefabInstance:
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Enabled
       value: 1
-<<<<<<< Updated upstream
-=======
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: BypassEffects
@@ -21594,7 +21580,6 @@ PrefabInstance:
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: BypassListenerEffects
       value: 1
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 6368163114866499697, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: audio
@@ -22286,10 +22271,6 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1984830889 stripped
 GameObject:
-<<<<<<< Updated upstream
-  m_CorrespondingSourceObject: {fileID: 122196, guid: 8641c0ea619290f46a68c207dc6ff828, type: 3}
-  m_PrefabInstance: {fileID: 1984830887}
-=======
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -22327,7 +22308,6 @@ MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
->>>>>>> Stashed changes
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1984830890
 MonoBehaviour:
