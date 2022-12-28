@@ -44,9 +44,10 @@ public class ChangeCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         player = GameObject.Find("Player");
         boss = GameObject.Find("BigBoss");
-        sword = player.transform.Find("CameraHolder").Find("PlayerCam").Find("SwordSpawnPoint").Find("PlayerSword"); //WIP
+        sword = player.transform.Find("CameraHolder").Find("PlayerCam").Find("SwordSpawnPoint").Find("PlayerSword").gameObject; //WIP
         boss.active = false;
 
         playerIsWalking = true;
@@ -114,7 +115,7 @@ public class ChangeCamera : MonoBehaviour
         else if (SecondsPassed == 13) //transistion to boss camera.
         {
             //disable the sword
-            player.PlayerCam.SwordSpawnPoint.active = false;
+            sword.SetActive(false);
             _vCams[4].SetActive(false); //close thy cam
         }
 
