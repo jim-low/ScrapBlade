@@ -129,20 +129,34 @@ public class BossManager : MonoBehaviour
     }
 
     void Scene2() {
-        AngryTalking();
+        Talking();
     }
 
     void Scene3() {
         HappyTalking();
     }
 
+    void Scene4()
+    {
+        //reset mouth
+        _FacialValue = 0;
+        _GeneralChangeType = mouth;
+        _MouthChangeType = mouthExtra02;
+        SetFacial();
+
+        _FacialValue = 0;
+        _GeneralChangeType = mouth;
+        _MouthChangeType = mouthJawOpen;
+        SetFacial();
+    }
+
     void Walk() {
         _SapphiArtChanAnimator.SetBool(param_idletowalk, true);
     }
 
-    void AngryTalking() {
+    void Talking() {
 
-        ReturnToIdle();
+        //ReturnToIdle();
 
         //=== reset ===
         _FacialValue = 0;
@@ -166,7 +180,7 @@ public class BossManager : MonoBehaviour
             closeMouth = true;
 
         }
-        else if (mouthMovement >= 90)
+        else if (mouthMovement >= 80)
         {
             closeMouth = false;
         }
@@ -178,16 +192,6 @@ public class BossManager : MonoBehaviour
         _MouthChangeType = mouthJawOpen;
         _FacialValue = mouthMovement;
         SetFacial();
-
-        _GeneralChangeType = eyebrows;
-        _EyebrowsChangeType = angerR;
-        _FacialValue = 100;
-        SetFacial();
-
-        _EyebrowsChangeType = angerL;
-        _FacialValue = 100;
-        SetFacial();
-
     }
 
     void HappyTalking() {
@@ -211,7 +215,7 @@ public class BossManager : MonoBehaviour
             closeMouth = true;
             
         }
-        else if (mouthMovement >= 90)
+        else if (mouthMovement >= 80)
         {
             closeMouth = false;
         }
@@ -661,12 +665,22 @@ public class BossManager : MonoBehaviour
 
         else if (currentScene == 2) 
         {
-            Scene2();
+            ReturnToIdle();
         }
 
         else if (currentScene == 3)
         {
+            Scene2();
+        }
+
+        else if (currentScene == 4)
+        {
             Scene3();
+        }
+
+        else if (currentScene == 5)
+        {
+            Scene4();
         }
 
         //Set New Animation
