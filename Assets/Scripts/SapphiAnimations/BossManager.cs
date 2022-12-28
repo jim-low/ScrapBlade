@@ -120,7 +120,7 @@ public class BossManager : MonoBehaviour
     float mouthMovement = 0;
     bool closeMouth = true;
 
-    public static int currentScene = 1; //change the current scene
+    public static int currentScene = 0; //change the current scene
 
     //Cutscene Phases
 
