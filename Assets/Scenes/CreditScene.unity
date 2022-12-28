@@ -2268,6 +2268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hint: Who Is Lemmy
+  addPrefix: 1
   easterEggBoard: {fileID: 366912042}
   easterEggStartBoard: {fileID: 950880221}
 --- !u!95 &950880227
@@ -5135,7 +5136,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b, type: 3}
-    m_FontSize: 26
+    m_FontSize: 33
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -5146,8 +5147,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.08
-  m_Text: "Special Thanks to \nThe Great \nMr Andrew\nAnd Youtube\n\nPress Esc To
-    Exit Game"
+  m_Text: "Special Thanks to \nThe Great \nMr Andrew\nAnd Youtube"
 --- !u!222 &2009311239
 CanvasRenderer:
   m_ObjectHideFlags: 0
