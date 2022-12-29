@@ -111,10 +111,10 @@ namespace SlimUI.ModernMenu{
 		}
 
 		public void PlayGame(){
-			LoadScene("BossCutScene");
-			//exitMenu.SetActive(false);
-			//if(extrasMenu) extrasMenu.SetActive(false);
-			//playMenu.SetActive(true);
+			LoadScene("Level1");
+			exitMenu.SetActive(false);
+			if(extrasMenu) extrasMenu.SetActive(false);
+			playMenu.SetActive(true);
 		}
 		
 		public void PlayCampaignMobile(){
