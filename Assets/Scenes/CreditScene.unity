@@ -1186,6 +1186,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 428906, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
   m_PrefabInstance: {fileID: 466824611}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &531950568 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4521449763467700046, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+  m_PrefabInstance: {fileID: 695086113}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &577338782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4195,6 +4200,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ab65c6a27b5fe429720885fd5fb00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1468236032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1468236033}
+  - component: {fileID: 1468236036}
+  - component: {fileID: 1468236035}
+  - component: {fileID: 1468236034}
+  m_Layer: 5
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1468236033
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468236032}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 531950568}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 166.79999, y: -102.90015}
+  m_SizeDelta: {x: 238.8, y: 121.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1468236034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468236032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c729c1dc51e922d4d82fd0f1f5b389d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1468236035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468236032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 00:00
+--- !u!222 &1468236036
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468236032}
+  m_CullTransparentMesh: 1
 --- !u!1 &1547995793
 GameObject:
   m_ObjectHideFlags: 0
@@ -4539,7 +4637,7 @@ GameObject:
   - component: {fileID: 1581297869}
   - component: {fileID: 1581297868}
   m_Layer: 9
-  m_Name: Canvas4
+  m_Name: Canvas5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5463,7 +5561,7 @@ GameObject:
   - component: {fileID: 1931565456}
   - component: {fileID: 1931565455}
   m_Layer: 9
-  m_Name: Text4
+  m_Name: Text5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5524,13 +5622,12 @@ MonoBehaviour:
     m_LineSpacing: 2.24
   m_Text: 'Fastest Time
 
-    (haven''t coded it yet)
+    N/A
 
 
     Your Time
 
-    (haven''t
-    coded it yet)'
+    N/A'
 --- !u!222 &1931565456
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5598,6 +5695,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6576272, guid: 9050f6c8a29d61f49ac1b3052875c968, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9050f6c8a29d61f49ac1b3052875c968, type: 3}
 --- !u!4 &1972710414 stripped
@@ -5610,22 +5711,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 126148, guid: 9050f6c8a29d61f49ac1b3052875c968, type: 3}
   m_PrefabInstance: {fileID: 1972710413}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1972710416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972710415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4e936007cd0924c845e3ef288437d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hint: Who Is Lemmy
-  addPrefix: 1
-  easterEggBoard: {fileID: 366912042}
-  easterEggStartBoard: {fileID: 1972710415}
 --- !u!95 &1972710417
 Animator:
   serializedVersion: 4
