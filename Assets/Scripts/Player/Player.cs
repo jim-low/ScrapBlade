@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
 	{
 		if (collider.gameObject.tag == "Checkpoint")
 		{
-			Debug.Log("hit checkpoint");
 			SpawnCheckpoint.checkpoint = collider.gameObject.transform;
 		}
 	}

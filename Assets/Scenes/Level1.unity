@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2872,7 +2872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Swing to swing the sword
+  m_Text: Left click to swing the sword
 --- !u!222 &78373056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11944,7 +11944,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 138158, guid: 6c7bfc57a0f70db46b9b83dddca510e1, type: 3}
       propertyPath: m_Name
-      value: floor_4
+      value: lavaTipFloor
       objectReference: {fileID: 0}
     - target: {fileID: 138158, guid: 6c7bfc57a0f70db46b9b83dddca510e1, type: 3}
       propertyPath: m_Layer
@@ -18669,6 +18669,10 @@ PrefabInstance:
       value: SwordPedestal
       objectReference: {fileID: 0}
     - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
+      propertyPath: hint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
       propertyPath: moveIn
       value: 
       objectReference: {fileID: 7400000, guid: 7a251ac691c47c049b50de0b025b37f6, type: 2}
@@ -18684,6 +18688,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1375228045}
+    - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
+      propertyPath: textObject
+      value: 
+      objectReference: {fileID: 78373055}
     - target: {fileID: 4582518930620597303, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -27493,6 +27501,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8387265885671831821, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: lavaTip
+      value: Avoid the lava below.
+      objectReference: {fileID: 0}
+    - target: {fileID: -8387265885671831821, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 855255580}
+    - target: {fileID: -8387265885671831821, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: textObject
+      value: 
+      objectReference: {fileID: 78373055}
+    - target: {fileID: -8387265885671831821, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: lavaTipFloorName
+      value: lavaTipFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 337897564, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: hintText
       value: 
@@ -27575,7 +27599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Volume
-      value: 0.1
+      value: 0.209
       objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Enabled
@@ -28659,7 +28683,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b8ec0b12c4c3949b1653770ba79780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoint: {fileID: 0}
   spawnAtCheckpoint: 0
 --- !u!1 &2013587801 stripped
 GameObject:
