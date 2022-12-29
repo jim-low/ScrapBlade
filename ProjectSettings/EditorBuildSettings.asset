@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2767942fbcdba984385d2a660e770454
+  - enabled: 0
+    path: Assets/Scenes/CutScene.unity
+    guid: c83599c845211964ea61d1743dcb76a1
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 36076a59a9bf7c848a5b5cfed2dd6467
+  - enabled: 1
+    path: Assets/Scenes/BossCutScene.unity
+    guid: 8da035d0ff0717b4bb295c0c61717962
   - enabled: 1
     path: Assets/Scenes/BossArena.unity
     guid: a85aa870f4dce5d4f9b5b110d4743d90
@@ -18,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/CreditScene.unity
     guid: 73835f9219cced745aee5db5bdb6932e
   - enabled: 1
-    path: Assets/Scenes/BossCutScene.unity
-    guid: 8da035d0ff0717b4bb295c0c61717962
+    path: Assets/Scenes/StartCutScene.unity
+    guid: adeb79eaf1b79424e8f585430d711c5f
   m_configObjects: {}
