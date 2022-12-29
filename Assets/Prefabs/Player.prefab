@@ -279,6 +279,9 @@ MonoBehaviour:
   sliding: 0
   wallRunning: 0
   inAir: 0
+  killFloorLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &2985258290278243355
 MonoBehaviour:
   m_ObjectHideFlags: 0
