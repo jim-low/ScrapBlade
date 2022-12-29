@@ -18758,6 +18758,14 @@ PrefabInstance:
       propertyPath: hintText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 337897564, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 658566789, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 658566789, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: diedButtons
       value: 
@@ -18771,6 +18779,10 @@ PrefabInstance:
       value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243346, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: wallJumpUpForce
       value: 7
       objectReference: {fileID: 0}
@@ -18778,10 +18790,18 @@ PrefabInstance:
       propertyPath: wallJumpSideForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243347, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2006163539}
+    - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2985258290278243353, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: groundLayer
       value: Ground
@@ -18790,14 +18810,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2985258290278243355, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3840178568145402262, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6368163114866499697, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: audio
       value: 
       objectReference: {fileID: 2006163542}
+    - target: {fileID: 6368163114866499697, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6368163114866499697, guid: ed280c4b4ce13a24aa371412e68b7c81, type: 3}
       propertyPath: playerMovement
       value: 
@@ -19586,7 +19614,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1955822189}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006163539}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54549a12bd5bebc42828cf2221b0d05b, type: 3}
   m_Name: 

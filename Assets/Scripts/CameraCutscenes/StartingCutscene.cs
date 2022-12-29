@@ -29,7 +29,7 @@ public class StartingCutscene : MonoBehaviour
     string cam6 = "CamPoint6";
 
     GameObject playerGameObject;
-    GameObject UiGameObject;
+    //GameObject UiGameObject;
     string levelChange = "Level1";
 
 // Start is called before the first frame update
@@ -50,8 +50,8 @@ void Start()
         playerGameObject.GetComponent<PlayerSlide>().enabled = false;
         playerGameObject.GetComponent<PlayerWallRun>().enabled = false;
         playerGameObject.GetComponent<PlayerClimbing>().enabled = false;
-        UiGameObject = GameObject.Find("PlayerUI");
-        UiGameObject.active = false;
+        //UiGameObject = GameObject.Find("PlayerUI");
+        //UiGameObject.active = false;
     }
 
     // Update is called once per frame
