@@ -34,7 +34,7 @@ public class HighScoreTimer : MonoBehaviour
     string creditScene = "CreditScene";
     string levelOne = "Level1";
     string fastestTime = "Fastest Time\n";
-    string yourTime = "Your Time\n";
+    string yourTime = "\nYour Time\n";
 
     // Start is called before the first frame update
     void Start()
@@ -110,7 +110,7 @@ public class HighScoreTimer : MonoBehaviour
             }
 
             //get the text and display
-            displayHighScore.GetComponent<UnityEngine.UI.Text>().text = /*fastestTime + finalHighestTime +*/ yourTime + onCountTime;
+            displayHighScore.GetComponent<UnityEngine.UI.Text>().text = fastestTime + finalHighestTime + yourTime + onCountTime;
 
             //remove the text on upper left
             timeText.GetComponent<UnityEngine.UI.Text>().text = empty;
