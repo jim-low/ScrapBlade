@@ -44,10 +44,22 @@ public class HighScoreTimer : MonoBehaviour
         //get the text object
         timeText = GameObject.Find("PlayerUI").transform.Find("Timer").gameObject;
 
+        //if it is at the credits Scene, stop the timer.
         if (curScene == creditScene)
         {
             displayHighScore = GameObject.Find("HighScoreBoard").transform.Find("Canvas5").Find("Text5").gameObject;
+            gameEnd = true;
+            isLevel1 = false;
         } 
+
+        else if (curScene == levelOne)
+        {
+            gameEnd = false;
+            deltaSeconds = 0;
+            secondsPassed = 0;
+            minutesPassed = 0;
+            onCountTime = substituteZero + substituteZero + colon + substituteZero + substituteZero;
+        }
     }
 
     // Update is called once per frame
@@ -57,21 +69,6 @@ public class HighScoreTimer : MonoBehaviour
         if (secondsPassed >= 60)
         {
             secondsPassed -= 60; //remove count
-        }
-
-        //if it is at the credits Scene, stop the timer.
-        if (curScene == creditScene) {
-            gameEnd = true;
-            isLevel1 = false;
-        }
-
-        if (curScene == levelOne) {
-            gameEnd = false;
-            if (isLevel1 == false) isLevel1 = true;
-            deltaSeconds = 0;
-            secondsPassed = 0;
-            minutesPassed = 0;
-            onCountTime = substituteZero + substituteZero + colon + substituteZero + substituteZero;
         }
 
         //format to string and display the time.
