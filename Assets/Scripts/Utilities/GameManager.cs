@@ -74,38 +74,33 @@ public class GameManager : MonoBehaviour
 		}
         else // if got enemies
         {
-            // yes this is shit but its what you get
-            foreach (Animator animator in GameObject.Find("Enemies").GetComponentsInChildren<Animator>())
+            foreach (GameObject enemy in GameObject.Find("Enemies").GetComponentsInChildren<GameObject>())
             {
-                animator.enabled = true;
+                enemy.GetComponent<Animator>().enabled = true;
+                enemy.GetComponent<RangedEnemy>().SetLiveStatus(true);
             }
 
-            foreach (RangedEnemy rangedEnemy in GameObject.Find("Enemies").GetComponentsInChildren<RangedEnemy>())
-            {
-                rangedEnemy.SetLiveStatus(true);
-            }
-        }
+			GameObject player = GameObject.Find("Player");
+			player.GetComponent<Player>().UnDie();
+			player.GetComponent<SpawnCheckpoint>().SpawnAtCheckpoint();
+		}
+	}
 
-        GameObject player = GameObject.Find("Player");
-        player.GetComponent<Player>().UnDie();
-        player.GetComponent<SpawnCheckpoint>().SpawnAtCheckpoint();
-    }
+	private void LoadSceneAndPlayClick(string sceneName)
+	{
+		SceneManager.LoadScene(sceneName);
+		buttonSource.Play();
+	}
 
-    private void LoadSceneAndPlayClick(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-        buttonSource.Play();
-    }
+	public void MainMenu()
+	{
+		Cursor.lockState = CursorLockMode.None;
+		Time.timeScale = 1;
+		LoadSceneAndPlayClick("MainMenu");
+	}
 
-    public void MainMenu()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 1;
-        LoadSceneAndPlayClick("MainMenu");
-    }
-
-    public void StartGame()
-    {
-        LoadSceneAndPlayClick("BossCutScene");
-    }
+	public void StartGame()
+	{
+		LoadSceneAndPlayClick("BossCutScene");
+	}
 }
