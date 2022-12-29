@@ -39,12 +39,15 @@ public class HighScoreTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        curScene = SceneManager.GetActiveScene().name;
+
         //get the text object
         timeText = GameObject.Find("PlayerUI").transform.Find("Timer").gameObject;
 
-        displayHighScore = GameObject.Find("HighScoreBoard").transform.Find("Canvas5").Find("Text5").gameObject;
-
-        curScene = SceneManager.GetActiveScene().name;
+        if (curScene == creditScene)
+        {
+            displayHighScore = GameObject.Find("HighScoreBoard").transform.Find("Canvas5").Find("Text5").gameObject;
+        } 
     }
 
     // Update is called once per frame
