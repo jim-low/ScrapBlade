@@ -85,6 +85,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        LoadSceneAndPlayClick("Level1");
+        LoadSceneAndPlayClick("BossCutScene");
     }
 }
