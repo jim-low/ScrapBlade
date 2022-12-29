@@ -686,7 +686,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Hold W in front of wall to Wall Climb'
+  m_Text: '   Hold W in front of wall to Wall Climb.'
 --- !u!222 &362293605
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -766,7 +766,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '    Hold Ctrl Key while moving to Slide'
+  m_Text: '    Hold Ctrl Key while moving to Slide.'
 --- !u!222 &414670182
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -846,7 +846,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Hold W after jumping on walls to Wall Run'
+  m_Text: '   Hold W after jumping on walls to Wall Run.'
 --- !u!222 &440381100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1314,7 +1314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Press Space Bar while Wall Run to Jump'
+  m_Text: '   Press Space Bar while Wall Run to Jump.'
 --- !u!222 &734740531
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2708,7 +2708,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Left Click to Swing sword'
+  m_Text: '   Left Click to Swing sword.'
 --- !u!222 &1111690571
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3750,7 +3750,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '    Hold Ctrl Key to Crouch'
+  m_Text: '    Hold Ctrl Key to Crouch.'
 --- !u!222 &1925258350
 CanvasRenderer:
   m_ObjectHideFlags: 0
