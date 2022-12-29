@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12768,6 +12768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwordPedestal
       objectReference: {fileID: 0}
+    - target: {fileID: 2751887579129616145, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4211066554070881731, guid: f5b43d1e9b6387a4f85616acf1729b1a, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -21030,6 +21034,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1392948652}
+    - target: {fileID: 3248433854156372950, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+      propertyPath: m_Text
+      value: Spawn Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809391142528722724, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+      propertyPath: m_Name
+      value: LastCheckpointButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4521449763467700046, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
       propertyPath: m_Pivot.x
       value: 0

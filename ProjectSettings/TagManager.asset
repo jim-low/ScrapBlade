@@ -12,6 +12,7 @@ TagManager:
   - BossKick
   - Boss
   - KillFloor
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

@@ -67,7 +67,28 @@ public class GameManager : MonoBehaviour
         Player.isDied = false;
         GameObject.Find("PlayerUI").transform.Find("Buttons").gameObject.SetActive(false);
         buttonSource.Play();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (GameObject.Find("Enemies") == null) // got no enemies (just boss)
+        {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reload boss scene
+		}
+        else // if got enemies
+        {
+            // yes this is shit but its what you get
+            foreach (Animator animator in GameObject.Find("Enemies").GetComponentsInChildren<Animator>())
+            {
+                animator.enabled = true;
+            }
+
+            foreach (RangedEnemy rangedEnemy in GameObject.Find("Enemies").GetComponentsInChildren<RangedEnemy>())
+            {
+                rangedEnemy.SetLiveStatus(true);
+            }
+        }
+
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<Player>().UnDie();
+        player.GetComponent<SpawnCheckpoint>().SpawnAtCheckpoint();
     }
 
     private void LoadSceneAndPlayClick(string sceneName)
