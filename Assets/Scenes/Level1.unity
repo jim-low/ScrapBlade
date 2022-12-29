@@ -2872,7 +2872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Swing to swing the sword ;)
+  m_Text: Swing to swing the sword
 --- !u!222 &78373056
 CanvasRenderer:
   m_ObjectHideFlags: 0
