@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HighScoreTimer : MonoBehaviour
@@ -24,6 +23,7 @@ public class HighScoreTimer : MonoBehaviour
 
     //indication of the end of game
     static bool gameEnd = false;
+    static bool isLevel1 = false;
 
     //object grabbing
     GameObject timeText;
@@ -41,6 +41,7 @@ public class HighScoreTimer : MonoBehaviour
     {
         //get the text object
         timeText = GameObject.Find("PlayerUI").transform.Find("Timer").gameObject;
+
         displayHighScore = GameObject.Find("HighScoreBoard").transform.Find("Canvas5").Find("Text5").gameObject;
 
         curScene = SceneManager.GetActiveScene().name;
@@ -58,10 +59,12 @@ public class HighScoreTimer : MonoBehaviour
         //if it is at the credits Scene, stop the timer.
         if (curScene == creditScene) {
             gameEnd = true;
+            isLevel1 = false;
         }
 
         if (curScene == levelOne) {
             gameEnd = false;
+            if (isLevel1 == false) isLevel1 = true;
             deltaSeconds = 0;
             secondsPassed = 0;
             minutesPassed = 0;
@@ -107,7 +110,7 @@ public class HighScoreTimer : MonoBehaviour
             }
 
             //get the text and display
-            displayHighScore.GetComponent<UnityEngine.UI.Text>().text = fastestTime + finalHighestTime + yourTime + onCountTime;
+            displayHighScore.GetComponent<UnityEngine.UI.Text>().text = /*fastestTime + finalHighestTime +*/ yourTime + onCountTime;
 
             //remove the text on upper left
             timeText.GetComponent<UnityEngine.UI.Text>().text = empty;
