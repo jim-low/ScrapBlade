@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
 {
+    public string scene;
+
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
         {
-            StartCoroutine(GoToBossScene());
+            StartCoroutine(GoToScene(scene));
         }
     }
 
-    IEnumerator GoToBossScene()
+    IEnumerator GoToScene(string scene)
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("BossCutScene");
+        SceneManager.LoadScene(scene);
     }
 }
