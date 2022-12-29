@@ -74,11 +74,17 @@ public class GameManager : MonoBehaviour
 		}
         else // if got enemies
         {
-            foreach (GameObject enemy in GameObject.Find("Enemies").GetComponentsInChildren<GameObject>())
+            GameObject enemies = GameObject.Find("Enemies");
+            for (int i = 0; i < enemies.transform.childCount; ++i)
             {
-                enemy.GetComponent<Animator>().enabled = true;
-                enemy.GetComponent<RangedEnemy>().SetLiveStatus(true);
+                enemies.transform.GetChild(i).GetComponent<Animator>().enabled = true;
+                enemies.transform.GetChild(i).GetComponent<RangedEnemy>().SetLiveStatus(true);
             }
+            //foreach (Transform enemy in GameObject.Find("Enemies").GetComponentsInChildren<Transform>())
+            //{
+            //    enemy.GetComponent<Animator>().enabled = true;
+            //    enemy.GetComponent<RangedEnemy>().SetLiveStatus(true);
+            //}
 
 			GameObject player = GameObject.Find("Player");
 			player.GetComponent<Player>().UnDie();
