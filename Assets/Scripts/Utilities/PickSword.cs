@@ -16,10 +16,19 @@ public class PickSword : Interactable
 	private Animation tooltipAnimation;
 	public AnimationClip moveIn;
 	public AnimationClip moveOut;
+	private string swordRotPivot;
+	private string swordName;
+	private string emptyString;
+	private string swingSwordTip;
+	public Text textObject;
 
 	void Start()
 	{
+		swordName = "PlayerSword";
+		swordRotPivot = "SwordRotationPivot";
 		hint = "Take Sword";
+		swingSwordTip = "Left click to swing sword";
+		emptyString = "";
 		spotlight = transform.parent.GetComponentInChildren<Light>();
 		source = GetComponent<AudioSource>();
 		source.clip = swordPull;
@@ -51,19 +60,20 @@ public class PickSword : Interactable
 			return;
 
 		// Destroy pivot point
-		transform.parent.Find("SwordRotationPivot").gameObject.SetActive(false);
+		transform.parent.Find(swordRotPivot).gameObject.SetActive(false);
 
 		// instantiate sword in player hand
 		GameObject swordInstance = Instantiate(swordPrefab, spawnPoint);
-		swordInstance.name = "PlayerSword";
+		swordInstance.name = swordName;
 
 		// setting flags
 		hasTakenSword = true;
+		textObject.text = swingSwordTip;
 		swordInstance.GetComponent<Sword>().SetIsPickedUp(true);
 		source.Play();
 		tooltipAnimation.clip = moveIn;
 		tooltipAnimation.Play();
 		StartCoroutine(ToolTipMoveOut());
-		hint = "";
+		hint = emptyString;
 	}
 }
