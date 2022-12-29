@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
-        hitKillFloor = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.5f, killFloorLayer);
+        hitKillFloor = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.35f, killFloorLayer);
         
         MyInput();
         SpeedControl();
