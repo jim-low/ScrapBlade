@@ -30,10 +30,22 @@ public class Boss : MonoBehaviour
 	public AudioClip winSound;
 	public AudioClip lastHealth;
 	public AudioClip midHealth;
+	//strings to use
+	private string winBool;
+	private string KOBool;
+	private string hitName;
+	private string hitTrigger;
+	private string dmgTrigger;
 
 	void Start()
 	{
-		anim = GetComponent<Animator>();
+		winBool = "Win";
+		KOBool = "KO";
+        hitName = "hit01";
+		hitTrigger = "Hit1";
+		dmgTrigger = "Damage";
+
+        anim = GetComponent<Animator>();
 		rangedBehavior = GetComponent<RangedEnemy>();
 		rangedBehavior.SetCanShoot(false);
 		playerState = player.GetComponent<PlayerMovement>();
@@ -51,7 +63,7 @@ public class Boss : MonoBehaviour
 		if (Player.isDied)
 		{
 			PlaySound(winSound);
-			anim.SetBool("Win", true);
+			anim.SetBool(winBool, true);
 			rangedBehavior.SetCanShoot(false);
 			return;
 		}
@@ -100,13 +112,13 @@ public class Boss : MonoBehaviour
 		GetComponent<Rigidbody>().isKinematic = true;
 		GetComponent<CapsuleCollider>().enabled = false;
 		GetComponent<RangedEnemy>().enabled = false;
-		anim.SetBool("KO", true);
+		anim.SetBool(KOBool, true);
 		died = true;
 	}
 
 	void ShootAttack()
 	{
-		if (anim.GetBool("Win"))
+		if (anim.GetBool(winBool))
 		{
 			if (!isPlayingKick())
 			{
@@ -122,7 +134,7 @@ public class Boss : MonoBehaviour
 	private bool isPlayingKick()
 	{
 		AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-		return stateInfo.IsName("hit01") && stateInfo.normalizedTime < 1.0f;
+		return stateInfo.IsName(hitName) && stateInfo.normalizedTime < 1.0f;
 	}
 
 	public void SetCanKick(bool canKickMou)
@@ -133,12 +145,12 @@ public class Boss : MonoBehaviour
 	void Kick()
 	{
 		PlaySound(kickSound);
-		anim.SetTrigger("Hit1");
+		anim.SetTrigger(hitTrigger);
 	}
 
 	public void Damaged()
 	{
-		anim.SetTrigger("Damage");
+		anim.SetTrigger(dmgTrigger);
 		++hitTimes;
 	}
 }

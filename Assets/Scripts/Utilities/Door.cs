@@ -10,12 +10,18 @@ public class Door : Interactable
 	public AudioClip doorOpen;
 	public AudioClip doorClose;
 	private Animator anim;
+	private string charNearBool;
+	private string emptyStr;
+	private string openDoor;
 
 	void Start()
 	{
-		anim = transform.parent.GetComponent<Animator>();
+		charNearBool = "character_nearby";
+		emptyStr = "";
+		openDoor = "Open Door";
+        anim = transform.parent.GetComponent<Animator>();
 		source = GetComponent<AudioSource>();
-		hint = "Open Door";
+		hint = openDoor;				//initialize the hint
 	}
 
 	protected override void Action()
@@ -24,10 +30,10 @@ public class Door : Interactable
 			return;
 
 		isOpen = true;
-		anim.SetBool("character_nearby", true);
+		anim.SetBool(charNearBool, true);
 		source.clip = doorOpen;
 		source.Play();
-		hint = "";
+		hint = emptyStr;
 		StartCoroutine(CloseDoor());
 	}
 
@@ -35,9 +41,9 @@ public class Door : Interactable
 	{
 		yield return new WaitForSeconds(2f);
 		isOpen = false;
-		anim.SetBool("character_nearby", false);
+		anim.SetBool(charNearBool, false);
 		source.clip = doorClose;
 		source.Play();
-		hint = "Open Door";
+		hint = openDoor;
 	}
 }

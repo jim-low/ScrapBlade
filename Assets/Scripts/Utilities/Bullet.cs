@@ -7,9 +7,13 @@ public class Bullet : MonoBehaviour
 {
 	private Rigidbody rb;
 	public float speed = 2f;
+	private string bulletTag;
+	private string playerTag;
 
 	void Start()
 	{
+		bulletTag = "BlockBullet";
+		playerTag = "Player";
 		rb = GetComponent<Rigidbody>();
 	}
 
@@ -20,11 +24,11 @@ public class Bullet : MonoBehaviour
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.tag == "BlockBullet")
+		if (collider.gameObject.tag == bulletTag)
 		{
 			Destroy(gameObject);
 		}
-		else if (collider.gameObject.tag == "Player")
+		else if (collider.gameObject.tag == playerTag)
 		{
 			Transform currGO = collider.gameObject.transform;
 			while (currGO.GetComponent<Player>() == null)

@@ -22,13 +22,24 @@ public class Sword : MonoBehaviour
 	private int swooshIndex = 0;
 	private int maxSwooshes = 2;
 	private float swooshDelay = 0.2f;
+	//Strings to use
+	private string playerObject;
+	private string blockBulletColliderName;
+	private string block;
+	private string attack;
+	private string bossTag;
 
 	void Start()
 	{
-		anim = GetComponent<Animator>();
+		playerObject = "Player";
+        blockBulletColliderName = "BlockBulletCollider";
+		block = "Block";
+		attack = "Attack";
+		bossTag = "Boss";
+        anim = GetComponent<Animator>();
 		source = GetComponent<AudioSource>();
 		maxSwooshes = swooshes.Length;
-		blockBulletCollider = GameObject.Find("Player").transform.Find("BlockBulletCollider").GetComponent<BoxCollider>(); // what the fuck??
+		blockBulletCollider = GameObject.Find(playerObject).transform.Find(blockBulletColliderName).GetComponent<BoxCollider>(); // what the fuck??
 	}
 
 	void Update()
@@ -53,7 +64,7 @@ public class Sword : MonoBehaviour
 		}
 
 		isBlocking = true;
-		anim.SetTrigger("Block" + (blockIndex + 1));
+		anim.SetTrigger(block + (blockIndex + 1));
 		++blockIndex;
 		StartCoroutine(StopBlock());
 	}
@@ -75,10 +86,9 @@ public class Sword : MonoBehaviour
 		{
 			swooshIndex = 0;
 		}
-		Debug.Log("Swoosh Index: " + swooshIndex);
 
 		isAttacking = true;
-		anim.SetTrigger("Attack" + (attackIndex + 1));
+		anim.SetTrigger(attack + (attackIndex + 1));
 		StartCoroutine(SwordAttackSoundBecauseItSoundsCool());
 		++attackIndex;
 		StartCoroutine(StopAttack());
@@ -105,10 +115,9 @@ public class Sword : MonoBehaviour
 			return;
 		}
 
-		if (collider.gameObject.tag == "Boss")
+		if (collider.gameObject.tag == bossTag)
 		{
 			collider.gameObject.GetComponent<Boss>().Damaged();
-			Debug.Log("boss has been hit");
 		}
 	}
 

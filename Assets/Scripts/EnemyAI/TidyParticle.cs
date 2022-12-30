@@ -10,9 +10,4 @@ public class TidyParticle : MonoBehaviour
         Destroy(gameObject, 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
