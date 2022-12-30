@@ -19,9 +19,9 @@ public class Door : Interactable
 		charNearBool = "character_nearby";
 		emptyStr = "";
 		openDoor = "Open Door";
-        anim = transform.parent.GetComponent<Animator>();
+		anim = transform.parent.GetComponent<Animator>();
 		source = GetComponent<AudioSource>();
-		hint = openDoor;				//initialize the hint
+		hint = openDoor;                                //initialize the hint
 	}
 
 	protected override void Action()

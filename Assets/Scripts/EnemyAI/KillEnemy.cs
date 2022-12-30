@@ -20,10 +20,12 @@ public class KillEnemy : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == swordTag && Sword.isAttacking)
+        if (collider.gameObject.tag == swordTag && Sword.isAttacking) // only activate if sword is attacking (when animation is playing)
         {
-            GetComponent<Animator>().enabled = false;
-            GetComponent<RangedEnemy>().SetLiveStatus(false);
+            GetComponent<Animator>().enabled = false; // disable enemy animator to allow ragdoll effect
+            GetComponent<RangedEnemy>().SetLiveStatus(false); // unalive enemy
+
+            // play spark animation
             GameObject temp = Instantiate(deathSpark, transform.position, Quaternion.identity);
             temp.name = sparkName;
         }

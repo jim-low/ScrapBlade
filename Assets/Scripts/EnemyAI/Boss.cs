@@ -7,12 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Boss : MonoBehaviour
 {
+	[Header("References")]
 	public GameObject player;
 	private Animator anim;
 	private RangedEnemy rangedBehavior;
-	private bool hasPlayedWin = false;
-	private PlayerMovement playerState;
-	private BossMovement bossMovement;
 	private bool canKick = false;
 	private int maxHitTimes = 5;
 	private int hitTimes = 0;
@@ -30,6 +28,7 @@ public class Boss : MonoBehaviour
 	public AudioClip winSound;
 	public AudioClip lastHealth;
 	public AudioClip midHealth;
+
 	//strings to use
 	private string winBool;
 	private string KOBool;
@@ -44,15 +43,13 @@ public class Boss : MonoBehaviour
 	{
 		winBool = "Win";
 		KOBool = "KO";
-        hitName = "hit01";
+		hitName = "hit01";
 		hitTrigger = "Hit1";
 		dmgTrigger = "Damage";
 
-        anim = GetComponent<Animator>();
+		anim = GetComponent<Animator>();
 		rangedBehavior = GetComponent<RangedEnemy>();
 		rangedBehavior.SetCanShoot(false);
-		playerState = player.GetComponent<PlayerMovement>();
-		bossMovement = GetComponent<BossMovement>();
 		source = GetComponent<AudioSource>();
 	}
 
@@ -65,9 +62,9 @@ public class Boss : MonoBehaviour
 
 		if (Player.isDied)
 		{
-			PlaySound(winSound);
-			anim.SetBool(winBool, true);
-			rangedBehavior.SetCanShoot(false);
+			PlaySound(winSound); // play boss win audio
+			anim.SetBool(winBool, true); // play boss win animation
+			rangedBehavior.SetCanShoot(false); // stop shooting
 			return;
 		}
 
@@ -95,8 +92,7 @@ public class Boss : MonoBehaviour
 			canKick = false;
 		}
 
-		BossAttack.isKicking = isPlayingKick(); // this does not work
-		//Debug.Log("Boss is kicking: " + BossAttack.isKicking);
+		BossAttack.isKicking = isPlayingKick(); // check if boss is kicking by checking if kick animation is playing
 		ShootAttack();
 	}
 
@@ -108,20 +104,31 @@ public class Boss : MonoBehaviour
 
 	void Die()
 	{
-		PlaySound(deathSound);
+		PlaySound(deathSound); // play death voice line
+
+		// stop navigating
 		Navigation navigation = GetComponent<Navigation>();
 		navigation.agent.enabled = false;
 		navigation.enabled = false;
+
+		// disable physics to make dead body untouchable
 		GetComponent<Rigidbody>().isKinematic = true;
 		GetComponent<CapsuleCollider>().enabled = false;
+		
+		// disable shooting
 		GetComponent<RangedEnemy>().enabled = false;
+
+		// play death animation
 		anim.SetBool(KOBool, true);
 		died = true;
+
+		// open escape door
 		bossDefeatEscapeDoor.GetComponent<BossDefeatEscapeDoor>().OpenEscapeDoor();
 	}
 
 	void ShootAttack()
 	{
+		// if shooting animation is playing and is not kicking, begin shooting player
 		if (anim.GetBool(winBool))
 		{
 			if (!isPlayingKick())

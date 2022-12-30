@@ -17,7 +17,7 @@ public class Navigation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (target)
+        if (target) // if target has been found, set target position
         {
 			agent.destination = target.position;
 		}

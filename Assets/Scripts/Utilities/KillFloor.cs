@@ -13,7 +13,7 @@ public class KillFloor : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == playerTag)
+        if (collision.gameObject.tag == playerTag) // if player collided with kill floor, die
         {
             collision.gameObject.GetComponent<Player>().Die();
         }

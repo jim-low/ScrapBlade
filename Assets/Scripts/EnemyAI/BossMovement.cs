@@ -14,19 +14,18 @@ public class BossMovement : MonoBehaviour
 	public float walkDistance;
 	public float minFollowDistance;
 	public bool follow;
-	private Vector3 moveDir;
+	private bool engagedPlayer = false;
+	private bool shooting = false;
 
 	[Header("References")]
 	public Transform player;
-	RangedEnemy rangedBehavior;
-	private bool engagedPlayer = false;
 	private Animator anim;
 	private PlayerMovement playerState;
-	private bool shooting = false;
 	private Boss boss;
 	private Navigation navigation;
 	private NavMeshAgent agent;
 
+	// string references
 	private string runBool;
 	private string idleBool;
 	private string stopName;
@@ -44,7 +43,6 @@ public class BossMovement : MonoBehaviour
 		runName = "run";
 		walkName = "walk";
 		follow = false;
-		rangedBehavior = GetComponent<RangedEnemy>();
 		speed = walkSpeed;
 		anim = GetComponent<Animator>();
 		navigation = GetComponent<Navigation>();
@@ -56,6 +54,7 @@ public class BossMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		// set player as target if boss is following and is not engaged with player before
 		if (follow && !engagedPlayer)
 		{
 			navigation.SetTarget(player);
@@ -101,7 +100,7 @@ public class BossMovement : MonoBehaviour
 		// shoot when player is wall running or climbing or jumping when wall run
 		if (playerState.state == PlayerMovement.MovementState.wallrunning)
 			shooting = true;
-		else if (playerState.grounded)
+		else if (playerState.grounded) // stop shooting when player landed on the ground
 			shooting = false;
 
 		anim.SetBool(winBool, shooting);

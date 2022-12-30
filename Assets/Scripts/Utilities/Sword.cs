@@ -22,7 +22,8 @@ public class Sword : MonoBehaviour
 	private int swooshIndex = 0;
 	private int maxSwooshes = 2;
 	private float swooshDelay = 0.2f;
-	//Strings to use
+
+	// string references
 	private string playerObject;
 	private string blockBulletColliderName;
 	private string block;
@@ -32,14 +33,14 @@ public class Sword : MonoBehaviour
 	void Start()
 	{
 		playerObject = "Player";
-        blockBulletColliderName = "BlockBulletCollider";
+		blockBulletColliderName = "BlockBulletCollider";
 		block = "Block";
 		attack = "Attack";
 		bossTag = "Boss";
-        anim = GetComponent<Animator>();
+		anim = GetComponent<Animator>();
 		source = GetComponent<AudioSource>();
 		maxSwooshes = swooshes.Length;
-		blockBulletCollider = GameObject.Find(playerObject).transform.Find(blockBulletColliderName).GetComponent<BoxCollider>(); // what the fuck??
+		blockBulletCollider = GameObject.Find(playerObject).transform.Find(blockBulletColliderName).GetComponent<BoxCollider>();
 	}
 
 	void Update()
@@ -53,7 +54,7 @@ public class Sword : MonoBehaviour
 		if (!isBlocking && Input.GetMouseButtonDown(1))
 			BlockBullet();
 
-		blockBulletCollider.enabled = true;
+		blockBulletCollider.enabled = isBlocking;
 	}
 
 	void BlockBullet()

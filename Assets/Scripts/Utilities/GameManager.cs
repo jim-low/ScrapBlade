@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Things handled:
+// Pause Game
+// Resume Game
 // Restart level
 // Go to main menu
-// Go to settings page
-// Play level 1
-// Pause Level
-// Resume Level
+// Start game (load StartCutScene)
 
 [RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour

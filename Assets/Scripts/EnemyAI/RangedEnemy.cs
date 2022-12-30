@@ -40,6 +40,7 @@ public class RangedEnemy : MonoBehaviour
 
 		if (inSight)
 		{
+			// get the player position and have the enemy and fire point to aim towards the player
 			Vector3 playerPostition = new Vector3(target.position.x, transform.position.y, target.position.z);
 			transform.LookAt(playerPostition);
 			firePoint.LookAt(target);

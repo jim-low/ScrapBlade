@@ -9,6 +9,6 @@ public class SpawnCheckpoint : MonoBehaviour
 
     public void SpawnAtCheckpoint()
     {
-        transform.position = checkpoint.transform.position;             //teleports the player to checkpoint
+        transform.position = checkpoint.transform.position; //teleports the player to checkpoint
     }
 }

@@ -28,14 +28,14 @@ public class Bullet : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-		else if (collider.gameObject.tag == playerTag)
+		else if (collider.gameObject.tag == playerTag) // if hit player
 		{
 			Transform currGO = collider.gameObject.transform;
-			while (currGO.GetComponent<Player>() == null)
+			while (currGO.GetComponent<Player>() == null) // find player parent object
 			{
 				currGO = currGO.transform.parent;
 			}
-			currGO.GetComponent<Player>().Die();
+			currGO.GetComponent<Player>().Die(); // activate unalive function
 
 			Destroy(gameObject);
 		}

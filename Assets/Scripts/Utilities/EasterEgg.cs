@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// best script ever written for best functionality
 public class EasterEgg : Interactable
 {
     public GameObject easterEggBoard;
