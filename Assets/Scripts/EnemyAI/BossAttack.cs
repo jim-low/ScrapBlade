@@ -5,10 +5,16 @@ using UnityEngine;
 public class BossAttack : MonoBehaviour
 {
     public static bool isKicking = false;
+    private string playerTag;
+
+    void Start()
+    {
+        playerTag = "Player";
+    }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Player" && isKicking)
+        if (collider.gameObject.tag == playerTag && isKicking)
         {
             Transform curr = collider.gameObject.transform;
             if (curr.GetComponent<Player>() == null)

@@ -2548,6 +2548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 864456761, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
+      propertyPath: m_Text
+      value: You Died
+      objectReference: {fileID: 0}
     - target: {fileID: 819040577230390857, guid: fcffc4795f5fe7641adee802bfd6c1f5, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.4666667

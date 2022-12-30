@@ -14,6 +14,6 @@ public abstract class Interactable : MonoBehaviour
 
 	protected virtual void Action()
 	{
-		Debug.Log("Action is not set");
+		//Debug.Log("Action is not set");
 	}
 }

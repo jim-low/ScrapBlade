@@ -9,9 +9,16 @@ public class Interact : MonoBehaviour
 	public Camera cam;
 	public LayerMask interactableLayer;
 	private bool canInteract;
+	private string EKey;
+	private string emptyStr;
 
 	RaycastHit hit;
 
+	void Start()
+	{
+		EKey = " (E)";
+		emptyStr = "";
+	}
 	void Update()
 	{
 		DetectPlayerLineOfSight();
@@ -33,14 +40,14 @@ public class Interact : MonoBehaviour
 			{
 				hintText.text = text;
 				if (addPrefx)
-					hintText.text = text + " (E)";
+					hintText.text = text + EKey;
 				hintText.enabled = true;
 				canInteract = true;
 			}
 		}
 		else
 		{
-			hintText.text = "";
+			hintText.text = emptyStr;
 			hintText.enabled = false;
 			canInteract = false;
 		}

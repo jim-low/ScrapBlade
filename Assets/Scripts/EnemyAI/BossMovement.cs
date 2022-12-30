@@ -27,9 +27,22 @@ public class BossMovement : MonoBehaviour
 	private Navigation navigation;
 	private NavMeshAgent agent;
 
+	private string runBool;
+	private string idleBool;
+	private string stopName;
+	private string winBool;
+	private string runName;
+	private string walkName;
+
 	// Start is called before the first frame update
 	void Start()
 	{
+		runBool = "Running";
+		idleBool = "Idle";
+		stopName = "stop";
+		winBool = "Win";
+		runName = "run";
+		walkName = "walk";
 		follow = false;
 		rangedBehavior = GetComponent<RangedEnemy>();
 		speed = walkSpeed;
@@ -59,26 +72,26 @@ public class BossMovement : MonoBehaviour
 
 		if (shooting || distance <= minFollowDistance)
 		{
-			anim.SetBool("Running", false);
-			anim.SetBool("Idle", true);
-			SetSpeed("stop");
+			anim.SetBool(runBool, false);
+			anim.SetBool(idleBool, true);
+			SetSpeed(stopName);
 
 			if (!shooting)
 				boss.SetCanKick(true);
 		}
 		else if (distance > minFollowDistance)
 		{
-			anim.SetBool("Idle", false);
+			anim.SetBool(idleBool, false);
 
 			if (distance >= minFollowDistance + walkDistance)
 			{
-				anim.SetBool("Running", true);
-				SetSpeed("run");
+				anim.SetBool(runBool, true);
+				SetSpeed(runName);
 			}
 			else
 			{
-				anim.SetBool("Running", false);
-				SetSpeed("walk");
+				anim.SetBool(runBool, false);
+				SetSpeed(walkName);
 			}
 		}
 	}
@@ -91,7 +104,7 @@ public class BossMovement : MonoBehaviour
 		else if (playerState.grounded)
 			shooting = false;
 
-		anim.SetBool("Win", shooting);
+		anim.SetBool(winBool, shooting);
 	}
 
 	void FixedUpdate()
@@ -101,13 +114,13 @@ public class BossMovement : MonoBehaviour
 
 	public void SetSpeed(string status)
 	{
-		if (status == "walk")
+		if (status == walkName)
 			navigation.SetSpeed(walkSpeed);
 
-		if (status == "run")
+		if (status == runName)
 			navigation.SetSpeed(runSpeed);
 
-		if (status == "stop")
+		if (status == stopName)
 			navigation.SetSpeed(0);
 	}
 
