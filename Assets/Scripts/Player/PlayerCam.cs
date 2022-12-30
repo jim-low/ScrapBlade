@@ -9,6 +9,8 @@ public class PlayerCam : MonoBehaviour
     [Header("Sensitivity")]
     public float sensX; 
     public float sensY;
+    private string mouseStrX;
+    private string mouseStrY;
 
     //player orientation
     [Header("References")]
@@ -20,6 +22,8 @@ public class PlayerCam : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        mouseStrX = "Mouse X";
+        mouseStrY = "Mouse Y";
         //lock cursor in middle.
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -31,8 +35,8 @@ public class PlayerCam : MonoBehaviour
         if (Player.isDied)
             return;
 
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        float mouseX = Input.GetAxisRaw(mouseStrX) * Time.deltaTime * sensX;
+        float mouseY = Input.GetAxisRaw(mouseStrY) * Time.deltaTime * sensY;
 
         yRotate += mouseX;
         xRotate -= mouseY;

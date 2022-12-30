@@ -26,19 +26,18 @@ public class LavaTip : MonoBehaviour
 
     IEnumerator ToolTipMoveOut()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(7f);                            //waits before moving out
         tooltipAnimation.clip = moveOut;
         tooltipAnimation.Play();
     }
 
-    // Update is called once per frame
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)                      
     {
-        if (collision.gameObject.name == lavaTipFloorName){
-            textObject.text = lavaTip;
+        if (collision.gameObject.name == lavaTipFloorName){             //when collides when the right floor
+            textObject.text = lavaTip;                                  //changes the tooltip text 
             tooltipAnimation.clip = moveIn;
-            tooltipAnimation.Play();
-            StartCoroutine(ToolTipMoveOut());
+            tooltipAnimation.Play();                                    //moves the tooltip in
+            StartCoroutine(ToolTipMoveOut());                           //moves the tooltip out
         }
     }
 }

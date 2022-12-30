@@ -23,10 +23,14 @@ public class PlayerSlide : MonoBehaviour
     public KeyCode slideKey = KeyCode.LeftControl;
     private float horizontalInput;
     private float verticalInput;
+    private string horizontal;
+    private string vertical;
 
     // Start is called before the first frame update
     void Start()
     {
+        horizontal = "Horizontal";
+        vertical = "Vertical";
         rb = GetComponent<Rigidbody>();
         playerMovement = GetComponent<PlayerMovement>();
         startYScale = playerObj.localScale.y;
@@ -35,8 +39,8 @@ public class PlayerSlide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw(horizontal);
+        verticalInput = Input.GetAxisRaw(vertical);
 
 
         if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0) && playerMovement.canSlide)
@@ -62,8 +66,8 @@ public class PlayerSlide : MonoBehaviour
 
         playerMovement.sliding = true;
 
-        playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
-        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);    //scales the player down
+        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);                                                  //pushes player down to touch the ground
 
         slideTimer = maxSlideTime;
 
