@@ -37,6 +37,9 @@ public class Boss : MonoBehaviour
 	private string hitTrigger;
 	private string dmgTrigger;
 
+	[Header("Boss Defeat")]
+	public GameObject bossDefeatEscapeDoor;
+
 	void Start()
 	{
 		winBool = "Win";
@@ -114,6 +117,7 @@ public class Boss : MonoBehaviour
 		GetComponent<RangedEnemy>().enabled = false;
 		anim.SetBool(KOBool, true);
 		died = true;
+		bossDefeatEscapeDoor.GetComponent<BossDefeatEscapeDoor>().OpenEscapeDoor();
 	}
 
 	void ShootAttack()
