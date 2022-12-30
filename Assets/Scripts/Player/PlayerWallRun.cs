@@ -22,6 +22,8 @@ public class PlayerWallRun : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     private float xInput;
     private float yInput;
+    private string horizontal;
+    private string vertical;
 
     [Header("Detection")]
     public float wallCheckDistance;
@@ -53,6 +55,8 @@ public class PlayerWallRun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        horizontal = "Horizontal";
+        vertical = "Vertical";
         rb = GetComponent<Rigidbody>();
         playerMovement = GetComponent<PlayerMovement>();
         exitWall = false;
@@ -102,8 +106,8 @@ public class PlayerWallRun : MonoBehaviour
     private void StateMachine()
     {
         //detect moving
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        xInput = Input.GetAxisRaw(horizontal);
+        yInput = Input.GetAxisRaw(vertical);
 
         //State1 - wallrunning
         if ((wallLeft || wallRight) && yInput > 0 && AboveGround() && !exitWall)//check for walls, if player is moving forward and aboveground

@@ -12,9 +12,11 @@ public class Player : MonoBehaviour
 	private AudioSource source;
 	public AudioClip deathSound;
 	static SpawnCheckpoint spawnCheckpoint;
+	private string checkpointTag;
 
 	void Start()
 	{
+		checkpointTag = "Checkpoint";
 		gameOverText.enabled = false;
 		diedButtons.SetActive(false);
 		source = GetComponent<AudioSource>();
@@ -22,20 +24,20 @@ public class Player : MonoBehaviour
 		
 		if (spawnCheckpoint == null)
 		{
-			spawnCheckpoint = GetComponent<SpawnCheckpoint>();
+			spawnCheckpoint = GetComponent<SpawnCheckpoint>();			
 		}
 	}
 
 	public void UnDie()
 	{
-		isDied = false;
+		isDied = false;							//if player restarts
 		gameOverText.enabled = isDied;
 		diedButtons.SetActive(isDied);
 	}
 
 	public void Die()
 	{
-		if (isDied)
+		if (isDied)								//if player died
 			return;
 
 		isDied = true;
@@ -46,9 +48,9 @@ public class Player : MonoBehaviour
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.tag == "Checkpoint")
+		if (collider.gameObject.tag == checkpointTag)						//when player reaches checkpoint
 		{
-			SpawnCheckpoint.checkpoint = collider.gameObject.transform;
+			SpawnCheckpoint.checkpoint = collider.gameObject.transform;		//sets checkpoint
 		}
 	}
 }

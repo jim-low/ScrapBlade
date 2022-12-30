@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float slideSpeed;
     public float wallRunSpeed;
     public float originalFov;
+    private string horizontal;
+    private string vertical;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
@@ -83,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        horizontal = "Horizontal";
+        vertical = "Vertical";
         cam.DoFovChanges(originalFov);
         rb = GetComponent<Rigidbody>();
         readyToJump = true;
@@ -158,8 +162,8 @@ public class PlayerMovement : MonoBehaviour
     private void MyInput()
     {
         //detect moving
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        xInput = Input.GetAxisRaw(horizontal);
+        yInput = Input.GetAxisRaw(vertical);
 
         //when can jump
         if(Input.GetKey(jumpKey) && readyToJump && grounded)
@@ -308,7 +312,7 @@ public class PlayerMovement : MonoBehaviour
             rb.useGravity = true;
         }
         //speedometer
-        PlayerSpeedometer.speedMsg = "Speed:" + rb.velocity.magnitude;
+        //PlayerSpeedometer.speedMsg = "Speed:" + rb.velocity.magnitude;
     }
 
     private void SpeedControl()
