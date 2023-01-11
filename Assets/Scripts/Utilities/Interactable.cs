@@ -4,16 +4,16 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-	public string hint;
-	public bool addPrefix = true;
+    public string hint;
+    public bool addPrefix = true;
 
-	public void Interact()
-	{
-		Action();
-	}
+    public void Interact()
+    {
+        Action();
+    }
 
-	protected virtual void Action()
-	{
-		//Debug.Log("Action is not set");
-	}
+    protected virtual void Action()
+    {
+        //Debug.Log("Action is not set");
+    }
 }

@@ -71,7 +71,7 @@ public class PlayerSlide : MonoBehaviour
 
         slideTimer = maxSlideTime;
 
-       
+
     }
 
     private void StopSlide()
@@ -83,7 +83,7 @@ public class PlayerSlide : MonoBehaviour
     private void SlidingMovement()
     {
         Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        
+
         if (!playerMovement.OnSlope() || rb.velocity.y > -0.1f) //apply extra slide speed if player is not on slope or moving upwards
         {
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
@@ -93,7 +93,7 @@ public class PlayerSlide : MonoBehaviour
         {
             rb.AddForce(playerMovement.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
         }
-        
+
 
 
         if(slideTimer <= 0)

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeCamera : MonoBehaviour
 {
     [SerializeField] private GameObject[] _vCams = new GameObject[7];
-    
+
     float deltaSeconds = 0;
     float SecondsPassed = 0;
 
@@ -145,7 +145,7 @@ public class ChangeCamera : MonoBehaviour
             //talk
             BossManager.currentScene = 3;
             _vCams[5].SetActive(false); //close thy cam
-            
+
             //dialog
             d1.SetActive(true);
         }

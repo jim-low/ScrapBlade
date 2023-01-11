@@ -26,10 +26,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-		Cursor.visible = paused || Player.isDied;
+        Cursor.visible = paused || Player.isDied;
         Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
 
-		if (!Player.isDied && Input.GetKeyDown(KeyCode.Escape))
+        if (!Player.isDied && Input.GetKeyDown(KeyCode.Escape))
         {
             paused = !paused;
             if (paused)
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         paused = true;
         GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().Pause(); // stop music
         Time.timeScale = 0; // stop gameplay
-		Cursor.lockState = CursorLockMode.None; // release mouse lock
+        Cursor.lockState = CursorLockMode.None; // release mouse lock
         inGameMenu.SetActive(true); // show pause menu
     }
 
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         paused = false;
         GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().UnPause(); // continue music
         Time.timeScale = 1; // continue gameplay
-		Cursor.lockState = CursorLockMode.Locked; // lock mouse
+        Cursor.lockState = CursorLockMode.Locked; // lock mouse
         inGameMenu.SetActive(false); // hide pause menu
     }
 
@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
 
         if (GameObject.Find("Enemies") == null) // got no enemies (just boss)
         {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reload boss scene
-		}
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // reload boss scene
+        }
         else // if got enemies
         {
             GameObject enemies = GameObject.Find("Enemies");
@@ -85,27 +85,27 @@ public class GameManager : MonoBehaviour
             //    enemy.GetComponent<RangedEnemy>().SetLiveStatus(true);
             //}
 
-			GameObject player = GameObject.Find("Player");
-			player.GetComponent<Player>().UnDie();
-			player.GetComponent<SpawnCheckpoint>().SpawnAtCheckpoint();
-		}
-	}
+            GameObject player = GameObject.Find("Player");
+            player.GetComponent<Player>().UnDie();
+            player.GetComponent<SpawnCheckpoint>().SpawnAtCheckpoint();
+        }
+    }
 
-	private void LoadSceneAndPlayClick(string sceneName)
-	{
-		SceneManager.LoadScene(sceneName);
-		buttonSource.Play();
-	}
+    private void LoadSceneAndPlayClick(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        buttonSource.Play();
+    }
 
-	public void MainMenu()
-	{
-		Cursor.lockState = CursorLockMode.None;
-		Time.timeScale = 1;
-		LoadSceneAndPlayClick("MainMenu");
-	}
+    public void MainMenu()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 1;
+        LoadSceneAndPlayClick("MainMenu");
+    }
 
-	public void StartGame()
-	{
-		LoadSceneAndPlayClick("BossCutScene");
-	}
+    public void StartGame()
+    {
+        LoadSceneAndPlayClick("BossCutScene");
+    }
 }

@@ -11,7 +11,7 @@ public class PlayerSounds : MonoBehaviour
     AudioClip noSound;
     public bool toggleSound;
 
-    
+
     void Update()
     {
         if(toggleSound && !audio.isPlaying)             //ensure the sound doesnt play when not needed

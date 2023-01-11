@@ -19,9 +19,9 @@ public class Navigation : MonoBehaviour
     {
         if (target) // if target has been found, set target position
         {
-			agent.destination = target.position;
-		}
-	}
+            agent.destination = target.position;
+        }
+    }
 
     public void SetSpeed(float speed)
     {

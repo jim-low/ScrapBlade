@@ -78,9 +78,9 @@ public class PlayerMovement : MonoBehaviour
     public bool wallRunning;
     public bool inAir;
 
-	[Header("Player Death")]
-	public LayerMask killFloorLayer;
-	bool hitKillFloor;
+    [Header("Player Death")]
+    public LayerMask killFloorLayer;
+    bool hitKillFloor;
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
         hitKillFloor = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.35f, killFloorLayer);
-        
+
         MyInput();
         SpeedControl();
         StateHandler();
@@ -131,23 +131,23 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
-       
+
     }
 
     void FixedUpdate()
     {
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);//apply gravity
-        
+
         if ((wallRunScript.wallDetected || wallRunScript.CheckForObstacleWall()) && inAir && !climbing)
         {
             rb.AddForce(Vector3.down * 35f, ForceMode.Force);
         }
         MovePlayer();
 
-	if (hitKillFloor)
-	{
-		GetComponent<Player>().Die();
-	}
+        if (hitKillFloor)
+        {
+            GetComponent<Player>().Die();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -184,9 +184,9 @@ public class PlayerMovement : MonoBehaviour
         {
             crouching = false;
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-            
+
         }
-        
+
     }
 
     private void StateHandler()
@@ -301,7 +301,7 @@ public class PlayerMovement : MonoBehaviour
             }
             rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
         }
-        
+
         else if (!grounded || (!grounded && !wallRunScript.wallDetected))
         {
             rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);

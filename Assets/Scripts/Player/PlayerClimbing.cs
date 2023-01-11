@@ -30,11 +30,11 @@ public class PlayerClimbing : MonoBehaviour
     private RaycastHit frontWallHit;
     private bool wallFront;
     public bool topWall;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -60,7 +60,7 @@ public class PlayerClimbing : MonoBehaviour
             if(!playerMovement.climbing && climbTimer > 0)
             {
                 StartClimb();
-                
+
             }else if(playerMovement.climbing)
             {
                 if (!topWall)       //if the player climbs up to the top of the wall
@@ -108,13 +108,13 @@ public class PlayerClimbing : MonoBehaviour
     {
         rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);              //sets the velocity upwards to climb
         cam.DoFovChanges(climbFOVAmt);
-        
+
     }
 
     private IEnumerator ClimbOverMovement()
     {
         transform.Translate(0, ledgeClimbForce, 0);                                         //pushes the player up the cliff
-        //rb.AddForce(Vector3.up * 40.0f, ForceMode.Force);
+                                                                                            //rb.AddForce(Vector3.up * 40.0f, ForceMode.Force);
         cam.ClimbUpMotion();                                                   //rotate the camera down 45 degree
         yield return new WaitForSeconds(0.4f);
         //rb.AddForce(Vector3.forward * 10.0f, ForceMode.Force);                         //pushes the player front and over the cliff

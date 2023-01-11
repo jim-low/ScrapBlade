@@ -19,7 +19,7 @@ public class BossAttack : MonoBehaviour
             Transform curr = collider.gameObject.transform;
             if (curr.GetComponent<Player>() == null) // go up in hierarchy to get player game object
                 curr = curr.parent;
-        
+
             curr.GetComponent<Player>().Die();
         }
     }

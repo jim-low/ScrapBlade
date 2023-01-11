@@ -145,7 +145,7 @@ public class PlayerWallRun : MonoBehaviour
             if (playerMovement.wallRunning)
             {
                 StopWallRun();
-               
+
             } 
             wallRunJump = false;
         }
@@ -204,7 +204,7 @@ public class PlayerWallRun : MonoBehaviour
         {
             rb.AddForce(transform.up * gravityCounterForce, ForceMode.Force);
         }
-       
+
     }
 
     private void StopWallRun()

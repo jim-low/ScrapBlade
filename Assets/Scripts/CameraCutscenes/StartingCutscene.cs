@@ -32,8 +32,8 @@ public class StartingCutscene : MonoBehaviour
     //GameObject UiGameObject;
     string levelChange = "Level1";
 
-// Start is called before the first frame update
-void Start()
+    // Start is called before the first frame update
+    void Start()
     {
 
         ////enable cinematic cameras.
@@ -43,7 +43,7 @@ void Start()
         //}
 
         CinematicBars.enableBarsImmediate = true; //show da cinematic bars
-        //disable scripts and objects
+                                                  //disable scripts and objects
         playerGameObject = GameObject.Find("Player");
         playerGameObject.GetComponent<Interact>().enabled = false;
         playerGameObject.GetComponent<PlayerMovement>().enabled = false;

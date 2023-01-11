@@ -9,9 +9,9 @@ public class Aircraft : Interactable
         hint = "Drive Plane";
     }
 
-	protected override void Action()
-	{
+    protected override void Action()
+    {
         addPrefix = false;
         hint = "Sorry you cant drive the plane in this version of the game ;)";
-	}
+    }
 }

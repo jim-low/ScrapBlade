@@ -6,7 +6,7 @@ public class BossManager : MonoBehaviour
 {
     private Animator _SapphiArtChanAnimator;                //Character Animation
     internal string _SapphiArtChanAnimation = null;         //Character Animation Name
-    //private AnimationManagerUI _AnimationManagerUI;         //Character Animation UI Connection
+                                                            //private AnimationManagerUI _AnimationManagerUI;         //Character Animation UI Connection
     private string _SapphiArtChanLastAnimation = null;      //Character Last Animation
 
     private SkinnedMeshRenderer _SapphiArtChanRenderer_Face;        //Character Skin Mesh Renderer for Face
@@ -23,7 +23,7 @@ public class BossManager : MonoBehaviour
     private float _SapphiArtChanLastFacial = 0.0f;    //Character Last Facial Parameter
     private bool _SapphiArtChanFacialBool = false;    //Character Facial Parameter Bool
     private bool _SapphiArtChanLastFacialBool = false;    //Character Last Facial Parameter Bool
-    //BlendShapeValues
+                                                          //BlendShapeValues
     private float _SapphiArtChanFacial_Eye_L_Happy = 0.0f;
     private float _SapphiArtChanFacial_Eye_R_Happy = 0.0f;
     private float _SapphiArtChanFacial_Eye_L_Closed = 0.0f;
@@ -213,7 +213,7 @@ public class BossManager : MonoBehaviour
         if (mouthMovement <= 0)
         {
             closeMouth = true;
-            
+
         }
         else if (mouthMovement >= 80)
         {
@@ -392,11 +392,11 @@ public class BossManager : MonoBehaviour
         if (_SapphiArtChanAnimator.GetCurrentAnimatorStateInfo(0).IsName(_SapphiArtChanAnimation))
         {
             if (
-                _SapphiArtChanAnimation != walk &&
-                _SapphiArtChanAnimation != running &&
-                _SapphiArtChanAnimation != ko_big &&
-                _SapphiArtChanAnimation != winpose
-                )
+                    _SapphiArtChanAnimation != walk &&
+                    _SapphiArtChanAnimation != running &&
+                    _SapphiArtChanAnimation != ko_big &&
+                    _SapphiArtChanAnimation != winpose
+               )
             {
                 SetAllAnimationFlagsToFalse();
                 _SapphiArtChanAnimator.SetBool(param_toidle, true);
@@ -555,8 +555,8 @@ public class BossManager : MonoBehaviour
                 return;
 
             if (_MouthChangeType == _MouthLastChangeType &&
-                _SapphiArtChanFacial == _SapphiArtChanLastFacial &&
-                _SapphiArtChanFacialBool == _SapphiArtChanLastFacialBool)
+                    _SapphiArtChanFacial == _SapphiArtChanLastFacial &&
+                    _SapphiArtChanFacialBool == _SapphiArtChanLastFacialBool)
                 return;
 
             else if (_MouthChangeType == mouthE)

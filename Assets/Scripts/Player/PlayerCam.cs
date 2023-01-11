@@ -55,7 +55,7 @@ public class PlayerCam : MonoBehaviour
     {
         transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.25f);
     }
-        
+
     public void MoveHead(Vector3 headMoveAmt)       //moves the head away from wall to avoid clipping on wall
     {
         transform.localPosition = headMoveAmt;
